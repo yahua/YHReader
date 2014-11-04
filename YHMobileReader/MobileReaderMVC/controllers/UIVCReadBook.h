@@ -34,4 +34,6 @@ typedef NS_ENUM(NSUInteger, YHReadStyle) {
 
 - (id)initWithBookInfo:(Books *)bookInfo;
 
+
+
 @end
