@@ -54,7 +54,6 @@
 @end
 
 
-
 @interface AppColor : NSObject <
 AppColor
 >
