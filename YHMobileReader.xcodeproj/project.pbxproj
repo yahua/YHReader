@@ -1,0 +1,855 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0E184B1F18D54753005A3888 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E184B1E18D54753005A3888 /* UIKit.framework */; };
+		0E184B2118D54753005A3888 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E184B2018D54753005A3888 /* Foundation.framework */; };
+		0E184B2318D54753005A3888 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E184B2218D54753005A3888 /* CoreGraphics.framework */; };
+		0E184B2918D54753005A3888 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0E184B2718D54753005A3888 /* InfoPlist.strings */; };
+		0E184B2B18D54753005A3888 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E184B2A18D54753005A3888 /* main.m */; };
+		0E184B3118D54753005A3888 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E184B3018D54753005A3888 /* Default.png */; };
+		0E184B3318D54753005A3888 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E184B3218D54753005A3888 /* Default@2x.png */; };
+		0E184B3518D54753005A3888 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E184B3418D54753005A3888 /* Default-568h@2x.png */; };
+		0E184B5318D5505D005A3888 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E184B4A18D5505D005A3888 /* FMDatabase.m */; };
+		0E184B5418D5505D005A3888 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E184B4C18D5505D005A3888 /* FMDatabaseAdditions.m */; };
+		0E184B5518D5505D005A3888 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E184B4E18D5505D005A3888 /* FMDatabasePool.m */; };
+		0E184B5618D5505D005A3888 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E184B5018D5505D005A3888 /* FMDatabaseQueue.m */; };
+		0E184B5718D5505D005A3888 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E184B5218D5505D005A3888 /* FMResultSet.m */; };
+		0E184B5B18D55069005A3888 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E184B5A18D55069005A3888 /* DBManager.m */; };
+		0E27803418D5565600053099 /* BookClassify.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E27803318D5565600053099 /* BookClassify.m */; };
+		0E27803718D5585700053099 /* BookRack.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E27803618D5585700053099 /* BookRack.m */; };
+		0E27803A18D55AB200053099 /* Books.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E27803918D55AB200053099 /* Books.m */; };
+		0E27803D18D55C0300053099 /* BookMark.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E27803C18D55C0200053099 /* BookMark.m */; };
+		0E27804018D55D8100053099 /* ReadInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E27803F18D55D8000053099 /* ReadInfo.m */; };
+		0E27804318D5641000053099 /* ClassifyDBImplement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E27804218D5641000053099 /* ClassifyDBImplement.m */; };
+		0E27804618D567BE00053099 /* RackDBImplement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E27804518D567BE00053099 /* RackDBImplement.m */; };
+		0E27804918D56A7D00053099 /* BookDBImplement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E27804818D56A7D00053099 /* BookDBImplement.m */; };
+		0E9F903918D9A172008AA9F4 /* AppColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E9F903818D9A171008AA9F4 /* AppColor.m */; };
+		0EA047E318D5AEE400CBFB48 /* BookMarkDBImplement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA047E218D5AEE400CBFB48 /* BookMarkDBImplement.m */; };
+		0EA047F018D5B83500CBFB48 /* ReadInfoDBImplement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA047EF18D5B83500CBFB48 /* ReadInfoDBImplement.m */; };
+		0EA0555318D70C9C00318165 /* DBInterfaceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0555218D70C9A00318165 /* DBInterfaceFactory.m */; };
+		0EA27C0818E1AEDC00025541 /* BookRackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA27C0718E1AEDC00025541 /* BookRackView.m */; };
+		0EA62B8018D885F100454481 /* SystemLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA62B7F18D885F100454481 /* SystemLogic.m */; };
+		0EA62B9518D888F600454481 /* BlockCreateUIDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA62B8718D888F600454481 /* BlockCreateUIDefine.m */; };
+		0EA62B9618D888F600454481 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA62B8A18D888F600454481 /* UIColor+Hex.m */; };
+		0EA62B9718D888F600454481 /* UIImageExtended.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA62B8C18D888F600454481 /* UIImageExtended.m */; };
+		0EA62B9818D888F600454481 /* UIScreen+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA62B8E18D888F600454481 /* UIScreen+Common.m */; };
+		0EA62B9A18D888F600454481 /* UIView+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA62B9218D888F600454481 /* UIView+Size.m */; };
+		0EA62B9E18D889A600454481 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EA62B9D18D889A600454481 /* libsqlite3.dylib */; };
+		0EA62BA318D8919B00454481 /* BookClassifyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA62BA218D8919B00454481 /* BookClassifyCell.m */; };
+		0EBB232A18DA943B002D203E /* BookClassifyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EBB232918DA943B002D203E /* BookClassifyView.m */; };
+		0EBB232E18DAA45D002D203E /* UIVCBookRack.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EBB232D18DAA45D002D203E /* UIVCBookRack.m */; };
+		2C03BF2A18F81E3E002AFE50 /* PageFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C03BF2918F81E3E002AFE50 /* PageFooterView.m */; };
+		2C04CBC918F92C5D0083DB85 /* PageSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C04CBC818F92C5D0083DB85 /* PageSettingView.m */; };
+		2C04CBCC18F935B70083DB85 /* ReadStyleItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C04CBCB18F935B70083DB85 /* ReadStyleItemView.m */; };
+		2C052A4318F51B5D00A998EC /* VerticalPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C052A4218F51B5D00A998EC /* VerticalPageView.m */; };
+		2C052A4618F54A7800A998EC /* PageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C052A4518F54A7800A998EC /* PageHeaderView.m */; };
+		2C06B56418FBB34200B3F485 /* BookMarkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C06B56318FBB34200B3F485 /* BookMarkCell.m */; };
+		2C06B56718FBB85A00B3F485 /* UIVCBookMark.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C06B56618FBB85A00B3F485 /* UIVCBookMark.m */; };
+		2C06B56A18FBBCB800B3F485 /* BookMarkHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C06B56918FBBCB800B3F485 /* BookMarkHeaderView.m */; };
+		2C06B57C18FBCE0400B3F485 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C06B57B18FBCE0400B3F485 /* MBProgressHUD.m */; };
+		2C06B58218FBDA4600B3F485 /* 箭头1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C06B58018FBDA4600B3F485 /* 箭头1.png */; };
+		2C06B58318FBDA4600B3F485 /* 箭头2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C06B58118FBDA4600B3F485 /* 箭头2.png */; };
+		2C06B58518FBDDCB00B3F485 /* bookrack_edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C06B58418FBDDCB00B3F485 /* bookrack_edit@2x.png */; };
+		2C089F2D18FF91630067C920 /* MobileReaderAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C089F2B18FF91630067C920 /* MobileReaderAppDelegate.m */; };
+		2C0D83BB18FCD50200DB7730 /* dataBase.db in Resources */ = {isa = PBXBuildFile; fileRef = 2C0D83BA18FCD50200DB7730 /* dataBase.db */; };
+		2C0D83BD18FCDDDD00DB7730 /* bookclassify_add.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0D83BC18FCDDDD00DB7730 /* bookclassify_add.png */; };
+		2C0D83C218FD15F200DB7730 /* ClassifyLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0D83C118FD15F200DB7730 /* ClassifyLogic.m */; };
+		2C0D83CC18FD24D200DB7730 /* 超级校园狂少.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2C0D83C318FD24D200DB7730 /* 超级校园狂少.txt */; };
+		2C0D83CD18FD24D200DB7730 /* 道胎种魔.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2C0D83C418FD24D200DB7730 /* 道胎种魔.txt */; };
+		2C0D83CE18FD24D200DB7730 /* 过客,匆匆.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2C0D83C518FD24D200DB7730 /* 过客,匆匆.txt */; };
+		2C0D83CF18FD24D200DB7730 /* 冷宫的弃后.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2C0D83C618FD24D200DB7730 /* 冷宫的弃后.txt */; };
+		2C0D83D018FD24D200DB7730 /* 魔剑录.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2C0D83C718FD24D200DB7730 /* 魔剑录.txt */; };
+		2C0D83D118FD24D200DB7730 /* 倾城绝恋.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2C0D83C818FD24D200DB7730 /* 倾城绝恋.txt */; };
+		2C0D83D218FD24D200DB7730 /* 先结婚后恋爱.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2C0D83C918FD24D200DB7730 /* 先结婚后恋爱.txt */; };
+		2C0D83D318FD24D200DB7730 /* 邪妃傲天下.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2C0D83CA18FD24D200DB7730 /* 邪妃傲天下.txt */; };
+		2C0D83D418FD24D200DB7730 /* 最后一个道士.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2C0D83CB18FD24D200DB7730 /* 最后一个道士.txt */; };
+		2C0D841F18FD3B6E00DB7730 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0D840F18FD3B6E00DB7730 /* home.png */; };
+		2C0D842018FD3B6E00DB7730 /* return.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0D841018FD3B6E00DB7730 /* return.png */; };
+		2C0D842118FD3B6E00DB7730 /* 书签.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0D841118FD3B6E00DB7730 /* 书签.png */; };
+		2C0D842218FD3B6E00DB7730 /* 倾城绝恋.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0D841218FD3B6E00DB7730 /* 倾城绝恋.png */; };
+		2C0D842318FD3B6E00DB7730 /* 先结婚后恋爱.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0D841318FD3B6E00DB7730 /* 先结婚后恋爱.png */; };
+		2C0D842418FD3B6E00DB7730 /* 冷宫的弃后.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0D841418FD3B6E00DB7730 /* 冷宫的弃后.png */; };
+		2C0D842518FD3B6E00DB7730 /* 太阳.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0D841518FD3B6E00DB7730 /* 太阳.png */; };
+		2C0D842618FD3B6E00DB7730 /* 异界召唤师.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0D841618FD3B6E00DB7730 /* 异界召唤师.png */; };
+		2C0D842718FD3B6E00DB7730 /* 最后一个道士.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0D841718FD3B6E00DB7730 /* 最后一个道士.png */; };
+		2C0D842818FD3B6E00DB7730 /* 月亮.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0D841818FD3B6E00DB7730 /* 月亮.png */; };
+		2C0D842918FD3B6E00DB7730 /* 设置.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0D841918FD3B6E00DB7730 /* 设置.png */; };
+		2C0D842A18FD3B6E00DB7730 /* 超级校园狂少.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0D841A18FD3B6E00DB7730 /* 超级校园狂少.png */; };
+		2C0D842B18FD3B6E00DB7730 /* 过客,匆匆.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0D841B18FD3B6E00DB7730 /* 过客,匆匆.png */; };
+		2C0D842C18FD3B6E00DB7730 /* 道胎种魔.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0D841C18FD3B6E00DB7730 /* 道胎种魔.png */; };
+		2C0D842D18FD3B6E00DB7730 /* 邪妃傲天下.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0D841D18FD3B6E00DB7730 /* 邪妃傲天下.png */; };
+		2C0D842E18FD3B6E00DB7730 /* 魔剑录.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0D841E18FD3B6E00DB7730 /* 魔剑录.png */; };
+		2C0D843018FD4A7D00DB7730 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0D842F18FD4A7D00DB7730 /* icon.png */; };
+		2C0ECA5518E50E5A00E85F1B /* BookView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E40253F18E03BFF00E693BD /* BookView.m */; };
+		2C0ECA5718E50EBD00E85F1B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C0ECA5618E50EBD00E85F1B /* QuartzCore.framework */; };
+		2C183B2618ED8284009EE4B4 /* book_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C183B2418ED8284009EE4B4 /* book_delete.png */; };
+		2C5DC0FA18F4246F00D6F145 /* 异界召唤师.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2C5DC0F918F4246F00D6F145 /* 异界召唤师.txt */; };
+		2C5DC0FE18F4247C00D6F145 /* PageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5DC0FD18F4247C00D6F145 /* PageView.m */; };
+		2C5DC10118F4248D00D6F145 /* UIVCReadBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5DC0FF18F4248D00D6F145 /* UIVCReadBook.m */; };
+		2C5DC10518F42A0D00D6F145 /* ReadInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5DC10418F42A0D00D6F145 /* ReadInfoManager.m */; };
+		2C624C0618EC249F00D169AC /* BookRackHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C624C0518EC249F00D169AC /* BookRackHeaderView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0E184B1A18D54753005A3888 /* YHMobileReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YHMobileReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E184B1E18D54753005A3888 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		0E184B2018D54753005A3888 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0E184B2218D54753005A3888 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0E184B2618D54753005A3888 /* YHMobileReader-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "YHMobileReader-Info.plist"; sourceTree = "<group>"; };
+		0E184B2818D54753005A3888 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0E184B2A18D54753005A3888 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0E184B2C18D54753005A3888 /* YHMobileReader-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YHMobileReader-Prefix.pch"; sourceTree = "<group>"; };
+		0E184B3018D54753005A3888 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		0E184B3218D54753005A3888 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		0E184B3418D54753005A3888 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		0E184B4918D5505D005A3888 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		0E184B4A18D5505D005A3888 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		0E184B4B18D5505D005A3888 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		0E184B4C18D5505D005A3888 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		0E184B4D18D5505D005A3888 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		0E184B4E18D5505D005A3888 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		0E184B4F18D5505D005A3888 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		0E184B5018D5505D005A3888 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		0E184B5118D5505D005A3888 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		0E184B5218D5505D005A3888 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		0E184B5918D55069005A3888 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
+		0E184B5A18D55069005A3888 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
+		0E27803218D5565600053099 /* BookClassify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookClassify.h; sourceTree = "<group>"; };
+		0E27803318D5565600053099 /* BookClassify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookClassify.m; sourceTree = "<group>"; };
+		0E27803518D5585700053099 /* BookRack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookRack.h; sourceTree = "<group>"; };
+		0E27803618D5585700053099 /* BookRack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookRack.m; sourceTree = "<group>"; };
+		0E27803818D55AB200053099 /* Books.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Books.h; sourceTree = "<group>"; };
+		0E27803918D55AB200053099 /* Books.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Books.m; sourceTree = "<group>"; };
+		0E27803B18D55C0200053099 /* BookMark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookMark.h; sourceTree = "<group>"; };
+		0E27803C18D55C0200053099 /* BookMark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookMark.m; sourceTree = "<group>"; };
+		0E27803E18D55D8000053099 /* ReadInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadInfo.h; sourceTree = "<group>"; };
+		0E27803F18D55D8000053099 /* ReadInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadInfo.m; sourceTree = "<group>"; };
+		0E27804118D5641000053099 /* ClassifyDBInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyDBInterface.h; sourceTree = "<group>"; };
+		0E27804218D5641000053099 /* ClassifyDBImplement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClassifyDBImplement.m; path = ../ClassifyDBImplement.m; sourceTree = "<group>"; };
+		0E27804418D567BE00053099 /* RackDBInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RackDBInterface.h; sourceTree = "<group>"; };
+		0E27804518D567BE00053099 /* RackDBImplement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RackDBImplement.m; path = ../RackDBImplement.m; sourceTree = "<group>"; };
+		0E27804718D56A7D00053099 /* BookDBInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BookDBInterface.h; path = dbImplements/BookDBInterface.h; sourceTree = "<group>"; };
+		0E27804818D56A7D00053099 /* BookDBImplement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookDBImplement.m; sourceTree = "<group>"; };
+		0E40253E18E03BFE00E693BD /* BookView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BookView.h; path = ../bookClassify/BookView.h; sourceTree = "<group>"; };
+		0E40253F18E03BFF00E693BD /* BookView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BookView.m; path = ../bookClassify/BookView.m; sourceTree = "<group>"; };
+		0E9F903718D9A171008AA9F4 /* AppColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppColor.h; sourceTree = "<group>"; };
+		0E9F903818D9A171008AA9F4 /* AppColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppColor.m; sourceTree = "<group>"; };
+		0EA047E118D5AEE400CBFB48 /* BookMarkDBInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BookMarkDBInterface.h; path = dbImplements/BookMarkDBInterface.h; sourceTree = "<group>"; };
+		0EA047E218D5AEE400CBFB48 /* BookMarkDBImplement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookMarkDBImplement.m; sourceTree = "<group>"; };
+		0EA047E518D5B41F00CBFB48 /* ReadInfoDBInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadInfoDBInterface.h; sourceTree = "<group>"; };
+		0EA047EF18D5B83500CBFB48 /* ReadInfoDBImplement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadInfoDBImplement.m; sourceTree = "<group>"; };
+		0EA0555118D70C9800318165 /* DBInterfaceFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBInterfaceFactory.h; sourceTree = "<group>"; };
+		0EA0555218D70C9A00318165 /* DBInterfaceFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBInterfaceFactory.m; sourceTree = "<group>"; };
+		0EA27C0618E1AEDC00025541 /* BookRackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookRackView.h; sourceTree = "<group>"; };
+		0EA27C0718E1AEDC00025541 /* BookRackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookRackView.m; sourceTree = "<group>"; };
+		0EA62B7E18D885F100454481 /* SystemLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemLogic.h; sourceTree = "<group>"; };
+		0EA62B7F18D885F100454481 /* SystemLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemLogic.m; sourceTree = "<group>"; };
+		0EA62B8618D888F600454481 /* BlockCreateUIDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockCreateUIDefine.h; sourceTree = "<group>"; };
+		0EA62B8718D888F600454481 /* BlockCreateUIDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockCreateUIDefine.m; sourceTree = "<group>"; };
+		0EA62B8918D888F600454481 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		0EA62B8A18D888F600454481 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		0EA62B8B18D888F600454481 /* UIImageExtended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageExtended.h; sourceTree = "<group>"; };
+		0EA62B8C18D888F600454481 /* UIImageExtended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageExtended.m; sourceTree = "<group>"; };
+		0EA62B8D18D888F600454481 /* UIScreen+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+Common.h"; sourceTree = "<group>"; };
+		0EA62B8E18D888F600454481 /* UIScreen+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+Common.m"; sourceTree = "<group>"; };
+		0EA62B9118D888F600454481 /* UIView+Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Size.h"; sourceTree = "<group>"; };
+		0EA62B9218D888F600454481 /* UIView+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Size.m"; sourceTree = "<group>"; };
+		0EA62B9D18D889A600454481 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		0EA62BA118D8919B00454481 /* BookClassifyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookClassifyCell.h; sourceTree = "<group>"; };
+		0EA62BA218D8919B00454481 /* BookClassifyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookClassifyCell.m; sourceTree = "<group>"; };
+		0EBB232818DA943B002D203E /* BookClassifyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookClassifyView.h; sourceTree = "<group>"; };
+		0EBB232918DA943B002D203E /* BookClassifyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookClassifyView.m; sourceTree = "<group>"; };
+		0EBB232C18DAA45D002D203E /* UIVCBookRack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIVCBookRack.h; sourceTree = "<group>"; };
+		0EBB232D18DAA45D002D203E /* UIVCBookRack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIVCBookRack.m; sourceTree = "<group>"; };
+		2C03BF2818F81E3E002AFE50 /* PageFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageFooterView.h; sourceTree = "<group>"; };
+		2C03BF2918F81E3E002AFE50 /* PageFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageFooterView.m; sourceTree = "<group>"; };
+		2C04CBC718F92C5D0083DB85 /* PageSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageSettingView.h; sourceTree = "<group>"; };
+		2C04CBC818F92C5D0083DB85 /* PageSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageSettingView.m; sourceTree = "<group>"; };
+		2C04CBCA18F935B70083DB85 /* ReadStyleItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadStyleItemView.h; sourceTree = "<group>"; };
+		2C04CBCB18F935B70083DB85 /* ReadStyleItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadStyleItemView.m; sourceTree = "<group>"; };
+		2C052A4118F51B5D00A998EC /* VerticalPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalPageView.h; sourceTree = "<group>"; };
+		2C052A4218F51B5D00A998EC /* VerticalPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticalPageView.m; sourceTree = "<group>"; };
+		2C052A4418F54A7800A998EC /* PageHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageHeaderView.h; sourceTree = "<group>"; };
+		2C052A4518F54A7800A998EC /* PageHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageHeaderView.m; sourceTree = "<group>"; };
+		2C06B56218FBB34200B3F485 /* BookMarkCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookMarkCell.h; sourceTree = "<group>"; };
+		2C06B56318FBB34200B3F485 /* BookMarkCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookMarkCell.m; sourceTree = "<group>"; };
+		2C06B56518FBB85A00B3F485 /* UIVCBookMark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIVCBookMark.h; sourceTree = "<group>"; };
+		2C06B56618FBB85A00B3F485 /* UIVCBookMark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIVCBookMark.m; sourceTree = "<group>"; };
+		2C06B56818FBBCB800B3F485 /* BookMarkHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookMarkHeaderView.h; sourceTree = "<group>"; };
+		2C06B56918FBBCB800B3F485 /* BookMarkHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookMarkHeaderView.m; sourceTree = "<group>"; };
+		2C06B57A18FBCE0400B3F485 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		2C06B57B18FBCE0400B3F485 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		2C06B58018FBDA4600B3F485 /* 箭头1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头1.png"; sourceTree = "<group>"; };
+		2C06B58118FBDA4600B3F485 /* 箭头2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头2.png"; sourceTree = "<group>"; };
+		2C06B58418FBDDCB00B3F485 /* bookrack_edit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bookrack_edit@2x.png"; sourceTree = "<group>"; };
+		2C089F2B18FF91630067C920 /* MobileReaderAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileReaderAppDelegate.m; sourceTree = "<group>"; };
+		2C089F2C18FF91630067C920 /* MobileReaderAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileReaderAppDelegate.h; sourceTree = "<group>"; };
+		2C0D83BA18FCD50200DB7730 /* dataBase.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = dataBase.db; sourceTree = "<group>"; };
+		2C0D83BC18FCDDDD00DB7730 /* bookclassify_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookclassify_add.png; sourceTree = "<group>"; };
+		2C0D83C018FD15F200DB7730 /* ClassifyLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyLogic.h; sourceTree = "<group>"; };
+		2C0D83C118FD15F200DB7730 /* ClassifyLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassifyLogic.m; sourceTree = "<group>"; };
+		2C0D83C318FD24D200DB7730 /* 超级校园狂少.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "超级校园狂少.txt"; sourceTree = "<group>"; };
+		2C0D83C418FD24D200DB7730 /* 道胎种魔.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "道胎种魔.txt"; sourceTree = "<group>"; };
+		2C0D83C518FD24D200DB7730 /* 过客,匆匆.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "过客,匆匆.txt"; sourceTree = "<group>"; };
+		2C0D83C618FD24D200DB7730 /* 冷宫的弃后.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "冷宫的弃后.txt"; sourceTree = "<group>"; };
+		2C0D83C718FD24D200DB7730 /* 魔剑录.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "魔剑录.txt"; sourceTree = "<group>"; };
+		2C0D83C818FD24D200DB7730 /* 倾城绝恋.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "倾城绝恋.txt"; sourceTree = "<group>"; };
+		2C0D83C918FD24D200DB7730 /* 先结婚后恋爱.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "先结婚后恋爱.txt"; sourceTree = "<group>"; };
+		2C0D83CA18FD24D200DB7730 /* 邪妃傲天下.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "邪妃傲天下.txt"; sourceTree = "<group>"; };
+		2C0D83CB18FD24D200DB7730 /* 最后一个道士.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "最后一个道士.txt"; sourceTree = "<group>"; };
+		2C0D840F18FD3B6E00DB7730 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
+		2C0D841018FD3B6E00DB7730 /* return.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = return.png; sourceTree = "<group>"; };
+		2C0D841118FD3B6E00DB7730 /* 书签.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "书签.png"; sourceTree = "<group>"; };
+		2C0D841218FD3B6E00DB7730 /* 倾城绝恋.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "倾城绝恋.png"; sourceTree = "<group>"; };
+		2C0D841318FD3B6E00DB7730 /* 先结婚后恋爱.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "先结婚后恋爱.png"; sourceTree = "<group>"; };
+		2C0D841418FD3B6E00DB7730 /* 冷宫的弃后.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "冷宫的弃后.png"; sourceTree = "<group>"; };
+		2C0D841518FD3B6E00DB7730 /* 太阳.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "太阳.png"; sourceTree = "<group>"; };
+		2C0D841618FD3B6E00DB7730 /* 异界召唤师.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "异界召唤师.png"; sourceTree = "<group>"; };
+		2C0D841718FD3B6E00DB7730 /* 最后一个道士.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "最后一个道士.png"; sourceTree = "<group>"; };
+		2C0D841818FD3B6E00DB7730 /* 月亮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "月亮.png"; sourceTree = "<group>"; };
+		2C0D841918FD3B6E00DB7730 /* 设置.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "设置.png"; sourceTree = "<group>"; };
+		2C0D841A18FD3B6E00DB7730 /* 超级校园狂少.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "超级校园狂少.png"; sourceTree = "<group>"; };
+		2C0D841B18FD3B6E00DB7730 /* 过客,匆匆.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "过客,匆匆.png"; sourceTree = "<group>"; };
+		2C0D841C18FD3B6E00DB7730 /* 道胎种魔.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "道胎种魔.png"; sourceTree = "<group>"; };
+		2C0D841D18FD3B6E00DB7730 /* 邪妃傲天下.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "邪妃傲天下.png"; sourceTree = "<group>"; };
+		2C0D841E18FD3B6E00DB7730 /* 魔剑录.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "魔剑录.png"; sourceTree = "<group>"; };
+		2C0D842F18FD4A7D00DB7730 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		2C0ECA5618E50EBD00E85F1B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		2C183B2418ED8284009EE4B4 /* book_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book_delete.png; sourceTree = "<group>"; };
+		2C5DC0F918F4246F00D6F145 /* 异界召唤师.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "异界召唤师.txt"; sourceTree = "<group>"; };
+		2C5DC0FC18F4247C00D6F145 /* PageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageView.h; sourceTree = "<group>"; };
+		2C5DC0FD18F4247C00D6F145 /* PageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageView.m; sourceTree = "<group>"; };
+		2C5DC0FF18F4248D00D6F145 /* UIVCReadBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIVCReadBook.m; sourceTree = "<group>"; };
+		2C5DC10018F4248D00D6F145 /* UIVCReadBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIVCReadBook.h; sourceTree = "<group>"; };
+		2C5DC10318F42A0D00D6F145 /* ReadInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadInfoManager.h; sourceTree = "<group>"; };
+		2C5DC10418F42A0D00D6F145 /* ReadInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadInfoManager.m; sourceTree = "<group>"; };
+		2C624C0418EC249F00D169AC /* BookRackHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookRackHeaderView.h; sourceTree = "<group>"; };
+		2C624C0518EC249F00D169AC /* BookRackHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookRackHeaderView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0E184B1718D54753005A3888 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C0ECA5718E50EBD00E85F1B /* QuartzCore.framework in Frameworks */,
+				0EA62B9E18D889A600454481 /* libsqlite3.dylib in Frameworks */,
+				0E184B1F18D54753005A3888 /* UIKit.framework in Frameworks */,
+				0E184B2118D54753005A3888 /* Foundation.framework in Frameworks */,
+				0E184B2318D54753005A3888 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0E184B0F18D54753005A3888 = {
+			isa = PBXGroup;
+			children = (
+				0E184B2418D54753005A3888 /* YHMobileReader */,
+				0E184B1D18D54753005A3888 /* Frameworks */,
+				0E184B1B18D54753005A3888 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0E184B1B18D54753005A3888 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0E184B1A18D54753005A3888 /* YHMobileReader.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0E184B1D18D54753005A3888 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2C0ECA5618E50EBD00E85F1B /* QuartzCore.framework */,
+				0EA62B9D18D889A600454481 /* libsqlite3.dylib */,
+				0E184B1E18D54753005A3888 /* UIKit.framework */,
+				0E184B2018D54753005A3888 /* Foundation.framework */,
+				0E184B2218D54753005A3888 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0E184B2418D54753005A3888 /* YHMobileReader */ = {
+			isa = PBXGroup;
+			children = (
+				0E184B4118D548EE005A3888 /* Resource */,
+				0E184B4218D548EE005A3888 /* Third */,
+				0E184B3B18D548EE005A3888 /* MobileReaderMVC */,
+				0E184B4318D548EE005A3888 /* Utility */,
+				0E184B2518D54753005A3888 /* Supporting Files */,
+			);
+			path = YHMobileReader;
+			sourceTree = "<group>";
+		};
+		0E184B2518D54753005A3888 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0E184B2618D54753005A3888 /* YHMobileReader-Info.plist */,
+				0E184B2718D54753005A3888 /* InfoPlist.strings */,
+				0E184B2A18D54753005A3888 /* main.m */,
+				0E184B2C18D54753005A3888 /* YHMobileReader-Prefix.pch */,
+				0E184B3018D54753005A3888 /* Default.png */,
+				0E184B3218D54753005A3888 /* Default@2x.png */,
+				0E184B3418D54753005A3888 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0E184B3B18D548EE005A3888 /* MobileReaderMVC */ = {
+			isa = PBXGroup;
+			children = (
+				0E184B3C18D548EE005A3888 /* app */,
+				0E184B5818D55069005A3888 /* dbinterfaces */,
+				0E184B3D18D548EE005A3888 /* controllers */,
+				0E184B4018D548EE005A3888 /* views */,
+				2C5DC10218F429D200D6F145 /* common */,
+				0E184B3E18D548EE005A3888 /* logics */,
+				0E184B3F18D548EE005A3888 /* models */,
+			);
+			path = MobileReaderMVC;
+			sourceTree = "<group>";
+		};
+		0E184B3C18D548EE005A3888 /* app */ = {
+			isa = PBXGroup;
+			children = (
+				2C089F2B18FF91630067C920 /* MobileReaderAppDelegate.m */,
+				2C089F2C18FF91630067C920 /* MobileReaderAppDelegate.h */,
+			);
+			path = app;
+			sourceTree = "<group>";
+		};
+		0E184B3D18D548EE005A3888 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2C5DC10018F4248D00D6F145 /* UIVCReadBook.h */,
+				2C5DC0FF18F4248D00D6F145 /* UIVCReadBook.m */,
+				0EBB232C18DAA45D002D203E /* UIVCBookRack.h */,
+				0EBB232D18DAA45D002D203E /* UIVCBookRack.m */,
+				2C06B56518FBB85A00B3F485 /* UIVCBookMark.h */,
+				2C06B56618FBB85A00B3F485 /* UIVCBookMark.m */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		0E184B3E18D548EE005A3888 /* logics */ = {
+			isa = PBXGroup;
+			children = (
+				2C0D83C018FD15F200DB7730 /* ClassifyLogic.h */,
+				2C0D83C118FD15F200DB7730 /* ClassifyLogic.m */,
+				0EA62B7E18D885F100454481 /* SystemLogic.h */,
+				0EA62B7F18D885F100454481 /* SystemLogic.m */,
+			);
+			path = logics;
+			sourceTree = "<group>";
+		};
+		0E184B3F18D548EE005A3888 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				0E27803218D5565600053099 /* BookClassify.h */,
+				0E27803318D5565600053099 /* BookClassify.m */,
+				0E27803518D5585700053099 /* BookRack.h */,
+				0E27803618D5585700053099 /* BookRack.m */,
+				0E27803818D55AB200053099 /* Books.h */,
+				0E27803918D55AB200053099 /* Books.m */,
+				0E27803B18D55C0200053099 /* BookMark.h */,
+				0E27803C18D55C0200053099 /* BookMark.m */,
+				0E27803E18D55D8000053099 /* ReadInfo.h */,
+				0E27803F18D55D8000053099 /* ReadInfo.m */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		0E184B4018D548EE005A3888 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				2C06B56118FBB31900B3F485 /* bookMark */,
+				2C5DC0FB18F4247C00D6F145 /* readBook */,
+				0EA62B9F18D8915800454481 /* bookClassify */,
+				0EA62BA018D8915800454481 /* bookRack */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		0E184B4118D548EE005A3888 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				2C0D842F18FD4A7D00DB7730 /* icon.png */,
+				2C0D83BA18FCD50200DB7730 /* dataBase.db */,
+				2C5DC0F818F4246F00D6F145 /* books */,
+				2C183B2318ED8284009EE4B4 /* bookRack */,
+				2C183B2518ED8284009EE4B4 /* bookClassify */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		0E184B4218D548EE005A3888 /* Third */ = {
+			isa = PBXGroup;
+			children = (
+				2C06B57918FBCE0400B3F485 /* MBProgressHUD */,
+				0E184B4818D5505D005A3888 /* FMDB */,
+			);
+			path = Third;
+			sourceTree = "<group>";
+		};
+		0E184B4318D548EE005A3888 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				0E9F903718D9A171008AA9F4 /* AppColor.h */,
+				0E9F903818D9A171008AA9F4 /* AppColor.m */,
+				0EA62B8618D888F600454481 /* BlockCreateUIDefine.h */,
+				0EA62B8718D888F600454481 /* BlockCreateUIDefine.m */,
+				0EA62B8918D888F600454481 /* UIColor+Hex.h */,
+				0EA62B8A18D888F600454481 /* UIColor+Hex.m */,
+				0EA62B8B18D888F600454481 /* UIImageExtended.h */,
+				0EA62B8C18D888F600454481 /* UIImageExtended.m */,
+				0EA62B8D18D888F600454481 /* UIScreen+Common.h */,
+				0EA62B8E18D888F600454481 /* UIScreen+Common.m */,
+				0EA62B9118D888F600454481 /* UIView+Size.h */,
+				0EA62B9218D888F600454481 /* UIView+Size.m */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		0E184B4818D5505D005A3888 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				0E184B4918D5505D005A3888 /* FMDatabase.h */,
+				0E184B4A18D5505D005A3888 /* FMDatabase.m */,
+				0E184B4B18D5505D005A3888 /* FMDatabaseAdditions.h */,
+				0E184B4C18D5505D005A3888 /* FMDatabaseAdditions.m */,
+				0E184B4D18D5505D005A3888 /* FMDatabasePool.h */,
+				0E184B4E18D5505D005A3888 /* FMDatabasePool.m */,
+				0E184B4F18D5505D005A3888 /* FMDatabaseQueue.h */,
+				0E184B5018D5505D005A3888 /* FMDatabaseQueue.m */,
+				0E184B5118D5505D005A3888 /* FMResultSet.h */,
+				0E184B5218D5505D005A3888 /* FMResultSet.m */,
+			);
+			path = FMDB;
+			sourceTree = "<group>";
+		};
+		0E184B5818D55069005A3888 /* dbinterfaces */ = {
+			isa = PBXGroup;
+			children = (
+				0E27803018D5560100053099 /* dbImplements */,
+				0E184B5918D55069005A3888 /* DBManager.h */,
+				0E184B5A18D55069005A3888 /* DBManager.m */,
+				0E27804118D5641000053099 /* ClassifyDBInterface.h */,
+				0E27804418D567BE00053099 /* RackDBInterface.h */,
+				0E27804718D56A7D00053099 /* BookDBInterface.h */,
+				0EA047E118D5AEE400CBFB48 /* BookMarkDBInterface.h */,
+				0EA047E518D5B41F00CBFB48 /* ReadInfoDBInterface.h */,
+				0EA0555118D70C9800318165 /* DBInterfaceFactory.h */,
+				0EA0555218D70C9A00318165 /* DBInterfaceFactory.m */,
+			);
+			path = dbinterfaces;
+			sourceTree = "<group>";
+		};
+		0E27803018D5560100053099 /* dbImplements */ = {
+			isa = PBXGroup;
+			children = (
+				0EA047E218D5AEE400CBFB48 /* BookMarkDBImplement.m */,
+				0E27804518D567BE00053099 /* RackDBImplement.m */,
+				0E27804218D5641000053099 /* ClassifyDBImplement.m */,
+				0E27804818D56A7D00053099 /* BookDBImplement.m */,
+				0EA047EF18D5B83500CBFB48 /* ReadInfoDBImplement.m */,
+			);
+			path = dbImplements;
+			sourceTree = "<group>";
+		};
+		0EA62B9F18D8915800454481 /* bookClassify */ = {
+			isa = PBXGroup;
+			children = (
+				0EA62BA118D8919B00454481 /* BookClassifyCell.h */,
+				0EA62BA218D8919B00454481 /* BookClassifyCell.m */,
+				0EBB232818DA943B002D203E /* BookClassifyView.h */,
+				0EBB232918DA943B002D203E /* BookClassifyView.m */,
+			);
+			path = bookClassify;
+			sourceTree = "<group>";
+		};
+		0EA62BA018D8915800454481 /* bookRack */ = {
+			isa = PBXGroup;
+			children = (
+				0E40253E18E03BFE00E693BD /* BookView.h */,
+				0E40253F18E03BFF00E693BD /* BookView.m */,
+				0EA27C0618E1AEDC00025541 /* BookRackView.h */,
+				0EA27C0718E1AEDC00025541 /* BookRackView.m */,
+				2C624C0418EC249F00D169AC /* BookRackHeaderView.h */,
+				2C624C0518EC249F00D169AC /* BookRackHeaderView.m */,
+			);
+			path = bookRack;
+			sourceTree = "<group>";
+		};
+		2C06B56118FBB31900B3F485 /* bookMark */ = {
+			isa = PBXGroup;
+			children = (
+				2C06B56218FBB34200B3F485 /* BookMarkCell.h */,
+				2C06B56318FBB34200B3F485 /* BookMarkCell.m */,
+				2C06B56818FBBCB800B3F485 /* BookMarkHeaderView.h */,
+				2C06B56918FBBCB800B3F485 /* BookMarkHeaderView.m */,
+			);
+			path = bookMark;
+			sourceTree = "<group>";
+		};
+		2C06B57918FBCE0400B3F485 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				2C06B57A18FBCE0400B3F485 /* MBProgressHUD.h */,
+				2C06B57B18FBCE0400B3F485 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		2C0D840E18FD3B6E00DB7730 /* img */ = {
+			isa = PBXGroup;
+			children = (
+				2C0D840F18FD3B6E00DB7730 /* home.png */,
+				2C0D841018FD3B6E00DB7730 /* return.png */,
+				2C0D841118FD3B6E00DB7730 /* 书签.png */,
+				2C0D841218FD3B6E00DB7730 /* 倾城绝恋.png */,
+				2C0D841318FD3B6E00DB7730 /* 先结婚后恋爱.png */,
+				2C0D841418FD3B6E00DB7730 /* 冷宫的弃后.png */,
+				2C0D841518FD3B6E00DB7730 /* 太阳.png */,
+				2C0D841618FD3B6E00DB7730 /* 异界召唤师.png */,
+				2C0D841718FD3B6E00DB7730 /* 最后一个道士.png */,
+				2C0D841818FD3B6E00DB7730 /* 月亮.png */,
+				2C0D841918FD3B6E00DB7730 /* 设置.png */,
+				2C0D841A18FD3B6E00DB7730 /* 超级校园狂少.png */,
+				2C0D841B18FD3B6E00DB7730 /* 过客,匆匆.png */,
+				2C0D841C18FD3B6E00DB7730 /* 道胎种魔.png */,
+				2C0D841D18FD3B6E00DB7730 /* 邪妃傲天下.png */,
+				2C0D841E18FD3B6E00DB7730 /* 魔剑录.png */,
+			);
+			path = img;
+			sourceTree = "<group>";
+		};
+		2C183B2318ED8284009EE4B4 /* bookRack */ = {
+			isa = PBXGroup;
+			children = (
+				2C06B58418FBDDCB00B3F485 /* bookrack_edit@2x.png */,
+				2C06B58018FBDA4600B3F485 /* 箭头1.png */,
+				2C06B58118FBDA4600B3F485 /* 箭头2.png */,
+				2C183B2418ED8284009EE4B4 /* book_delete.png */,
+			);
+			path = bookRack;
+			sourceTree = "<group>";
+		};
+		2C183B2518ED8284009EE4B4 /* bookClassify */ = {
+			isa = PBXGroup;
+			children = (
+				2C0D83BC18FCDDDD00DB7730 /* bookclassify_add.png */,
+			);
+			path = bookClassify;
+			sourceTree = "<group>";
+		};
+		2C5DC0F818F4246F00D6F145 /* books */ = {
+			isa = PBXGroup;
+			children = (
+				2C0D840E18FD3B6E00DB7730 /* img */,
+				2C0D83C318FD24D200DB7730 /* 超级校园狂少.txt */,
+				2C0D83C418FD24D200DB7730 /* 道胎种魔.txt */,
+				2C0D83C518FD24D200DB7730 /* 过客,匆匆.txt */,
+				2C0D83C618FD24D200DB7730 /* 冷宫的弃后.txt */,
+				2C0D83C718FD24D200DB7730 /* 魔剑录.txt */,
+				2C0D83C818FD24D200DB7730 /* 倾城绝恋.txt */,
+				2C0D83C918FD24D200DB7730 /* 先结婚后恋爱.txt */,
+				2C0D83CA18FD24D200DB7730 /* 邪妃傲天下.txt */,
+				2C0D83CB18FD24D200DB7730 /* 最后一个道士.txt */,
+				2C5DC0F918F4246F00D6F145 /* 异界召唤师.txt */,
+			);
+			path = books;
+			sourceTree = "<group>";
+		};
+		2C5DC0FB18F4247C00D6F145 /* readBook */ = {
+			isa = PBXGroup;
+			children = (
+				2C5DC0FC18F4247C00D6F145 /* PageView.h */,
+				2C5DC0FD18F4247C00D6F145 /* PageView.m */,
+				2C052A4118F51B5D00A998EC /* VerticalPageView.h */,
+				2C052A4218F51B5D00A998EC /* VerticalPageView.m */,
+				2C052A4418F54A7800A998EC /* PageHeaderView.h */,
+				2C052A4518F54A7800A998EC /* PageHeaderView.m */,
+				2C03BF2818F81E3E002AFE50 /* PageFooterView.h */,
+				2C03BF2918F81E3E002AFE50 /* PageFooterView.m */,
+				2C04CBC718F92C5D0083DB85 /* PageSettingView.h */,
+				2C04CBC818F92C5D0083DB85 /* PageSettingView.m */,
+				2C04CBCA18F935B70083DB85 /* ReadStyleItemView.h */,
+				2C04CBCB18F935B70083DB85 /* ReadStyleItemView.m */,
+			);
+			path = readBook;
+			sourceTree = "<group>";
+		};
+		2C5DC10218F429D200D6F145 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				2C5DC10318F42A0D00D6F145 /* ReadInfoManager.h */,
+				2C5DC10418F42A0D00D6F145 /* ReadInfoManager.m */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0E184B1918D54753005A3888 /* YHMobileReader */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0E184B3818D54753005A3888 /* Build configuration list for PBXNativeTarget "YHMobileReader" */;
+			buildPhases = (
+				0E184B1618D54753005A3888 /* Sources */,
+				0E184B1718D54753005A3888 /* Frameworks */,
+				0E184B1818D54753005A3888 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YHMobileReader;
+			productName = YHMobileReader;
+			productReference = 0E184B1A18D54753005A3888 /* YHMobileReader.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0E184B1118D54753005A3888 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "压花";
+			};
+			buildConfigurationList = 0E184B1418D54753005A3888 /* Build configuration list for PBXProject "YHMobileReader" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0E184B0F18D54753005A3888;
+			productRefGroup = 0E184B1B18D54753005A3888 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0E184B1918D54753005A3888 /* YHMobileReader */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0E184B1818D54753005A3888 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C0D83CE18FD24D200DB7730 /* 过客,匆匆.txt in Resources */,
+				2C5DC0FA18F4246F00D6F145 /* 异界召唤师.txt in Resources */,
+				2C0D842618FD3B6E00DB7730 /* 异界召唤师.png in Resources */,
+				2C0D841F18FD3B6E00DB7730 /* home.png in Resources */,
+				2C183B2618ED8284009EE4B4 /* book_delete.png in Resources */,
+				0E184B2918D54753005A3888 /* InfoPlist.strings in Resources */,
+				2C0D83CC18FD24D200DB7730 /* 超级校园狂少.txt in Resources */,
+				0E184B3118D54753005A3888 /* Default.png in Resources */,
+				2C06B58218FBDA4600B3F485 /* 箭头1.png in Resources */,
+				2C06B58318FBDA4600B3F485 /* 箭头2.png in Resources */,
+				2C0D842A18FD3B6E00DB7730 /* 超级校园狂少.png in Resources */,
+				2C0D83BD18FCDDDD00DB7730 /* bookclassify_add.png in Resources */,
+				2C0D842E18FD3B6E00DB7730 /* 魔剑录.png in Resources */,
+				2C0D842D18FD3B6E00DB7730 /* 邪妃傲天下.png in Resources */,
+				0E184B3318D54753005A3888 /* Default@2x.png in Resources */,
+				2C0D83CF18FD24D200DB7730 /* 冷宫的弃后.txt in Resources */,
+				2C0D83D018FD24D200DB7730 /* 魔剑录.txt in Resources */,
+				2C0D83D418FD24D200DB7730 /* 最后一个道士.txt in Resources */,
+				2C0D842818FD3B6E00DB7730 /* 月亮.png in Resources */,
+				2C0D842118FD3B6E00DB7730 /* 书签.png in Resources */,
+				2C0D842718FD3B6E00DB7730 /* 最后一个道士.png in Resources */,
+				2C0D842318FD3B6E00DB7730 /* 先结婚后恋爱.png in Resources */,
+				2C0D83BB18FCD50200DB7730 /* dataBase.db in Resources */,
+				2C0D83CD18FD24D200DB7730 /* 道胎种魔.txt in Resources */,
+				0E184B3518D54753005A3888 /* Default-568h@2x.png in Resources */,
+				2C0D842418FD3B6E00DB7730 /* 冷宫的弃后.png in Resources */,
+				2C0D83D118FD24D200DB7730 /* 倾城绝恋.txt in Resources */,
+				2C0D842B18FD3B6E00DB7730 /* 过客,匆匆.png in Resources */,
+				2C0D842918FD3B6E00DB7730 /* 设置.png in Resources */,
+				2C0D83D318FD24D200DB7730 /* 邪妃傲天下.txt in Resources */,
+				2C0D843018FD4A7D00DB7730 /* icon.png in Resources */,
+				2C06B58518FBDDCB00B3F485 /* bookrack_edit@2x.png in Resources */,
+				2C0D842C18FD3B6E00DB7730 /* 道胎种魔.png in Resources */,
+				2C0D83D218FD24D200DB7730 /* 先结婚后恋爱.txt in Resources */,
+				2C0D842518FD3B6E00DB7730 /* 太阳.png in Resources */,
+				2C0D842018FD3B6E00DB7730 /* return.png in Resources */,
+				2C0D842218FD3B6E00DB7730 /* 倾城绝恋.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0E184B1618D54753005A3888 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C0ECA5518E50E5A00E85F1B /* BookView.m in Sources */,
+				2C5DC0FE18F4247C00D6F145 /* PageView.m in Sources */,
+				0E184B2B18D54753005A3888 /* main.m in Sources */,
+				2C06B56A18FBBCB800B3F485 /* BookMarkHeaderView.m in Sources */,
+				2C06B56418FBB34200B3F485 /* BookMarkCell.m in Sources */,
+				2C5DC10518F42A0D00D6F145 /* ReadInfoManager.m in Sources */,
+				2C04CBCC18F935B70083DB85 /* ReadStyleItemView.m in Sources */,
+				2C06B57C18FBCE0400B3F485 /* MBProgressHUD.m in Sources */,
+				0E184B5318D5505D005A3888 /* FMDatabase.m in Sources */,
+				0E184B5418D5505D005A3888 /* FMDatabaseAdditions.m in Sources */,
+				0E184B5518D5505D005A3888 /* FMDatabasePool.m in Sources */,
+				0E184B5618D5505D005A3888 /* FMDatabaseQueue.m in Sources */,
+				0E184B5718D5505D005A3888 /* FMResultSet.m in Sources */,
+				0E184B5B18D55069005A3888 /* DBManager.m in Sources */,
+				2C5DC10118F4248D00D6F145 /* UIVCReadBook.m in Sources */,
+				2C052A4618F54A7800A998EC /* PageHeaderView.m in Sources */,
+				2C624C0618EC249F00D169AC /* BookRackHeaderView.m in Sources */,
+				0E27803418D5565600053099 /* BookClassify.m in Sources */,
+				2C052A4318F51B5D00A998EC /* VerticalPageView.m in Sources */,
+				0E27803718D5585700053099 /* BookRack.m in Sources */,
+				0E27803A18D55AB200053099 /* Books.m in Sources */,
+				0E27803D18D55C0300053099 /* BookMark.m in Sources */,
+				0E27804018D55D8100053099 /* ReadInfo.m in Sources */,
+				0E27804318D5641000053099 /* ClassifyDBImplement.m in Sources */,
+				0E27804618D567BE00053099 /* RackDBImplement.m in Sources */,
+				2C03BF2A18F81E3E002AFE50 /* PageFooterView.m in Sources */,
+				0E27804918D56A7D00053099 /* BookDBImplement.m in Sources */,
+				2C04CBC918F92C5D0083DB85 /* PageSettingView.m in Sources */,
+				0EA047E318D5AEE400CBFB48 /* BookMarkDBImplement.m in Sources */,
+				0EA047F018D5B83500CBFB48 /* ReadInfoDBImplement.m in Sources */,
+				0EA0555318D70C9C00318165 /* DBInterfaceFactory.m in Sources */,
+				0EA62B8018D885F100454481 /* SystemLogic.m in Sources */,
+				0EA62B9518D888F600454481 /* BlockCreateUIDefine.m in Sources */,
+				0EA62B9618D888F600454481 /* UIColor+Hex.m in Sources */,
+				2C0D83C218FD15F200DB7730 /* ClassifyLogic.m in Sources */,
+				0EA62B9718D888F600454481 /* UIImageExtended.m in Sources */,
+				0EA62B9818D888F600454481 /* UIScreen+Common.m in Sources */,
+				0EA62B9A18D888F600454481 /* UIView+Size.m in Sources */,
+				2C06B56718FBB85A00B3F485 /* UIVCBookMark.m in Sources */,
+				0EA62BA318D8919B00454481 /* BookClassifyCell.m in Sources */,
+				0E9F903918D9A172008AA9F4 /* AppColor.m in Sources */,
+				0EBB232A18DA943B002D203E /* BookClassifyView.m in Sources */,
+				0EBB232E18DAA45D002D203E /* UIVCBookRack.m in Sources */,
+				0EA27C0818E1AEDC00025541 /* BookRackView.m in Sources */,
+				2C089F2D18FF91630067C920 /* MobileReaderAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0E184B2718D54753005A3888 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0E184B2818D54753005A3888 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0E184B3618D54753005A3888 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				VALID_ARCHS = "armv7 armv6";
+			};
+			name = Debug;
+		};
+		0E184B3718D54753005A3888 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv6";
+			};
+			name = Release;
+		};
+		0E184B3918D54753005A3888 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "YHMobileReader/YHMobileReader-Prefix.pch";
+				INFOPLIST_FILE = "YHMobileReader/YHMobileReader-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		0E184B3A18D54753005A3888 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "YHMobileReader/YHMobileReader-Prefix.pch";
+				INFOPLIST_FILE = "YHMobileReader/YHMobileReader-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0E184B1418D54753005A3888 /* Build configuration list for PBXProject "YHMobileReader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E184B3618D54753005A3888 /* Debug */,
+				0E184B3718D54753005A3888 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0E184B3818D54753005A3888 /* Build configuration list for PBXNativeTarget "YHMobileReader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E184B3918D54753005A3888 /* Debug */,
+				0E184B3A18D54753005A3888 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0E184B1118D54753005A3888 /* Project object */;
+}
