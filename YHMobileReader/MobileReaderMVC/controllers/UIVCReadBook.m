@@ -308,6 +308,7 @@ UIGestureRecognizerDelegate>
         
     });
 
+    
     [self handleTap];
 }
 
