@@ -31,41 +31,34 @@ PageSettingViewDelegate,
 UIScrollViewDelegate,
 UIGestureRecognizerDelegate>
 
-@property (nonatomic, copy) NSString *textStr;
-@property (nonatomic, retain) Books *bookInfo;
+@property (nonatomic, copy)     NSString *textStr;
+@property (nonatomic, strong)   Books *bookInfo;
 
-@property (nonatomic,assign) PageView *visitPage;
-@property (nonatomic,assign) PageView *prePage;
-@property (nonatomic,assign) PageView *nextPage;
-@property (nonatomic, assign) VerticalPageView *verticalPageView;
-@property (nonatomic, assign) PageHeaderView *pageHeaderView;
-@property (nonatomic, assign) PageFooterView *pageFooterView;
-@property (nonatomic, assign) PageSettingView *pageSettingView;
-@property (nonatomic, assign) UIScrollView *scrollview;
+@property (nonatomic, strong)   PageView *visitPage;
+@property (nonatomic, strong)   PageView *prePage;
+@property (nonatomic, strong)   PageView *nextPage;
+@property (nonatomic, strong)   VerticalPageView *verticalPageView;
+@property (nonatomic, strong)   PageHeaderView *pageHeaderView;
+@property (nonatomic, strong)   PageFooterView *pageFooterView;
+@property (nonatomic, strong)   PageSettingView *pageSettingView;
+@property (nonatomic, strong)   UIScrollView *scrollview;
 
-@property (nonatomic, retain) MBProgressHUD *hud;
+@property (nonatomic, strong)   MBProgressHUD *hud;
 
 //点击手势 点击显示顶部和底部界面
-@property (nonatomic, assign) UITapGestureRecognizer *tapGestureRecognizer;
+@property (nonatomic, strong)   UITapGestureRecognizer *tapGestureRecognizer;
 
 //滑动手势
-@property (nonatomic, assign) UIPanGestureRecognizer *panGestureRecognizer;
+@property (nonatomic, strong)   UIPanGestureRecognizer *panGestureRecognizer;
 
 //是否显示设顶部和底部界面
-@property (nonatomic, assign) BOOL *isShowSetting;
+@property (nonatomic, assign)   BOOL isShowSetting;
 
 
 @end
 
 @implementation UIVCReadBook
 
-- (void)dealloc
-{
-    self.textStr = nil;
-    self.bookInfo = nil;
-    self.hud = nil;
-    [super dealloc];
-}
 
 - (id)initWithBookInfo:(Books *)bookInfo {
     
@@ -108,7 +101,7 @@ UIGestureRecognizerDelegate>
     self.view.backgroundColor = [ReadInfoManager shareReadInfoManager].backgroundColor;
     currentIndex = 0;
     
-    self.scrollview = [[[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kUIScreen_Width, kUIScreen_Height)] autorelease];
+    self.scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kUIScreen_Width, kUIScreen_Height)];
     //self.scrollview.backgroundColor = [UIColor redColor];
     [self.scrollview setDelegate:self];
     [self.scrollview setPagingEnabled:YES];
@@ -117,20 +110,20 @@ UIGestureRecognizerDelegate>
     self.scrollview.userInteractionEnabled = NO;
     [self.view addSubview:self.scrollview];
 
-    self.verticalPageView = [[[VerticalPageView alloc] initWithFrame:CGRectMake(0, 0, kUIScreen_Width, kUIScreen_Height) withBookName:self.bookInfo.booksName] autorelease];
+    self.verticalPageView = [[VerticalPageView alloc] initWithFrame:CGRectMake(0, 0, kUIScreen_Width, kUIScreen_Height) withBookName:self.bookInfo.booksName];
     self.verticalPageView.hidden = YES;
     self.verticalPageView.delegate = self;
     [self.view addSubview:self.verticalPageView];
     
     //顶部
-    self.pageHeaderView = [[[PageHeaderView alloc] initWithFrame:CGRectMake(0, kUIScreen_AppTop, kUIScreen_Width, kUIScreen_TopBarHeight)] autorelease];
+    self.pageHeaderView = [[PageHeaderView alloc] initWithFrame:CGRectMake(0, kUIScreen_AppTop, kUIScreen_Width, kUIScreen_TopBarHeight)];
     self.pageHeaderView.backgroundColor = [ReadInfoManager shareReadInfoManager].backgroundColor;
     self.pageHeaderView.bottom = 0;
     self.pageHeaderView.delegate = self;
     [self.view addSubview:self.pageHeaderView];
     
     //底部
-    self.pageFooterView = [[[PageFooterView alloc] initWithFrame:CGRectMake(0, self.view.height - kUIScreen_BottomBarHeight, kUIScreen_Width, kUIScreen_BottomBarHeight) withProgress:self.bookInfo.booksProgress] autorelease];
+    self.pageFooterView = [[PageFooterView alloc] initWithFrame:CGRectMake(0, self.view.height - kUIScreen_BottomBarHeight, kUIScreen_Width, kUIScreen_BottomBarHeight) withProgress:self.bookInfo.booksProgress];
     self.pageFooterView.backgroundColor = [ReadInfoManager shareReadInfoManager].backgroundColor;
     self.pageFooterView.top = self.view.height;
     self.pageFooterView.delegate =self;
@@ -147,7 +140,7 @@ UIGestureRecognizerDelegate>
     [self.view addGestureRecognizer:self.panGestureRecognizer];
     
     //设置界面
-    self.pageSettingView = [[[PageSettingView alloc] initWithFrame:self.view.bounds] autorelease];
+    self.pageSettingView = [[PageSettingView alloc] initWithFrame:self.view.bounds];
     self.pageSettingView.alpha = 0.0f;
     self.pageSettingView.delegate = self;
     [self.view addSubview:self.pageSettingView];
@@ -263,9 +256,9 @@ UIGestureRecognizerDelegate>
         
         if ([bookMark.bookMarkDes isEqualToString:[self.visitPage.textLabel.text  substringToIndex:200]]) {
             
-            MBProgressHUD *markHud = [[[MBProgressHUD alloc] initWithWindow:(UIWindow *)self.view] autorelease];
+            MBProgressHUD *markHud = [[MBProgressHUD alloc] initWithWindow:(UIWindow *)self.view];
             markHud.userInteractionEnabled = NO;
-            markHud.customView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]] autorelease];
+            markHud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
             markHud.mode = MBProgressHUDModeCustomView;
             markHud.labelText = @"书签已存在";
             markHud.removeFromSuperViewOnHide = YES;
@@ -277,14 +270,14 @@ UIGestureRecognizerDelegate>
         }
     }
     
-    BookMark *bookMark = [[[BookMark alloc] init] autorelease];
+    BookMark *bookMark = [[BookMark alloc] init];
     bookMark.bookID = self.bookInfo.booksID;
     bookMark.bookMarkID = [bookMarkArray count];
     bookMark.bookMarkDes = [self.visitPage.textLabel.text  substringToIndex:200];
     bookMark.bookProgress = [self getCurrentProgress];
     
     NSDate *  senddate=[NSDate date];
-    NSDateFormatter  *dateformatter=[[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
     [dateformatter setDateFormat:@"YY/MM/dd hh:mm:ss"];
     NSString *locationString=[dateformatter stringFromDate:senddate];
     bookMark.bookMarkDate = locationString;
@@ -295,9 +288,9 @@ UIGestureRecognizerDelegate>
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            MBProgressHUD *hud = [[[MBProgressHUD alloc] initWithWindow:(UIWindow *)self.view] autorelease];
+            MBProgressHUD *hud = [[MBProgressHUD alloc] initWithWindow:(UIWindow *)self.view];
             hud.userInteractionEnabled = NO;
-            hud.customView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]] autorelease];
+            hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
             hud.mode = MBProgressHUDModeCustomView;
             hud.labelText = @"添加成功";
             hud.removeFromSuperViewOnHide = YES;
@@ -328,7 +321,7 @@ UIGestureRecognizerDelegate>
     self.bookInfo.booksProgress = progress;
     
     self.visitPage.textLabel.text = @"";
-    MBProgressHUD *hud = [[[MBProgressHUD alloc] initWithWindow:(UIWindow *)self.view] autorelease];
+    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithWindow:(UIWindow *)self.view];
     hud.userInteractionEnabled = NO;
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.removeFromSuperViewOnHide = YES;
@@ -363,9 +356,9 @@ UIGestureRecognizerDelegate>
     
     if ([ReadInfoManager shareReadInfoManager].fontSize == 10) {
         
-        MBProgressHUD *hud = [[[MBProgressHUD alloc] initWithWindow:(UIWindow *)self.view] autorelease];
+        MBProgressHUD *hud = [[MBProgressHUD alloc] initWithWindow:(UIWindow *)self.view];
         hud.userInteractionEnabled = NO;
-        hud.customView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]] autorelease];
+        hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
         hud.mode = MBProgressHUDModeCustomView;
         hud.labelText = @"字体已最小";
         hud.removeFromSuperViewOnHide = YES;
@@ -375,7 +368,7 @@ UIGestureRecognizerDelegate>
         return;
     }
     
-    MBProgressHUD *hud = [[[MBProgressHUD alloc] initWithWindow:(UIWindow *)self.view] autorelease];
+    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithWindow:(UIWindow *)self.view];
     hud.userInteractionEnabled = NO;
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.removeFromSuperViewOnHide = YES;
@@ -389,9 +382,9 @@ UIGestureRecognizerDelegate>
     
     if ([ReadInfoManager shareReadInfoManager].fontSize == 20) {
         
-        MBProgressHUD *hud = [[[MBProgressHUD alloc] initWithWindow:(UIWindow *)self.view] autorelease];
+        MBProgressHUD *hud = [[MBProgressHUD alloc] initWithWindow:(UIWindow *)self.view];
         hud.userInteractionEnabled = NO;
-        hud.customView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]] autorelease];
+        hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
         hud.mode = MBProgressHUDModeCustomView;
         hud.labelText = @"字体已最大";
         hud.removeFromSuperViewOnHide = YES;
@@ -402,7 +395,7 @@ UIGestureRecognizerDelegate>
     }
     
     [[ReadInfoManager shareReadInfoManager] addFont];
-    MBProgressHUD *hud = [[[MBProgressHUD alloc] initWithWindow:(UIWindow *)self.view] autorelease];
+    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithWindow:(UIWindow *)self.view];
     hud.userInteractionEnabled = NO;
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.removeFromSuperViewOnHide = YES;
@@ -693,7 +686,7 @@ UIGestureRecognizerDelegate>
 
 - (PageView *)createView {
     
-    PageView *pageView = [[[PageView alloc] initWithFrame:self.scrollview.bounds withBookName:self.bookInfo.booksName] autorelease];
+    PageView *pageView = [[PageView alloc] initWithFrame:self.scrollview.bounds withBookName:self.bookInfo.booksName];
     pageView.hidden = YES;
     pageView.delegate = self;
     [self.scrollview addSubview:pageView];

@@ -30,7 +30,7 @@
     self.bookNameLabel = block_createLabel([UIColor blackColor], CGRectMake(returnButton.right + 5, 0, 150, 44), 20);
     [self addSubview:self.bookNameLabel];
     
-    UIView *lineView = [[[UIView alloc] initWithFrame:CGRectMake(0, self.height-1, self.width, 1)] autorelease];
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, self.height-1, self.width, 1)];
     lineView.backgroundColor = [UIColor colorWithHex:0x000000 alpha:0.3];
     [self addSubview:lineView];
 }

@@ -14,7 +14,7 @@
 
 @interface BookView ()
 
-@property (nonatomic, assign) UIButton *deleteButton;
+@property (nonatomic, strong) UIButton *deleteButton;
 @property (nonatomic, assign) BOOL editing;
 
 @end

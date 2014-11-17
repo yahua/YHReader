@@ -18,7 +18,7 @@
 
 @interface PageFooterView : UIView
 
-@property (nonatomic, assign) id<PageFooterViewDelegate> delegate;
+@property (nonatomic, weak) id<PageFooterViewDelegate> delegate;
 
 - (id)initWithFrame:(CGRect)frame withProgress:(CGFloat)progress;
 

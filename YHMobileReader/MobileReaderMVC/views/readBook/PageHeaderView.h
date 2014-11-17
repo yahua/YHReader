@@ -22,7 +22,7 @@
 
 @interface PageHeaderView : UIView
 
-@property (nonatomic, assign) id<PageHeaderViewDelegate> delegate;
+@property (nonatomic, weak) id<PageHeaderViewDelegate> delegate;
 
 - (void)clickDaynightButton;
 

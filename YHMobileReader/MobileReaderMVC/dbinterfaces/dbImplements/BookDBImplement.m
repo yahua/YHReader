@@ -30,7 +30,7 @@
         
         while ([result next]) {
             
-            Books *books = [[[Books alloc] init] autorelease];
+            Books *books = [[Books alloc] init];
             books.booksID = [result intForColumn:@"booksID"];
             books.bookRackID = [result intForColumn:@"bookRackID"];
             books.booksName = [result stringForColumn:@"booksName"];
@@ -62,7 +62,7 @@
 
         while ([result next]) {
             
-            Books *books = [[[Books alloc] init] autorelease];
+            Books *books = [[Books alloc] init];
             books.booksID = [result intForColumn:@"booksID"];
             books.bookRackID = bookRackID;
             books.booksName = [result stringForColumn:@"booksName"];

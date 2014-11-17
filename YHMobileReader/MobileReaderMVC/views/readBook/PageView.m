@@ -11,23 +11,19 @@
 
 @interface PageView ()
 
-@property(nonatomic,assign) UIImageView *mirrorImageView;
-@property(nonatomic,assign) UIView *parentViewMirrorImg;
-@property(nonatomic,assign) UIView *parentViewForTxt;
-@property(nonatomic,assign) CAGradientLayer *newShadow;
+@property (nonatomic, strong) UIImageView *mirrorImageView;
+@property (nonatomic, strong) UIView *parentViewMirrorImg;
+@property (nonatomic, strong) UIView *parentViewForTxt;
+@property (nonatomic, strong) CAGradientLayer *nShadow;
 
-@property (nonatomic, assign) UILabel *bookNameLabel;
-@property (nonatomic, assign) UILabel *progressLabel;
-@property (nonatomic, assign) UILabel *timeLabel;
+@property (nonatomic, strong) UILabel *bookNameLabel;
+@property (nonatomic, strong) UILabel *progressLabel;
+@property (nonatomic, strong) UILabel *timeLabel;
 
 @end
 
 @implementation PageView
 
-- (void)dealloc {
-    
-    [super dealloc];
-}
 
 - (id)initWithFrame:(CGRect)frame withBookName:(NSString *)name;
 {
@@ -50,7 +46,7 @@
     self.progressLabel.text = progress;
     
     NSDate *  senddate=[NSDate date];
-    NSDateFormatter  *dateformatter=[[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
     [dateformatter setDateFormat:@"hh:mm"];
     NSString *locationString=[dateformatter stringFromDate:senddate];
     self.timeLabel.text = locationString;
@@ -69,7 +65,7 @@
     UIGraphicsEndImageContext();
     
     
-    CAGradientLayer *shadow = [[[CAGradientLayer alloc] init] autorelease];
+    CAGradientLayer *shadow = [[CAGradientLayer alloc] init];
     shadow.colors =[NSArray arrayWithObjects:(id)[UIColor colorWithRed:0xee /255.0 green:0xee /255.0 blue:0xee /255.0 alpha:0.2].CGColor,(id)[UIColor colorWithRed:0x00 /255.0 green:0x00 /255.0 blue:0x00 /255.0 alpha:0.3].CGColor
                     ,nil];
     shadow.frame = CGRectMake(-5, 0, 5, self.frame.size.height);
@@ -83,7 +79,7 @@
 - (void)move:(float)x
 {
     
-    self.newShadow.hidden = NO;
+    self.nShadow.hidden = NO;
     self.parentViewMirrorImg.hidden = NO;
     
     CGRect rect = self.parentViewMirrorImg.frame;
@@ -159,7 +155,7 @@
 
 - (void)didFinishMove
 {
-    self.newShadow.hidden = YES;
+    self.nShadow.hidden = YES;
     [self.delegate didFinishMove];
 }
 
@@ -168,37 +164,37 @@
 
 - (void)initSubviews:(NSString *)name {
     
-    self.parentViewForTxt = [[[UIView alloc] initWithFrame:self.bounds] autorelease];
+    self.parentViewForTxt = [[UIView alloc] initWithFrame:self.bounds];
     self.parentViewForTxt.clipsToBounds = YES;
     [self addSubview:self.parentViewForTxt];
     
     
-    self.textLabel = [[[UILabel alloc] initWithFrame:CGRectMake(15, 36, self.parentViewForTxt.width - 30, self.parentViewForTxt.height - 86)] autorelease];
+    self.textLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 36, self.parentViewForTxt.width - 30, self.parentViewForTxt.height - 86)];
     self.textLabel.text = @"";
     [self.parentViewForTxt addSubview:self.textLabel];
     
     
-    self.parentViewMirrorImg = [[[UIView alloc] initWithFrame:self.bounds] autorelease];
+    self.parentViewMirrorImg = [[UIView alloc] initWithFrame:self.bounds];
     self.parentViewMirrorImg.clipsToBounds = YES;
     // self.clipsToBounds = NO;
-    self.mirrorImageView = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.parentViewForTxt.width, self.parentViewForTxt.height)] autorelease];
+    self.mirrorImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.parentViewForTxt.width, self.parentViewForTxt.height)];
     [self.parentViewMirrorImg addSubview:self.mirrorImageView];
     [self addSubview:self.parentViewMirrorImg];
     self.parentViewMirrorImg.hidden = YES;
     
     //
-    self.newShadow = [[[CAGradientLayer alloc] init] autorelease];
-    self.newShadow.colors =[NSArray arrayWithObjects:(id)[UIColor colorWithRed:0xee /255.0 green:0xee /255.0 blue:0xee /255.0 alpha:0.1].CGColor,(id)[UIColor colorWithRed:0x00 /255.0 green:0x00 /255.0 blue:0x00 /255.0 alpha:0.2].CGColor,
+    self.nShadow = [CAGradientLayer layer];
+    self.nShadow.colors =[NSArray arrayWithObjects:(id)[UIColor colorWithRed:0xee /255.0 green:0xee /255.0 blue:0xee /255.0 alpha:0.1].CGColor,(id)[UIColor colorWithRed:0x00 /255.0 green:0x00 /255.0 blue:0x00 /255.0 alpha:0.2].CGColor,
                             (id)[UIColor colorWithRed:0xee /255.0 green:0xee /255.0 blue:0xee /255.0 alpha:0.1].CGColor
                             ,nil];
-    self.newShadow.frame = CGRectMake(self.frame.size.width - self.frame.size.width /6 /2, 0, self.frame.size.width /6, self.frame.size.height);
-    self.newShadow.startPoint = CGPointMake(0, 0.5);
-    self.newShadow.endPoint = CGPointMake(1.0, 0.5);
-    self.newShadow.hidden = YES;
-    [self.layer addSublayer:self.newShadow];
+    self.nShadow.frame = CGRectMake(self.frame.size.width - self.frame.size.width /6 /2, 0, self.frame.size.width /6, self.frame.size.height);
+    self.nShadow.startPoint = CGPointMake(0, 0.5);
+    self.nShadow.endPoint = CGPointMake(1.0, 0.5);
+    self.nShadow.hidden = YES;
+    [self.layer addSublayer:self.nShadow];
     
     //底部进度
-    self.progressLabel = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 10)] autorelease];
+    self.progressLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 10)];
     self.progressLabel.left = 15;
     self.progressLabel.bottom = self.parentViewForTxt.height - 15;;
     self.progressLabel.font = [UIFont systemFontOfSize:10];
@@ -206,13 +202,13 @@
     [self.parentViewForTxt addSubview:self.progressLabel];
     
     //顶部书名和时间
-    self.bookNameLabel = [[[UILabel alloc] initWithFrame:CGRectMake(15, 20, 100, 10)] autorelease];
+    self.bookNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 20, 100, 10)];
     self.bookNameLabel.font = [UIFont systemFontOfSize:10];
     self.bookNameLabel.textColor = [UIColor colorWithHex:0x000000];
     self.bookNameLabel.text = name;
     [self.parentViewForTxt addSubview:self.bookNameLabel];
     
-    self.timeLabel = [[[UILabel alloc] initWithFrame:CGRectMake(15, 15, 100, 10)] autorelease];
+    self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 15, 100, 10)];
     self.timeLabel.right = self.parentViewForTxt.width - 15;
     self.timeLabel.bottom = self.parentViewForTxt.height - 15;
     self.timeLabel.textAlignment = NSTextAlignmentRight;

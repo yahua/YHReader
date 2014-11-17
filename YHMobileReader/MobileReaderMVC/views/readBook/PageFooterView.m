@@ -13,12 +13,12 @@
 @interface PageFooterView ()
 
 //进度条
-@property (nonatomic, assign) UISlider *mSlider;
+@property (nonatomic, strong) UISlider *mSlider;
 
-@property (nonatomic, assign) UIButton *popView;
+@property (nonatomic, strong) UIButton *popView;
 
 //点击弹出设置按钮
-@property (nonatomic, assign) UIButton *settingButton;
+@property (nonatomic, strong) UIButton *settingButton;
 
 @end
 
@@ -39,7 +39,7 @@
     UIButton *backgroundButton = block_createButton(self.bounds, @"", self, @selector(clickBackgroundButton));
     [self addSubview:backgroundButton];
     
-    self.mSlider = [[[UISlider alloc]initWithFrame:CGRectMake(25, 20, 220, 10)] autorelease];
+    self.mSlider = [[UISlider alloc]initWithFrame:CGRectMake(25, 20, 220, 10)];
     self.mSlider.minimumValue = 0;
     self.mSlider.maximumValue = 1;
     self.mSlider.value = progress;

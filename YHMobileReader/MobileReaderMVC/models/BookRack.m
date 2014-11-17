@@ -10,11 +10,5 @@
 
 @implementation BookRack
 
-- (void)dealloc
-{
-    self.bookRackName = nil;
-    self.booksArray = nil;
-    [super dealloc];
-}
 
 @end

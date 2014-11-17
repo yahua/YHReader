@@ -16,9 +16,9 @@
 
 @interface VerticalPageView : UIView
 
-@property(nonatomic,assign) UITextView *textView;
+@property (nonatomic, strong) UITextView *textView;
 
-@property (nonatomic, assign) id<VerticalPageViewDelegate> delegate;
+@property (nonatomic, weak) id<VerticalPageViewDelegate> delegate;
 
 - (id)initWithFrame:(CGRect)frame withBookName:(NSString *)name;
 

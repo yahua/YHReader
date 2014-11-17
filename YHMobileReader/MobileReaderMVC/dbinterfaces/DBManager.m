@@ -26,7 +26,7 @@ static FMDatabase *shareDataBase = nil;
                           stringByAppendingPathComponent:KdataBaseName];
         
         NSAssert([[NSFileManager defaultManager] fileExistsAtPath:path], @"dataBase.db not exist");
-        shareDataBase = [[FMDatabase databaseWithPath:path] retain];
+        shareDataBase = [FMDatabase databaseWithPath:path];
         [shareDataBase open];
     });
     return shareDataBase;

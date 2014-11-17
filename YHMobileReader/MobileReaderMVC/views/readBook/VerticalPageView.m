@@ -12,19 +12,14 @@
 @interface VerticalPageView () <
 UITextViewDelegate>
 
-@property (nonatomic, assign) UILabel *bookNameLabel;
-@property (nonatomic, assign) UILabel *progressLabel;
-@property (nonatomic, assign) UILabel *timeLabel;
+@property (nonatomic, strong) UILabel *bookNameLabel;
+@property (nonatomic, strong) UILabel *progressLabel;
+@property (nonatomic, strong) UILabel *timeLabel;
 
 @end
 
 @implementation VerticalPageView
 
-- (void)dealloc
-{
-    
-    [super dealloc];
-}
 
 - (id)initWithFrame:(CGRect)frame withBookName:(NSString *)name
 {
@@ -41,7 +36,7 @@ UITextViewDelegate>
 - (void)initSubviews:(NSString *)name {
     
     
-    self.textView = [[[UITextView alloc] initWithFrame:CGRectMake(15, 30, self.width-30, self.height - 60)] autorelease];
+    self.textView = [[UITextView alloc] initWithFrame:CGRectMake(15, 30, self.width-30, self.height - 60)];
     self.textView.backgroundColor = [UIColor clearColor];
     [self.textView setShowsHorizontalScrollIndicator:NO];
     [self.textView setShowsVerticalScrollIndicator:NO];
@@ -50,7 +45,7 @@ UITextViewDelegate>
     [self addSubview:self.textView];
     
     //底部进度
-    self.progressLabel = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 10)] autorelease];
+    self.progressLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 10)];
     self.progressLabel.left = 15;
     self.progressLabel.bottom = self.height - 10;
     self.progressLabel.font = [UIFont systemFontOfSize:10];
@@ -58,14 +53,14 @@ UITextViewDelegate>
     [self addSubview:self.progressLabel];
     
     //顶部书名和时间
-    self.bookNameLabel = [[[UILabel alloc] initWithFrame:CGRectMake(0, 20, self.width, 10)] autorelease];
+    self.bookNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, self.width, 10)];
     self.bookNameLabel.font = [UIFont systemFontOfSize:10];
     self.bookNameLabel.textColor = [UIColor colorWithHex:0x000000];
     self.bookNameLabel.text = name;
     self.bookNameLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:self.bookNameLabel];
     
-    self.timeLabel = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 10)] autorelease];
+    self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 10)];
     self.timeLabel.right = self.width - 15;
     self.timeLabel.bottom = self.height - 10;
     self.timeLabel.textAlignment = NSTextAlignmentRight;
@@ -89,7 +84,7 @@ UITextViewDelegate>
     self.progressLabel.text = [NSString stringWithFormat:@"全书:%.2f%@", [self getBooksProgress]*100, @"%"];
     
     NSDate *  senddate=[NSDate date];
-    NSDateFormatter  *dateformatter=[[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
     [dateformatter setDateFormat:@"hh:mm"];
     NSString *locationString=[dateformatter stringFromDate:senddate];
     self.timeLabel.text = locationString;

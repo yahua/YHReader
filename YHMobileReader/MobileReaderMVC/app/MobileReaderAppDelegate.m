@@ -16,11 +16,6 @@
 
 @implementation MobileReaderAppDelegate
 
-- (void)dealloc
-{
-    [_window release];
-    [super dealloc];
-}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -50,11 +45,11 @@
     //初始化
     [UIScreen initialUIScreenParam];
     
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    UIVCBookRack *bookRackCon = [[[UIVCBookRack alloc] init] autorelease];
+    UIVCBookRack *bookRackCon = [[UIVCBookRack alloc] init];
     
-    self.navigationController = [[[UINavigationController alloc] initWithRootViewController:bookRackCon] autorelease];
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:bookRackCon];
     self.navigationController.navigationBarHidden = YES;
     
     // Override point for customization after application launch.

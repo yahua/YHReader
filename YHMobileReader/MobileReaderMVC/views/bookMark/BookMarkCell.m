@@ -11,9 +11,9 @@
 
 @interface BookMarkCell ()
 
-@property (nonatomic, assign) UILabel *decLabel;
-@property (nonatomic, assign) UILabel *progressLabel;
-@property (nonatomic, assign) UILabel *timeLabel;
+@property (nonatomic, strong) UILabel *decLabel;
+@property (nonatomic, strong) UILabel *progressLabel;
+@property (nonatomic, strong) UILabel *timeLabel;
 
 @end
 
@@ -36,7 +36,7 @@
         self.timeLabel.textAlignment = NSTextAlignmentRight;
         [self addSubview:self.timeLabel];
         
-        UIView *lineView = [[[UIView alloc] initWithFrame:CGRectMake(14, 75, kUIScreen_Width - 28, 1)] autorelease];
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(14, 75, kUIScreen_Width - 28, 1)];
         lineView.backgroundColor = [UIColor colorWithHex:0x000000 alpha:0.3];
         [self addSubview:lineView];
     }

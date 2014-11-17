@@ -10,11 +10,5 @@
 
 @implementation BookMark
 
-- (void)dealloc
-{
-    self.bookMarkDes = nil;
-    self.bookMarkDate = nil;
-    [super dealloc];
-}
 
 @end

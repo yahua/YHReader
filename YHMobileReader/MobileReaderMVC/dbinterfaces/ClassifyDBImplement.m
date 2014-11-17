@@ -14,7 +14,7 @@
 
 @interface  ClassifyDBImplement : NSObject <ClassifyDBInterface>
 
-@property (nonatomic, assign) dispatch_queue_t serialQueue;
+@property (nonatomic, strong) dispatch_queue_t serialQueue;
 
 @end
 
@@ -30,11 +30,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    dispatch_release(self.serialQueue);
-    [super dealloc];
-}
 /**
  获取所有分类
  */
@@ -47,7 +42,7 @@
         
         while ([result next]) {
             
-            BookClassify *bookClassify = [[[BookClassify alloc] init] autorelease];
+            BookClassify *bookClassify = [[BookClassify alloc] init];
             bookClassify.classifyID = [result intForColumn:@"classifyID"];
             bookClassify.classifyName = [result stringForColumn:@"classifyName"];
             //bookClassify.bookNum = [result intForColumn:@"bookNum"];
@@ -85,7 +80,7 @@
 
 - (BookClassify *)getBookClassify:(NSInteger)classifyID {
     
-    BookClassify *bookClassify = [[[BookClassify alloc] init] autorelease];
+    BookClassify *bookClassify = [[BookClassify alloc] init];
     
     if ([[DBManager createDataBase] open]) {
         

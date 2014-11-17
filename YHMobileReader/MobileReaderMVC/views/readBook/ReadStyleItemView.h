@@ -16,7 +16,7 @@
 
 @interface ReadStyleItemView : UIView
 
-@property (nonatomic, assign) id<ReadStyleItemViewDelegate> delegate;
+@property (nonatomic, weak) id<ReadStyleItemViewDelegate> delegate;
 
 - (void)changeSelectedIndex:(NSInteger)index;
 

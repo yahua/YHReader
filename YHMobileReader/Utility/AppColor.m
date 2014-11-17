@@ -16,7 +16,6 @@
     static dispatch_once_t onceToken;    \
     dispatch_once(&onceToken, ^{         \
         instance = color;                \
-        [instance retain];               \
     });
 
 #define kDispatchAllocSingleton(instance, implement) \

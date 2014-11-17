@@ -23,10 +23,10 @@ UITableViewDelegate,
 UITableViewDataSource,
 BookClassifyCellDelegate>
 
-@property (nonatomic, assign) UITableView *tableView;
-@property (nonatomic, assign) UIButton *addButton;
-@property (nonatomic, assign) UIButton *editButton;
-@property (nonatomic, retain) NSMutableArray *bookClassifyArray;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UIButton *addButton;
+@property (nonatomic, strong) UIButton *editButton;
+@property (nonatomic, strong) NSMutableArray *bookClassifyArray;
 
 @property (nonatomic, assign) NSInteger selectClassifyID;
 @property (nonatomic, assign) BOOL editButtonIsClick;
@@ -35,11 +35,6 @@ BookClassifyCellDelegate>
 
 @implementation BookClassifyView
 
-- (void)dealloc
-{
-    self.bookClassifyArray = nil;
-    [super dealloc];
-}
 
 - (id)initWithFrame:(CGRect)frame classifyArray:(NSArray *)bookClassifyArray {
     
@@ -88,7 +83,7 @@ BookClassifyCellDelegate>
     //BookClassifyCell *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier];
     
     //if (cell == nil) {
-        BookClassifyCell *cell = [[[BookClassifyCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellWithIdentifier] autorelease];
+        BookClassifyCell *cell = [[BookClassifyCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellWithIdentifier];
         cell.delegate = self;
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     //}
@@ -225,7 +220,7 @@ BookClassifyCellDelegate>
     if (self.addButton.selected) {
         
         //添加一个分类
-        BookClassify *newBookClassify = [[[BookClassify alloc] init] autorelease];
+        BookClassify *newBookClassify = [[BookClassify alloc] init];
         newBookClassify.classifyID = 1;
         if ([self.bookClassifyArray count] > 1) {
             
@@ -306,7 +301,7 @@ BookClassifyCellDelegate>
 
 - (void)initSubviews {
     
-    self.tableView = [[[UITableView alloc] initWithFrame:CGRectMake(0, 70, self.width, self.height - 70)] autorelease];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 70, self.width, self.height - 70)];
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.allowsSelectionDuringEditing = YES;
@@ -314,7 +309,7 @@ BookClassifyCellDelegate>
     self.tableView.dataSource = self;
     [self addSubview:self.tableView];
     
-    UIView *topLine = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.width, 1)] autorelease];
+    UIView *topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.width, 1)];
     topLine.backgroundColor = [UIColor colorWithHex:0x000000 alpha:0.3];
     [self.tableView addSubview:topLine];
     
@@ -348,7 +343,7 @@ BookClassifyCellDelegate>
     [self.editButton addSubview:label];
     
     //边界线
-    UIView *boardLine = [[[UIView alloc] initWithFrame:CGRectMake(self.width - 1, 0, 1, self.height)] autorelease];
+    UIView *boardLine = [[UIView alloc] initWithFrame:CGRectMake(self.width - 1, 0, 1, self.height)];
     boardLine.backgroundColor = [UIColor colorWithHex:0x000000 alpha:0.5];
     [self addSubview:boardLine];
 }

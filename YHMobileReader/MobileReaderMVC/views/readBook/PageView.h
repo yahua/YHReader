@@ -17,9 +17,9 @@
 
 @interface PageView : UIView
 
-@property (nonatomic, assign) UILabel *textLabel;
+@property (nonatomic, strong) UILabel *textLabel;
 
-@property(nonatomic,assign) id<PageViewDelegate> delegate;
+@property (nonatomic, weak) id<PageViewDelegate> delegate;
 
 - (id)initWithFrame:(CGRect)frame withBookName:(NSString *)name;
 

@@ -11,11 +11,11 @@
 
 @interface PageHeaderView ()
 
-@property (nonatomic, assign) UIButton *returnButton;
-@property (nonatomic, assign) UIButton *catelogButton;
-@property (nonatomic, assign) UIButton *daynightButton;
-@property (nonatomic, assign) UIButton *markButton;
-@property (nonatomic, assign) UIImageView *daynightImageView;
+@property (nonatomic, strong) UIButton *returnButton;
+@property (nonatomic, strong) UIButton *catelogButton;
+@property (nonatomic, strong) UIButton *daynightButton;
+@property (nonatomic, strong) UIButton *markButton;
+@property (nonatomic, strong) UIImageView *daynightImageView;
 
 @end
 

@@ -21,11 +21,11 @@
 /**
  书架名  （分类名）
  */
-@property (nonatomic, retain) NSString *bookRackName;
+@property (nonatomic, copy) NSString *bookRackName;
 
 /**
  书架包含书籍的数组
  */
-@property (nonatomic, retain) NSArray *booksArray;
+@property (nonatomic, strong) NSArray *booksArray;
 
 @end

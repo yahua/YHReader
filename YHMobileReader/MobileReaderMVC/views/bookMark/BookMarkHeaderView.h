@@ -16,8 +16,8 @@
 
 @interface BookMarkHeaderView : UIView
 
-@property (nonatomic, assign) UILabel *bookNameLabel;
+@property (nonatomic, strong) UILabel *bookNameLabel;
 
-@property (nonatomic, assign) id<BookMarkHeaderViewDelegate> delegate;
+@property (nonatomic, weak) id<BookMarkHeaderViewDelegate> delegate;
 
 @end

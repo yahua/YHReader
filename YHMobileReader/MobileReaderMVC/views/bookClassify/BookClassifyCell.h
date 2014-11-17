@@ -19,7 +19,7 @@
 
 @interface BookClassifyCell : UITableViewCell
 
-@property (nonatomic, assign) id<BookClassifyCellDelegate> delegate;
+@property (nonatomic, weak) id<BookClassifyCellDelegate> delegate;
 
 - (void)initDate:(BookClassify *)bookClassify;
 

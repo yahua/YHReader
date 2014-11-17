@@ -16,7 +16,7 @@
 @interface PageSettingView () <
 ReadStyleItemViewDelegate>
 
-@property (nonatomic, assign) UISlider *lightSlider;
+@property (nonatomic, strong) UISlider *lightSlider;
 
 @end
 
@@ -38,7 +38,7 @@ ReadStyleItemViewDelegate>
     UIButton *backgroundButton = block_createButton(self.bounds, @"", self, @selector(clickBackgroundButton));
     [self addSubview:backgroundButton];
     
-    UIButton *settingView = [[[UIButton alloc] initWithFrame:CGRectMake(53, 0, 260, 215)] autorelease];
+    UIButton *settingView = [[UIButton alloc] initWithFrame:CGRectMake(53, 0, 260, 215)];
     [settingView addTarget:self action:@selector(clickSettingView) forControlEvents:UIControlEventTouchUpInside];
     settingView.bottom = self.height - kUIScreen_BottomBarHeight;
     settingView.backgroundColor = [UIColor colorWithHex:0xf2efe8];
@@ -67,7 +67,7 @@ ReadStyleItemViewDelegate>
     addButton.layer.borderColor = [UIColor colorWithHex:0xc7c4bd].CGColor;
     [settingView addSubview:addButton];
     
-    ReadStyleItemView *readStyleItemView = [[[ReadStyleItemView alloc] initWithFrame:CGRectMake(10, addButton.bottom + 12, 240, 35)] autorelease];
+    ReadStyleItemView *readStyleItemView = [[ReadStyleItemView alloc] initWithFrame:CGRectMake(10, addButton.bottom + 12, 240, 35)];
     readStyleItemView.delegate = self;
     [readStyleItemView changeSelectedIndex:[ReadInfoManager shareReadInfoManager].pageMethod + 1];
     [settingView addSubview:readStyleItemView];
@@ -88,7 +88,7 @@ ReadStyleItemViewDelegate>
     lowLabel.text = @"-";
     [lightView addSubview:lowLabel];
     
-    self.lightSlider = [[[UISlider alloc]initWithFrame:CGRectMake(21, 20, 191, 10)] autorelease];
+    self.lightSlider = [[UISlider alloc]initWithFrame:CGRectMake(21, 20, 191, 10)];
     self.lightSlider.minimumValue = 0;
     self.lightSlider.maximumValue = 100;
     self.lightSlider.value = [ReadInfoManager shareReadInfoManager].light;
@@ -105,7 +105,7 @@ ReadStyleItemViewDelegate>
 
 - (UIView *)createBackgroundColorView:(NSInteger)point_y {
     
-    UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0, point_y, 260, 35)] autorelease];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, point_y, 260, 35)];
     
     CGFloat x = 10;
     CGFloat y = 0;

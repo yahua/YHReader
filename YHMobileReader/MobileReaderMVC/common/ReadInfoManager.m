@@ -23,12 +23,6 @@
     return shareReadInfo;
 }
 
-- (void)dealloc
-{
-    self.backgroundColor = nil;
-    self.fontColor = nil;
-    [super dealloc];
-}
 
 - (id)init {
     

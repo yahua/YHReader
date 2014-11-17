@@ -20,18 +20,13 @@
 UITextFieldDelegate
 >
 
-@property (nonatomic, assign) UITextField *nameTextField;
-@property (nonatomic, retain) BookClassify *bookClassify;
+@property (nonatomic, strong) UITextField *nameTextField;
+@property (nonatomic, strong) BookClassify *bookClassify;
 
 @end
 
 @implementation BookClassifyCell
 
-- (void)dealloc
-{
-    self.bookClassify = nil;
-    [super dealloc];
-}
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -101,7 +96,7 @@ UITextFieldDelegate
     self.detailTextLabel.textColor = [[AppColor shareAppColor] _0x473125];
     self.detailTextLabel.font = [UIFont systemFontOfSize:20];
     
-    self.nameTextField = [[[UITextField alloc] initWithFrame:CGRectMake(0, 0, 260, kRowHeight)] autorelease];
+    self.nameTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 260, kRowHeight)];
     self.nameTextField.delegate = self;
     self.nameTextField.textColor = [[AppColor shareAppColor] _0x473125];
     self.nameTextField.font = [UIFont systemFontOfSize:20];
@@ -112,7 +107,7 @@ UITextFieldDelegate
     [self addSubview:self.nameTextField];
     self.nameTextField.hidden = YES;
     
-    UIView *lineView = [[[UIView alloc] initWithFrame:CGRectMake(0, kRowHeight - 1, 260, 1)] autorelease];
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, kRowHeight - 1, 260, 1)];
     lineView.backgroundColor = [UIColor colorWithHex:0xc1c1c1];
     [self addSubview:lineView];
 }
@@ -135,7 +130,6 @@ UITextFieldDelegate
         
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"输入的字符超限" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alertView show];
-        [alertView release];
         return;
     }
     

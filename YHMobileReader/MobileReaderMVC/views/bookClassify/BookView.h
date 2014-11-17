@@ -30,11 +30,11 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
 
 @interface BookView : UIView
 
-@property (nonatomic, assign) UIButton *selectButton;
-@property (nonatomic, assign) UILabel *bookNameLabel;
-@property (nonatomic, assign) UILabel *bookProgressLabel;
+@property (nonatomic, strong) UIButton *selectButton;
+@property (nonatomic, strong) UILabel *bookNameLabel;
+@property (nonatomic, strong) UILabel *bookProgressLabel;
 
-@property (nonatomic, assign) id<BookViewDelegate> delegate;
+@property (nonatomic, weak) id<BookViewDelegate> delegate;
 
 - (void)startEditing;
 

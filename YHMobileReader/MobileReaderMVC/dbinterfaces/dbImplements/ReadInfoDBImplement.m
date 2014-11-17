@@ -24,7 +24,7 @@
  */
 - (ReadInfo *)getReadInfo {
     
-    ReadInfo *readInfo = [[[ReadInfo alloc] init] autorelease];
+    ReadInfo *readInfo = [[ReadInfo alloc] init];
     
     if ([DBManager createDataBase]) {
         

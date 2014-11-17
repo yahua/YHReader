@@ -15,11 +15,11 @@
 		0E184B3118D54753005A3888 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E184B3018D54753005A3888 /* Default.png */; };
 		0E184B3318D54753005A3888 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E184B3218D54753005A3888 /* Default@2x.png */; };
 		0E184B3518D54753005A3888 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E184B3418D54753005A3888 /* Default-568h@2x.png */; };
-		0E184B5318D5505D005A3888 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E184B4A18D5505D005A3888 /* FMDatabase.m */; };
-		0E184B5418D5505D005A3888 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E184B4C18D5505D005A3888 /* FMDatabaseAdditions.m */; };
-		0E184B5518D5505D005A3888 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E184B4E18D5505D005A3888 /* FMDatabasePool.m */; };
-		0E184B5618D5505D005A3888 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E184B5018D5505D005A3888 /* FMDatabaseQueue.m */; };
-		0E184B5718D5505D005A3888 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E184B5218D5505D005A3888 /* FMResultSet.m */; };
+		0E184B5318D5505D005A3888 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E184B4A18D5505D005A3888 /* FMDatabase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0E184B5418D5505D005A3888 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E184B4C18D5505D005A3888 /* FMDatabaseAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0E184B5518D5505D005A3888 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E184B4E18D5505D005A3888 /* FMDatabasePool.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0E184B5618D5505D005A3888 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E184B5018D5505D005A3888 /* FMDatabaseQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0E184B5718D5505D005A3888 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E184B5218D5505D005A3888 /* FMResultSet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0E184B5B18D55069005A3888 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E184B5A18D55069005A3888 /* DBManager.m */; };
 		0E27803418D5565600053099 /* BookClassify.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E27803318D5565600053099 /* BookClassify.m */; };
 		0E27803718D5585700053099 /* BookRack.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E27803618D5585700053099 /* BookRack.m */; };
@@ -52,7 +52,7 @@
 		2C06B56418FBB34200B3F485 /* BookMarkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C06B56318FBB34200B3F485 /* BookMarkCell.m */; };
 		2C06B56718FBB85A00B3F485 /* UIVCBookMark.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C06B56618FBB85A00B3F485 /* UIVCBookMark.m */; };
 		2C06B56A18FBBCB800B3F485 /* BookMarkHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C06B56918FBBCB800B3F485 /* BookMarkHeaderView.m */; };
-		2C06B57C18FBCE0400B3F485 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C06B57B18FBCE0400B3F485 /* MBProgressHUD.m */; };
+		2C06B57C18FBCE0400B3F485 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C06B57B18FBCE0400B3F485 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2C06B58218FBDA4600B3F485 /* 箭头1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C06B58018FBDA4600B3F485 /* 箭头1.png */; };
 		2C06B58318FBDA4600B3F485 /* 箭头2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C06B58118FBDA4600B3F485 /* 箭头2.png */; };
 		2C06B58518FBDDCB00B3F485 /* bookrack_edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C06B58418FBDDCB00B3F485 /* bookrack_edit@2x.png */; };
@@ -321,8 +321,8 @@
 		0E184B3C18D548EE005A3888 /* app */ = {
 			isa = PBXGroup;
 			children = (
-				2C089F2B18FF91630067C920 /* MobileReaderAppDelegate.m */,
 				2C089F2C18FF91630067C920 /* MobileReaderAppDelegate.h */,
+				2C089F2B18FF91630067C920 /* MobileReaderAppDelegate.m */,
 			);
 			path = app;
 			sourceTree = "<group>";
@@ -809,6 +809,7 @@
 		0E184B3918D54753005A3888 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YHMobileReader/YHMobileReader-Prefix.pch";
 				INFOPLIST_FILE = "YHMobileReader/YHMobileReader-Info.plist";
@@ -820,6 +821,7 @@
 		0E184B3A18D54753005A3888 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YHMobileReader/YHMobileReader-Prefix.pch";
 				INFOPLIST_FILE = "YHMobileReader/YHMobileReader-Info.plist";

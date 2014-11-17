@@ -37,9 +37,9 @@
 
 @interface BookRackView : UIView
 
-@property (nonatomic, assign) id<BookRackViewDelegate> delegate;
-@property (nonatomic, assign) id<BookViewDataSource> dataSource;
-@property (nonatomic, assign) UIImageView *directionImageView;
+@property (nonatomic, weak) id<BookRackViewDelegate> delegate;
+@property (nonatomic, weak) id<BookViewDataSource> dataSource;
+@property (nonatomic, strong) UIImageView *directionImageView;
 /**
  是否是在编辑模式
  */

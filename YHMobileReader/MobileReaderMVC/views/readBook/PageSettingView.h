@@ -26,6 +26,6 @@
 
 @interface PageSettingView : UIView
 
-@property (nonatomic, assign) id<PageSettingViewDelegate> delegate;
+@property (nonatomic, weak) id<PageSettingViewDelegate> delegate;
 
 @end

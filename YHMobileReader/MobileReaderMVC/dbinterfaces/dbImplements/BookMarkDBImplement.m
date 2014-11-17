@@ -29,7 +29,7 @@
         
         while ([result next]) {
             
-            BookMark *bookMark = [[[BookMark alloc] init] autorelease];
+            BookMark *bookMark = [[BookMark alloc] init];
             bookMark.bookID = bookID;
             bookMark.bookMarkID = [result intForColumn:@"bookMarkID"];
             bookMark.bookMarkDes = [result stringForColumn:@"bookMarkDes"];

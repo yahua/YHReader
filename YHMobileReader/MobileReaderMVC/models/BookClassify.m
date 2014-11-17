@@ -10,10 +10,5 @@
 
 @implementation BookClassify
 
-- (void)dealloc
-{
-    self.classifyName = nil;
-    [super dealloc];
-}
 
 @end

@@ -15,8 +15,8 @@
 
 @interface BookRackHeaderView ()
 
-@property (nonatomic, assign) UILabel *tittleLabel;
-@property (nonatomic, assign) UIButton *editButton;
+@property (nonatomic, strong) UILabel *tittleLabel;
+@property (nonatomic, strong) UIButton *editButton;
 
 @end
 

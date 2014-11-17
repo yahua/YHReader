@@ -17,7 +17,7 @@ UILabel *(^block_createLabel)(UIColor *color,
                                     CGFloat fontSize
                                     ) {
     
-    UILabel *label = [[[UILabel alloc] init] autorelease];
+    UILabel *label = [[UILabel alloc] init];
     
     label.backgroundColor = [UIColor clearColor];
     label.frame = frame;
@@ -34,7 +34,7 @@ UIImageView *(^block_createImageView)(CGRect frame,
                                             NSString *imageName
                                             ) {
     
-    UIImageView *imageView = [[[UIImageView alloc] init] autorelease];
+    UIImageView *imageView = [[UIImageView alloc] init];
     imageView.image = [UIImage imageNamed:imageName];
     imageView.frame = frame;
     
@@ -72,7 +72,7 @@ UIImageView *(^block_createLineImageView)(CGRect frame,
                                                 size_t count
                                                 ) {
     
-    UIImageView *lineView = [[[UIImageView alloc]initWithFrame:frame] autorelease];
+    UIImageView *lineView = [[UIImageView alloc]initWithFrame:frame];
     
     UIGraphicsBeginImageContext(lineView.frame.size);   //开始画线
     

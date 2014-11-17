@@ -18,14 +18,14 @@
 
 @interface BookClassifyView : UIView
 
-- (id)initWithFrame:(CGRect)frame classifyArray:(NSArray *)bookClassifyArray;
-
-@property (nonatomic, assign) id<BookClassifyViewDelegate> delegate;
+@property (nonatomic, weak) id<BookClassifyViewDelegate> delegate;
 
 /**
  NO:正常打开   YES：移动分类de打开
  */
 @property (nonatomic, assign) BOOL isMoveToClassifyStyle;
+
+- (id)initWithFrame:(CGRect)frame classifyArray:(NSArray *)bookClassifyArray;
 
 - (void)reloadData;
 

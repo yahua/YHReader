@@ -17,9 +17,9 @@ UITableViewDataSource,
 UITableViewDelegate,
 BookMarkHeaderViewDelegate>
 
-@property (nonatomic, assign) UITableView *tableView;
-@property (nonatomic, assign) BookMarkHeaderView *bookMarkHeaderView;
-@property (nonatomic, retain) NSMutableArray *bookMarkArray;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) BookMarkHeaderView *bookMarkHeaderView;
+@property (nonatomic, strong) NSMutableArray *bookMarkArray;
 
 @property (nonatomic, assign) NSInteger bookID;
 @property (nonatomic, copy) NSString *bookName;
@@ -28,12 +28,6 @@ BookMarkHeaderViewDelegate>
 
 @implementation UIVCBookMark
 
-- (void)dealloc
-{
-    self.bookMarkArray = nil;
-    self.bookName = nil;
-    [super dealloc];
-}
 
 - (id)initWithBookID:(NSInteger)bookID withBookName:(NSString *)bookName
 {
@@ -59,7 +53,7 @@ BookMarkHeaderViewDelegate>
     [self.view addSubview:self.bookMarkHeaderView];
     self.navigationItem.leftBarButtonItem.title = self.bookName;
     
-    self.tableView = [[[UITableView alloc] initWithFrame:CGRectMake(0, kUIScreen_AppTop+kUIScreen_TopBarHeight, kUIScreen_Width, kUIScreen_AppContentHeight) style:UITableViewStylePlain] autorelease];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, kUIScreen_AppTop+kUIScreen_TopBarHeight, kUIScreen_Width, kUIScreen_AppContentHeight) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -98,7 +92,7 @@ BookMarkHeaderViewDelegate>
     //BookClassifyCell *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier];
     
     //if (cell == nil) {
-    BookMarkCell *cell = [[[BookMarkCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellWithIdentifier] autorelease];
+    BookMarkCell *cell = [[BookMarkCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellWithIdentifier];
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     //}
     

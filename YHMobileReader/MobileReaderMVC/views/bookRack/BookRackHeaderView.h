@@ -18,6 +18,6 @@
 
 - (void)reloadHeaderTittle:(NSString *)tittle;
 
-@property (nonatomic, assign) id<BookRackHeaderViewDelegate> delegate;
+@property (nonatomic, weak) id<BookRackHeaderViewDelegate> delegate;
 
 @end

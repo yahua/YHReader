@@ -16,17 +16,17 @@
 BookViewDelegate,
 UIGestureRecognizerDelegate>
 
-@property (nonatomic, assign) UILongPressGestureRecognizer *longPressGesture;
-@property (nonatomic, assign) UIPanGestureRecognizer *sortingPanGesture;
+@property (nonatomic, strong) UILongPressGestureRecognizer *longPressGesture;
+@property (nonatomic, strong) UIPanGestureRecognizer *sortingPanGesture;
 
-@property (nonatomic, assign) UIScrollView *scrollView;
+@property (nonatomic, strong) UIScrollView *scrollView;
 
-@property (nonatomic, assign) BookView *sortCell;
+@property (nonatomic, strong) BookView *sortCell;
 
 @property (nonatomic, assign) BOOL canSortCell;
 
 //提示：长按可移动书籍到书架
-@property (nonatomic, assign) UILabel *tipsLabel;
+@property (nonatomic, strong) UILabel *tipsLabel;
 
 /**
  最大的ScrollerContentOffset
@@ -44,12 +44,12 @@ UIGestureRecognizerDelegate>
         
         self.backgroundColor = [UIColor colorWithHex:0xdceaf0];
         
-        self.scrollView = [[[UIScrollView alloc] initWithFrame:self.bounds] autorelease];
+        self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
         self.scrollView.height = self.height - 22;
         self.scrollView.backgroundColor = [UIColor clearColor];
         [self addSubview:self.scrollView];
         
-        self.tipsLabel = [[[UILabel alloc] init] autorelease];
+        self.tipsLabel = [[UILabel alloc] init];
         self.tipsLabel.backgroundColor = [UIColor clearColor];
         self.tipsLabel.text = @"长按书籍可进行分类";
         self.tipsLabel.font = [UIFont systemFontOfSize:12];
@@ -60,7 +60,7 @@ UIGestureRecognizerDelegate>
         self.tipsLabel.bottom = self.height - 5;
         [self addSubview:self.tipsLabel];
         
-        self.directionImageView = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)] autorelease];
+        self.directionImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
         self.directionImageView.centerY = self.height/2 - 40;
         self.directionImageView.image = [UIImage imageNamed:@"箭头1.png"];
         [self addSubview:self.directionImageView];
@@ -376,7 +376,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 
 - (BookView *)createBookViewForIndex:(NSInteger)index {
     
-    BookView *bookView = [[[BookView alloc] initWithFrame:[self getBookViewFrame:index]] autorelease];
+    BookView *bookView = [[BookView alloc] initWithFrame:[self getBookViewFrame:index]];
     bookView.tag = kBaseTag + index;
     
     return bookView;
@@ -389,12 +389,12 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 
 - (void)setupGesture {
     
-    self.sortingPanGesture = [[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(sortingPanGestureUpdated:)] autorelease];
+    self.sortingPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(sortingPanGestureUpdated:)];
     self.sortingPanGesture.delegate = self;
     [self.scrollView addGestureRecognizer:self.sortingPanGesture];
     
     
-    self.longPressGesture = [[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureUpdated:)] autorelease];
+    self.longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureUpdated:)];
     self.longPressGesture.numberOfTouchesRequired = 1;
     self.longPressGesture.minimumPressDuration = 1;
     self.longPressGesture.delegate = self;
@@ -551,7 +551,6 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 - (void)relayoutItemsAnimate {
     
     BookView *sortCell = self.sortCell;
-    [sortCell retain];
     
     [UIView animateWithDuration:kDefaultAnimationDuration
                           delay:0
@@ -581,7 +580,6 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
                              [sortCell shakeStatus:YES];
                          }
                          
-                         [sortCell release];
                          
                          self.sortCell = nil;
                          

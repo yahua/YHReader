@@ -11,12 +11,5 @@
 
 @implementation Books
 
-- (void)dealloc
-{
-    self.booksName = nil;
-    self.booksPicName = nil;
-    self.booksPath = nil;
-    [super dealloc];
-}
 
 @end

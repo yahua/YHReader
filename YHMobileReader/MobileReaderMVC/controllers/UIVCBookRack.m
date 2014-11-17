@@ -26,34 +26,27 @@ BookViewDataSource,
 BookRackHeaderViewDelegate,
 UIGestureRecognizerDelegate>
 
-@property (nonatomic, assign) BookClassifyView *bookClassifyView;
-@property (nonatomic, assign) BookRackView *bookRackView;
-@property (nonatomic, assign) BookRackHeaderView *bookRackHeaderView;
-@property (nonatomic, retain) NSMutableArray *booksArray;
+@property (nonatomic, strong) BookClassifyView *bookClassifyView;
+@property (nonatomic, strong) BookRackView *bookRackView;
+@property (nonatomic, strong) BookRackHeaderView *bookRackHeaderView;
+@property (nonatomic, strong) NSMutableArray *booksArray;
 @property (nonatomic, assign) BOOL isShowBookRack;
 @property (nonatomic, assign) NSInteger currentBookRackID;
 /**
  当前书架
  */
-@property (nonatomic, retain) BookClassify *currentBookClassify;
+@property (nonatomic, strong) BookClassify *currentBookClassify;
 /**
  移动时选中的书籍
  */
-@property (nonatomic, retain) Books *selectedBooks;
+@property (nonatomic, strong) Books *selectedBooks;
 
-@property (nonatomic, assign) UIPanGestureRecognizer *panGesture;
-@property (nonatomic, assign) UITapGestureRecognizer *tapGestureRecognizer;
+@property (nonatomic, strong) UIPanGestureRecognizer *panGesture;
+@property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
 @end
 
 @implementation UIVCBookRack
 
-- (void)dealloc {
-    
-    self.booksArray = nil;
-    self.selectedBooks = nil;
-    self.currentBookClassify = nil;
-    [super dealloc];
-}
 
 - (void)viewWillAppear:(BOOL)animated {
     
@@ -68,19 +61,19 @@ UIGestureRecognizerDelegate>
     
     NSArray *bookClassiyArray = [[DBInterfaceFactory classifyDBInterface] getAllClassify];
     
-    self.bookClassifyView = [[[BookClassifyView alloc] initWithFrame:CGRectMake(-kBookClassifyWidth, 0, kBookClassifyWidth, self.view.height) classifyArray:bookClassiyArray] autorelease];
+    self.bookClassifyView = [[BookClassifyView alloc] initWithFrame:CGRectMake(-kBookClassifyWidth, 0, kBookClassifyWidth, self.view.height) classifyArray:bookClassiyArray];
     self.bookClassifyView.delegate = self;
     [self.view addSubview:self.bookClassifyView];
     
     self.currentBookRackID = kAllBookClassifyID;
     self.booksArray = [NSMutableArray arrayWithArray:[[DBInterfaceFactory bookDBInterface] getAllBooks]];
-    self.bookRackView = [[[BookRackView alloc] initWithFrame:CGRectMake(0, kUIScreen_AppTop + kUIScreen_TopBarHeight, kUIScreen_Width, kUIScreen_AppContentHeight)] autorelease];
+    self.bookRackView = [[BookRackView alloc] initWithFrame:CGRectMake(0, kUIScreen_AppTop + kUIScreen_TopBarHeight, kUIScreen_Width, kUIScreen_AppContentHeight)];
     self.bookRackView.delegate = self;
     self.bookRackView.dataSource = self;
     [self.bookRackView reloadGridDate];
     [self.view addSubview:self.bookRackView];
     
-    self.bookRackHeaderView = [[[BookRackHeaderView alloc] initWithFrame:CGRectMake(0, kUIScreen_AppTop, kUIScreen_Width, kUIScreen_TopBarHeight)] autorelease];
+    self.bookRackHeaderView = [[BookRackHeaderView alloc] initWithFrame:CGRectMake(0, kUIScreen_AppTop, kUIScreen_Width, kUIScreen_TopBarHeight)];
     self.bookRackHeaderView.delegate = self;
     [self.bookRackHeaderView reloadHeaderTittle:@"我的书架"];
     [self.view addSubview:self.bookRackHeaderView];
@@ -89,7 +82,7 @@ UIGestureRecognizerDelegate>
     self.tapGestureRecognizer.delegate = self;
     [self.view addGestureRecognizer:self.tapGestureRecognizer];
     
-    self.panGesture = [[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureUpdated:)] autorelease];
+    self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureUpdated:)];
     //self.panGesture.delegate = self;
     [self.view addGestureRecognizer:self.panGesture];
     
@@ -189,7 +182,7 @@ UIGestureRecognizerDelegate>
     //进入阅读界面
     self.selectedBooks = [self.booksArray objectAtIndex:index];
     
-    UIVCReadBook *controll = [[[UIVCReadBook alloc] initWithBookInfo:self.selectedBooks] autorelease];
+    UIVCReadBook *controll = [[UIVCReadBook alloc] initWithBookInfo:self.selectedBooks];
     [self.navigationController pushViewController:controll animated:YES];
 }
 
