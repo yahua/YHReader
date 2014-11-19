@@ -43,10 +43,27 @@ UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UIPanGestureRecognizer *panGesture;
 @property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
+
+@property (nonatomic, assign) BOOL isEditing;
+
 @end
 
 @implementation UIVCBookRack
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+
+        [[UINavigationBar appearance] setBarTintColor:[UIColor yellowColor]];
+        self.title = @"我的书架";
+        
+//        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"精选" style:UIBarButtonItemStylePlain target:self action:@selector(classifyClick)];
+        
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(editClick)];
+    }
+    return self;
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     
@@ -73,10 +90,13 @@ UIGestureRecognizerDelegate>
     [self.bookRackView reloadGridDate];
     [self.view addSubview:self.bookRackView];
     
-    self.bookRackHeaderView = [[BookRackHeaderView alloc] initWithFrame:CGRectMake(0, kUIScreen_AppTop, kUIScreen_Width, kUIScreen_TopBarHeight)];
+    self.bookRackHeaderView = [[BookRackHeaderView alloc] initWithFrame:CGRectMake(0, 0, kUIScreen_Width, kUIScreen_TopBarHeight)];
     self.bookRackHeaderView.delegate = self;
-    [self.bookRackHeaderView reloadHeaderTittle:@"我的书架"];
+    NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle].resourcePath stringByAppendingPathComponent:@"SysConfig.plist"]];
+    NSString *tittle = [dic objectForKey:@"MY_BOOK_CLASSIFY"];
+    [self.bookRackHeaderView reloadHeaderTittle:tittle];
     [self.view addSubview:self.bookRackHeaderView];
+    [self.bookRackHeaderView setHidden:YES];
     
     self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap)];
     self.tapGestureRecognizer.delegate = self;
@@ -373,6 +393,34 @@ UIGestureRecognizerDelegate>
         self.bookRackView.directionImageView.image = [UIImage imageNamed:@"箭头1.png"];
     }
     
+}
+
+#pragma mark - BarItemAction
+
+- (void)classifyClick {
+    
+    NSLog(@"classifyClick");
+}
+
+- (void)editClick {
+    
+    self.isEditing = !self.isEditing;
+    if(!self.isEditing) {  //结束编辑模式
+        
+        [self.bookRackView stopSort];
+        
+        if (self.currentBookRackID != kAllBookClassifyID) {  //全部书架中暂不提供记录书籍位置
+            
+            //书籍在书架中的位置保存进数据库
+            [[DBInterfaceFactory bookDBInterface] saveBooksWithRack:self.currentBookRackID withBooksArray:self.booksArray];
+        }
+        self.navigationItem.rightBarButtonItem.title = @"编辑";
+    }else {  //进入编辑模式
+        
+        [self.bookRackView startSort];
+        self.navigationItem.rightBarButtonItem.title = @"完成";
+    }
+    NSLog(@"editClick");
 }
 
 @end

@@ -50,7 +50,7 @@
     UIVCBookRack *bookRackCon = [[UIVCBookRack alloc] init];
     
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:bookRackCon];
-    self.navigationController.navigationBarHidden = YES;
+    self.navigationController.navigationBarHidden = NO;
     
     // Override point for customization after application launch.
     [self.window addSubview:self.navigationController.view];

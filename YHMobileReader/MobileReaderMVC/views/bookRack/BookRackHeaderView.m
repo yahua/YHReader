@@ -27,10 +27,17 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor clearColor];
         [self initSubViews];
     }
     return self;
+}
+
+- (void)layoutSubviews {
+    
+    [super layoutSubviews];
+    self.editButton.right = kUIScreen_Width - 6;
+    self.editButton.width = 72;
 }
 
 - (void)reloadHeaderTittle:(NSString *)tittle {
@@ -40,6 +47,7 @@
         tittle = @"我的书架";
     }
     self.tittleLabel.text = tittle;
+
 }
 
 - (void)initSubViews {

@@ -44,6 +44,8 @@
 		0EA62BA318D8919B00454481 /* BookClassifyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA62BA218D8919B00454481 /* BookClassifyCell.m */; };
 		0EBB232A18DA943B002D203E /* BookClassifyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EBB232918DA943B002D203E /* BookClassifyView.m */; };
 		0EBB232E18DAA45D002D203E /* UIVCBookRack.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EBB232D18DAA45D002D203E /* UIVCBookRack.m */; };
+		1926A50E1A1CF2A4006D2921 /* UIVCBookClassify.m in Sources */ = {isa = PBXBuildFile; fileRef = 1926A50D1A1CF2A4006D2921 /* UIVCBookClassify.m */; };
+		19BF38A41A1B96590068AFF8 /* SysConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19BF38A31A1B96590068AFF8 /* SysConfig.plist */; };
 		2C03BF2A18F81E3E002AFE50 /* PageFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C03BF2918F81E3E002AFE50 /* PageFooterView.m */; };
 		2C04CBC918F92C5D0083DB85 /* PageSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C04CBC818F92C5D0083DB85 /* PageSettingView.m */; };
 		2C04CBCC18F935B70083DB85 /* ReadStyleItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C04CBCB18F935B70083DB85 /* ReadStyleItemView.m */; };
@@ -167,6 +169,9 @@
 		0EBB232918DA943B002D203E /* BookClassifyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookClassifyView.m; sourceTree = "<group>"; };
 		0EBB232C18DAA45D002D203E /* UIVCBookRack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIVCBookRack.h; sourceTree = "<group>"; };
 		0EBB232D18DAA45D002D203E /* UIVCBookRack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIVCBookRack.m; sourceTree = "<group>"; };
+		1926A50C1A1CF2A4006D2921 /* UIVCBookClassify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIVCBookClassify.h; sourceTree = "<group>"; };
+		1926A50D1A1CF2A4006D2921 /* UIVCBookClassify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIVCBookClassify.m; sourceTree = "<group>"; };
+		19BF38A31A1B96590068AFF8 /* SysConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SysConfig.plist; sourceTree = "<group>"; };
 		2C03BF2818F81E3E002AFE50 /* PageFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageFooterView.h; sourceTree = "<group>"; };
 		2C03BF2918F81E3E002AFE50 /* PageFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageFooterView.m; sourceTree = "<group>"; };
 		2C04CBC718F92C5D0083DB85 /* PageSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageSettingView.h; sourceTree = "<group>"; };
@@ -293,6 +298,7 @@
 		0E184B2518D54753005A3888 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				19BF38A31A1B96590068AFF8 /* SysConfig.plist */,
 				0E184B2618D54753005A3888 /* YHMobileReader-Info.plist */,
 				0E184B2718D54753005A3888 /* InfoPlist.strings */,
 				0E184B2A18D54753005A3888 /* main.m */,
@@ -336,6 +342,8 @@
 				0EBB232D18DAA45D002D203E /* UIVCBookRack.m */,
 				2C06B56518FBB85A00B3F485 /* UIVCBookMark.h */,
 				2C06B56618FBB85A00B3F485 /* UIVCBookMark.m */,
+				1926A50C1A1CF2A4006D2921 /* UIVCBookClassify.h */,
+				1926A50D1A1CF2A4006D2921 /* UIVCBookClassify.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -658,6 +666,7 @@
 				0E184B3118D54753005A3888 /* Default.png in Resources */,
 				2C06B58218FBDA4600B3F485 /* 箭头1.png in Resources */,
 				2C06B58318FBDA4600B3F485 /* 箭头2.png in Resources */,
+				19BF38A41A1B96590068AFF8 /* SysConfig.plist in Resources */,
 				2C0D842A18FD3B6E00DB7730 /* 超级校园狂少.png in Resources */,
 				2C0D83BD18FCDDDD00DB7730 /* bookclassify_add.png in Resources */,
 				2C0D842E18FD3B6E00DB7730 /* 魔剑录.png in Resources */,
@@ -740,6 +749,7 @@
 				0EBB232E18DAA45D002D203E /* UIVCBookRack.m in Sources */,
 				0EA27C0818E1AEDC00025541 /* BookRackView.m in Sources */,
 				2C089F2D18FF91630067C920 /* MobileReaderAppDelegate.m in Sources */,
+				1926A50E1A1CF2A4006D2921 /* UIVCBookClassify.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
