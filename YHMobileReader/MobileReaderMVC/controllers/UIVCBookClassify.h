@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#define  kEnterBookRackNotify            @"EnterBookRackNotify"
+#define  kSelectWhichClassifyNotify      @"SelectWhichClassifyNotify"
+
 @interface UIVCBookClassify : UIViewController
 
 @end

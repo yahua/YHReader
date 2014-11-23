@@ -12,6 +12,7 @@
 #import "BookRackHeaderView.h"
 #import "DBInterfaceFactory.h"
 #import "UIVCReadBook.h"
+#import "UIVCBookClassify.h"
 
 #define kAllBookClassifyID 10000
 
@@ -20,35 +21,35 @@
 
 
 @interface UIVCBookRack () <
-BookClassifyViewDelegate,
 BookRackViewDelegate,
-BookViewDataSource,
-BookRackHeaderViewDelegate,
-UIGestureRecognizerDelegate>
+BookViewDataSource>
 
-@property (nonatomic, strong) BookClassifyView *bookClassifyView;
 @property (nonatomic, strong) BookRackView *bookRackView;
 @property (nonatomic, strong) BookRackHeaderView *bookRackHeaderView;
 @property (nonatomic, strong) NSMutableArray *booksArray;
-@property (nonatomic, assign) BOOL isShowBookRack;
 @property (nonatomic, assign) NSInteger currentBookRackID;
 /**
  当前书架
  */
 @property (nonatomic, strong) BookClassify *currentBookClassify;
+
 /**
  移动时选中的书籍
  */
 @property (nonatomic, strong) Books *selectedBooks;
 
-@property (nonatomic, strong) UIPanGestureRecognizer *panGesture;
-@property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
 
 @property (nonatomic, assign) BOOL isEditing;
 
 @end
 
 @implementation UIVCBookRack
+
+- (void)dealloc {
+    
+    //移除所有的通知
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (instancetype)init
 {
@@ -58,9 +59,13 @@ UIGestureRecognizerDelegate>
         [[UINavigationBar appearance] setBarTintColor:[UIColor yellowColor]];
         self.title = @"我的书架";
         
-//        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"精选" style:UIBarButtonItemStylePlain target:self action:@selector(classifyClick)];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"精选" style:UIBarButtonItemStylePlain target:self action:@selector(classifyClick)];
         
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(editClick)];
+        
+        //notify
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(enterBookRack:) name:kEnterBookRackNotify object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectWhichClassify::) name:kSelectWhichClassifyNotify object:nil];
     }
     return self;
 }
@@ -76,43 +81,21 @@ UIGestureRecognizerDelegate>
 
 - (void)viewDidLoad {
     
-    NSArray *bookClassiyArray = [[DBInterfaceFactory classifyDBInterface] getAllClassify];
-    
-    self.bookClassifyView = [[BookClassifyView alloc] initWithFrame:CGRectMake(-kBookClassifyWidth, 0, kBookClassifyWidth, self.view.height) classifyArray:bookClassiyArray];
-    self.bookClassifyView.delegate = self;
-    [self.view addSubview:self.bookClassifyView];
-    
     self.currentBookRackID = kAllBookClassifyID;
     self.booksArray = [NSMutableArray arrayWithArray:[[DBInterfaceFactory bookDBInterface] getAllBooks]];
-    self.bookRackView = [[BookRackView alloc] initWithFrame:CGRectMake(0, kUIScreen_AppTop + kUIScreen_TopBarHeight, kUIScreen_Width, kUIScreen_AppContentHeight)];
+    self.bookRackView = [[BookRackView alloc] initWithFrame:CGRectMake(0, kUIScreen_TopBarHeight+kUIScreen_AppTop, kUIScreen_Width, kUIScreen_AppContentHeight)];
     self.bookRackView.delegate = self;
     self.bookRackView.dataSource = self;
     [self.bookRackView reloadGridDate];
     [self.view addSubview:self.bookRackView];
-    
-    self.bookRackHeaderView = [[BookRackHeaderView alloc] initWithFrame:CGRectMake(0, 0, kUIScreen_Width, kUIScreen_TopBarHeight)];
-    self.bookRackHeaderView.delegate = self;
-    NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle].resourcePath stringByAppendingPathComponent:@"SysConfig.plist"]];
-    NSString *tittle = [dic objectForKey:@"MY_BOOK_CLASSIFY"];
-    [self.bookRackHeaderView reloadHeaderTittle:tittle];
-    [self.view addSubview:self.bookRackHeaderView];
-    [self.bookRackHeaderView setHidden:YES];
-    
-    self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap)];
-    self.tapGestureRecognizer.delegate = self;
-    [self.view addGestureRecognizer:self.tapGestureRecognizer];
-    
-    self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureUpdated:)];
-    //self.panGesture.delegate = self;
-    [self.view addGestureRecognizer:self.panGesture];
-    
-    self.isShowBookRack = YES;
 }
 
 #pragma mark
-#pragma mark - BookClassifyViewDelegate
+#pragma mark - NSNotification
 
-- (void)enterBookRack:(BookClassify *)bookClassify {
+- (void)enterBookRack:(NSNotification *)notification {
+    
+    BookClassify *bookClassify = (BookClassify *)notification.object;
     
     self.currentBookRackID = bookClassify.classifyID;
     self.currentBookClassify = nil;
@@ -129,16 +112,12 @@ UIGestureRecognizerDelegate>
     //刷新书架界面
     [self.bookRackView reloadGridDate];
     
-    [self.bookRackHeaderView reloadHeaderTittle:bookClassify.classifyName];
-    
-    //隐藏分类界面
-    [self viewAnimation:1];
+    self.title = bookClassify.classifyName;
 }
 
-- (void)selectWhichClassify:(BookClassify *)bookClassify {
+- (void)selectWhichClassify:(NSNotification *)notification {
     
-    //返回书架界面
-    [self viewAnimation:1];
+    BookClassify *bookClassify = (BookClassify *)notification.object;
     
     if (self.currentBookRackID != kAllBookClassifyID) {
         
@@ -158,7 +137,7 @@ UIGestureRecognizerDelegate>
         NSArray *bookArray = [[DBInterfaceFactory bookDBInterface] getBooks:bookClassify.classifyID];
         [[DBInterfaceFactory bookDBInterface] setBookInRackPos:[bookArray count] withBookID:self.selectedBooks.booksID];
         
-        [self.bookClassifyView reloadData];
+        //[self.bookClassifyView reloadData];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -231,175 +210,18 @@ UIGestureRecognizerDelegate>
     
     self.selectedBooks = [self.booksArray objectAtIndex:index];
     //打开分类界面
-    [self viewAnimation:0];
-    self.bookClassifyView.isMoveToClassifyStyle = YES;
+    
+    //self.bookClassifyView.isMoveToClassifyStyle = YES;
 }
 
-
-#pragma mark
-#pragma mark - BookRackHeaderViewDelegate
-
-- (void)clickEditButton {
-    
-    if (self.bookRackView.isInSortMode) {  //结束编辑模式
-        
-        [self.bookRackView stopSort];
-        
-        if (self.currentBookRackID != kAllBookClassifyID) {  //全部书架中暂不提供记录书籍位置
-            
-            //书籍在书架中的位置保存进数据库
-            [[DBInterfaceFactory bookDBInterface] saveBooksWithRack:self.currentBookRackID withBooksArray:self.booksArray];
-        }
-    } else {  //进入编辑模式
-        
-        [self.bookRackView startSort];
-    }
-}
-
-#pragma mark
-#pragma mark - UIGestureRecognizerDelegate
-
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-    
-    if (gestureRecognizer == self.tapGestureRecognizer) {
-        
-        CGPoint point = [gestureRecognizer locationInView:self.view];
-        if (self.bookClassifyView.left == 0 && point.x >= kUIScreen_Width - 60) {
-            
-            return YES;
-        } else if (self.bookRackView.left == 0 && point.x <= 25) {
-            
-            return YES;
-        } else {
-            
-            return NO;
-        }
-    }
-    
-    return YES;
-}
-
-#pragma mark 
-#pragma mark - Action
-//pan滑动处理函数
-- (void)panGestureUpdated:(UIPanGestureRecognizer *)panGesture {
-    
-    //[self setScrollEnabled:YES];
-    if (panGesture.state == UIGestureRecognizerStateEnded) {
-        CGPoint translatedPoint = [panGesture translationInView:self.view];
-    
-        if (self.isShowBookRack) {
-            
-            if (translatedPoint.x > kSlideLegth) {
-                
-                //滑出分类view
-                [self viewAnimation:0];
-            } else {
-                
-                [self viewAnimation:1];
-            }
-        } else {
-            
-            if (-translatedPoint.x > kSlideLegth) {
-                
-                //滑出分类view
-                [self viewAnimation:1];
-            } else {
-                
-                [self viewAnimation:0];
-            }
-        }
-    }
-    
-    if (panGesture.state == UIGestureRecognizerStateChanged) {
-        CGPoint translatedPoint = [panGesture translationInView:self.view];
-        CGPoint offset = translatedPoint;
-        
-        if (self.isShowBookRack) {
-            
-            if (offset.x > 0) {
-                self.bookRackView.left = offset.x;
-                self.bookRackHeaderView.left = offset.x;
-                self.bookClassifyView.left = -kBookClassifyWidth + offset.x;
-            }
-            
-            if (translatedPoint.x > kSlideLegth) {
-                
-                self.bookRackView.directionImageView.image = [UIImage imageNamed:@"箭头2.png"];
-            }
-        }else {
-            
-            if (offset.x < 0) {
-                
-                self.bookClassifyView.left = offset.x;
-                self.bookRackView.left = kBookClassifyWidth + offset.x;
-                self.bookRackHeaderView.left = self.bookRackView.left;
-            }
-            
-            if (translatedPoint.x < -kSlideLegth) {
-                
-                self.bookRackView.directionImageView.image = [UIImage imageNamed:@"箭头1.png"];
-            }
-        }
-    }
-}
-
-/**
- index:0表示显示分类动画；1表示显示书架动画
- */
-
-- (void)viewAnimation:(NSInteger)index {
-    
-    if (index == 0) {
-        
-        self.isShowBookRack = NO;
-        self.bookClassifyView.isMoveToClassifyStyle = NO;
-        self.bookRackView.userInteractionEnabled = NO;
-        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-            
-            self.bookClassifyView.left = 0;
-            self.bookRackView.left = kBookClassifyWidth;
-            self.bookRackHeaderView.left = self.bookRackView.left;
-        } completion:^(BOOL finished) {
-            
-            
-        }];
-    } else {
-        
-        self.isShowBookRack = YES;
-        self.bookClassifyView.isMoveToClassifyStyle = NO;
-        self.bookRackView.userInteractionEnabled = YES;
-        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-            
-            self.bookClassifyView.left = -kBookClassifyWidth;
-            self.bookRackView.left = 0;
-            self.bookRackHeaderView.left = self.bookRackView.left;
-        } completion:^(BOOL finished) {
-            
-            
-        }];
-    }
-}
-
-- (void)handleTap {
-    
-    if (self.bookRackView.left == 0) {
-        
-        [self viewAnimation:0];
-        self.bookRackView.directionImageView.image = [UIImage imageNamed:@"箭头2.png"];
-    } else {
-        
-        [self viewAnimation:1];
-        self.bookRackView.directionImageView.image = [UIImage imageNamed:@"箭头1.png"];
-    }
-    
-}
 
 #pragma mark - BarItemAction
 
 - (void)classifyClick {
     
     NSLog(@"classifyClick");
+    UIVCBookClassify *vc = [[UIVCBookClassify alloc] init];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 - (void)editClick {

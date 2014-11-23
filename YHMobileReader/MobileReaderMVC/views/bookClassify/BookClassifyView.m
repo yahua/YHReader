@@ -301,20 +301,7 @@ BookClassifyCellDelegate>
 
 - (void)initSubviews {
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 70, self.width, self.height - 70)];
-    self.tableView.backgroundColor = [UIColor clearColor];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.allowsSelectionDuringEditing = YES;
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    [self addSubview:self.tableView];
-    
-    UIView *topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.width, 1)];
-    topLine.backgroundColor = [UIColor colorWithHex:0x000000 alpha:0.3];
-    [self.tableView addSubview:topLine];
-    
-    //
-    self.addButton = block_createButton(CGRectMake(30, 40, 72, 32), @"", self, @selector(addButtonClick:));
+    self.addButton = block_createButton(CGRectMake(30, kUIScreen_AppTop, 72, 32), @"", self, @selector(addButtonClick:));
     self.addButton.backgroundColor = [UIColor colorWithHex:0xaad0dc];
     self.addButton.layer.cornerRadius = 4;
     [self addSubview:self.addButton];
@@ -342,10 +329,13 @@ BookClassifyCellDelegate>
     label.text = @"编辑";
     [self.editButton addSubview:label];
     
-    //边界线
-    UIView *boardLine = [[UIView alloc] initWithFrame:CGRectMake(self.width - 1, 0, 1, self.height)];
-    boardLine.backgroundColor = [UIColor colorWithHex:0x000000 alpha:0.5];
-    [self addSubview:boardLine];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, kUIScreen_AppTop+kUIScreen_TopBarHeight, self.width, kUIScreen_AppContentHeight)];
+    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.allowsSelectionDuringEditing = YES;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    [self addSubview:self.tableView];
 }
 
 - (void)clickDone {

@@ -8,8 +8,10 @@
 
 #import "UIVCBookClassify.h"
 #import "BookClassifyView.h"
+#import "DBInterfaceFactory.h"
 
-@interface UIVCBookClassify ()
+@interface UIVCBookClassify () <
+BookClassifyViewDelegate>
 
 @property (nonatomic, strong) BookClassifyView *bookClassifyView;
 
@@ -17,9 +19,9 @@
 
 @implementation UIVCBookClassify
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)init
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super init];
     if (self) {
         // Custom initialization
     }
@@ -30,23 +32,34 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    NSArray *bookClassiyArray = [[DBInterfaceFactory classifyDBInterface] getAllClassify];
+    
+    self.bookClassifyView = [[BookClassifyView alloc] initWithFrame:self.view.bounds classifyArray:bookClassiyArray];
+    self.bookClassifyView.delegate = self;
+    [self.view addSubview:self.bookClassifyView];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark
+#pragma mark - BookClassifyViewDelegate
+
+- (void)enterBookRack:(BookClassify *)bookClassify {
+    
+    [self close];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kEnterBookRackNotify object:bookClassify];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)selectWhichClassify:(BookClassify *)bookClassify {
+    
+    [self close];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kSelectWhichClassifyNotify object:bookClassify];
 }
-*/
+
+#pragma mark - BarItemAction
+
+- (void)close {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end
