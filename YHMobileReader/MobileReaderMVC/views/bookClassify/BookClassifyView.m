@@ -117,13 +117,7 @@ BookClassifyCellDelegate>
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (self.isMoveToClassifyStyle) {
-        
-        [self.delegate selectWhichClassify:[self.bookClassifyArray objectAtIndex:indexPath.row]];
-    }else {
-        
-        [self.delegate enterBookRack:[self.bookClassifyArray objectAtIndex:indexPath.row]];
-    }
+    [self.delegate enterBookRack:[self.bookClassifyArray objectAtIndex:indexPath.row]];
 }
 
 //更改删除按钮

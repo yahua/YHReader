@@ -81,16 +81,6 @@
     self.deleteButton = block_createButton(CGRectMake(0, 0, 30, 30), @"book_delete.png", self, @selector(deleteButtonClick:));
     self.deleteButton.hidden = YES;
     [self addSubview:self.deleteButton];
-    
-    //阴影效果
-//    CALayer* centerLayer =  self.selectButton.layer;
-//    centerLayer.shadowColor = [UIColor blackColor].CGColor;
-//    centerLayer.shadowOffset = CGSizeMake(2, 2);
-//    centerLayer.shadowOpacity = 0.5;
-//    centerLayer.shadowRadius = 3.0;
-//    centerLayer.rasterizationScale = 5.0;
-//    [centerLayer setShadowPath: [[UIBezierPath
-//                                  bezierPathWithRect: centerLayer.bounds] CGPath]];
 }
 
 - (void)shakeStatus:(BOOL)isShake {
@@ -120,11 +110,6 @@
 
 - (void)selectButtonClick:(id)sender {
     
-    // 判断是否是在震动的模式，是的话不响应选择的动作。
-    
-    if (self.editing) {
-        return;
-    }
     [self.delegate bookDidClick:self];
 }
 

@@ -16,7 +16,6 @@
 BookViewDelegate,
 UIGestureRecognizerDelegate>
 
-@property (nonatomic, strong) UILongPressGestureRecognizer *longPressGesture;
 @property (nonatomic, strong) UIPanGestureRecognizer *sortingPanGesture;
 
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -59,11 +58,6 @@ UIGestureRecognizerDelegate>
         self.tipsLabel.frame = CGRectMake(10, 0, 200, 12);
         self.tipsLabel.bottom = self.height - 5;
         [self addSubview:self.tipsLabel];
-        
-        self.directionImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-        self.directionImageView.centerY = self.height/2 - 40;
-        self.directionImageView.image = [UIImage imageNamed:@"箭头1.png"];
-        [self addSubview:self.directionImageView];
     
         [self setupGesture];
     }
@@ -190,12 +184,6 @@ UIGestureRecognizerDelegate>
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
     
-    // 在编辑模式下，不接收用户的长按事件
-    if (gestureRecognizer == self.longPressGesture &&
-        self.isInSortMode) {
-        
-        return NO;
-    }
     //不是编辑模式滑动事件不响应
     if (gestureRecognizer == self.sortingPanGesture &&
         !self.isInSortMode) {
@@ -204,16 +192,6 @@ UIGestureRecognizerDelegate>
     }
     
     return YES;
-}
-
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
-shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    
-    if (gestureRecognizer == self.longPressGesture) {
-        return YES;
-    }
-    
-    return NO;
 }
 
 #pragma mark
@@ -252,7 +230,6 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 
                         [self.delegate bookDidDelete:bookView.tag - kBaseTag];
                         [self reloadGridDate];
-  
                      }];
 
 }
@@ -331,46 +308,6 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     }
 }
 
-- (void)longPressGestureUpdated:(UILongPressGestureRecognizer *)longPressGesture {
-    
-    
-    switch (longPressGesture.state)
-    {
-        case UIGestureRecognizerStateEnded:
-        case UIGestureRecognizerStateCancelled:
-        case UIGestureRecognizerStateFailed:
-        {
-            NSLog(@"long end");
-            
-            break;
-        }
-        case UIGestureRecognizerStateBegan:
-        {
-            
-            // 判断用户触摸的位置是否是在item的contentframe中，
-            // 如果是的话，设置sortCell，如果不是的话则不启动开始排序
-            // 设置sortCell处于选中的状态
-            
-            NSLog(@"long begin");
-            
-            CGPoint location = [longPressGesture locationInView:self.scrollView];
-            
-            self.sortCell = [self locationCellContentByPoint:location];
-            
-            // 用户长按的地方是一个cell的话，开始启动排序的功能
-            if (self.sortCell) {
-                
-                //移动到分类
-                [self.delegate bookMoveToClassify:self.sortCell.tag - kBaseTag];
-            }
-            
-            break;
-        }
-        default:
-            break;
-    }
-}
-
 #pragma mark
 #pragma mark - Private
 
@@ -392,14 +329,6 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     self.sortingPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(sortingPanGestureUpdated:)];
     self.sortingPanGesture.delegate = self;
     [self.scrollView addGestureRecognizer:self.sortingPanGesture];
-    
-    
-    self.longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureUpdated:)];
-    self.longPressGesture.numberOfTouchesRequired = 1;
-    self.longPressGesture.minimumPressDuration = 1;
-    self.longPressGesture.delegate = self;
-    self.longPressGesture.cancelsTouchesInView = NO;
-    [self.scrollView addGestureRecognizer:self.longPressGesture];
     
 }
 

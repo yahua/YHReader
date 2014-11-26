@@ -31,15 +31,12 @@
 - (void)bookDidMoveFromIndex:(NSInteger)fromIndex
                      toIndex:(NSInteger)toIndex;
 
-- (void)bookMoveToClassify:(NSInteger)index;
-
 @end
 
 @interface BookRackView : UIView
 
 @property (nonatomic, weak) id<BookRackViewDelegate> delegate;
 @property (nonatomic, weak) id<BookViewDataSource> dataSource;
-@property (nonatomic, strong) UIImageView *directionImageView;
 /**
  是否是在编辑模式
  */

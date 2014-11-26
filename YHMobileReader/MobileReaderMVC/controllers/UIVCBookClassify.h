@@ -8,9 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, OpenBookClassifyStyle) {
+    
+    OpenBookClassifySelectStyle,
+    OpenBookClassifyMoveStyle
+};
+
 #define  kEnterBookRackNotify            @"EnterBookRackNotify"
 #define  kSelectWhichClassifyNotify      @"SelectWhichClassifyNotify"
 
 @interface UIVCBookClassify : UIViewController
+
+- (id)initWithStyle:(OpenBookClassifyStyle)style;
 
 @end

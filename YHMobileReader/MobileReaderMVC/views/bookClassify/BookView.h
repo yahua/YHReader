@@ -41,4 +41,5 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
 - (void)stopEditing;
 
 - (void)shakeStatus:(BOOL)isShake;
+
 @end

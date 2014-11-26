@@ -14,16 +14,18 @@
 BookClassifyViewDelegate>
 
 @property (nonatomic, strong) BookClassifyView *bookClassifyView;
+@property (nonatomic, assign) OpenBookClassifyStyle style;
 
 @end
 
 @implementation UIVCBookClassify
 
-- (id)init
+- (id)initWithStyle:(OpenBookClassifyStyle)style;
 {
     self = [super init];
     if (self) {
         // Custom initialization
+        self.style = style;
     }
     return self;
 }
@@ -46,13 +48,11 @@ BookClassifyViewDelegate>
 - (void)enterBookRack:(BookClassify *)bookClassify {
     
     [self close];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kEnterBookRackNotify object:bookClassify];
-}
-
-- (void)selectWhichClassify:(BookClassify *)bookClassify {
-    
-    [self close];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kSelectWhichClassifyNotify object:bookClassify];
+    if (self.style == OpenBookClassifySelectStyle) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kEnterBookRackNotify object:bookClassify];
+    }else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kSelectWhichClassifyNotify object:bookClassify];
+    }
 }
 
 #pragma mark - BarItemAction

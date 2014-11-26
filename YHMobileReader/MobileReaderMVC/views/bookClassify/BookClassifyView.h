@@ -12,18 +12,12 @@
 @protocol BookClassifyViewDelegate
 
 - (void)enterBookRack:(BookClassify *)bookClassify;
-- (void)selectWhichClassify:(BookClassify *)bookClassify;
 
 @end
 
 @interface BookClassifyView : UIView
 
 @property (nonatomic, weak) id<BookClassifyViewDelegate> delegate;
-
-/**
- NO:正常打开   YES：移动分类de打开
- */
-@property (nonatomic, assign) BOOL isMoveToClassifyStyle;
 
 - (id)initWithFrame:(CGRect)frame classifyArray:(NSArray *)bookClassifyArray;
 
