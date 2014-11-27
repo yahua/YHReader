@@ -151,7 +151,7 @@ UIGestureRecognizerDelegate>
 - (void)removeCellIndex:(NSInteger)index {
     
     BookView *bookView = [self subCellForIndex:index];
-    [bookView removeFromSuperview];
+    [bookView deleteSelf];
     
     // 将tag大于gridCell.tag的子cell的tag减1，然后再根据新的tag计算新的frame
     // 进行重新排列
@@ -202,38 +202,6 @@ UIGestureRecognizerDelegate>
     [self.delegate bookDidClick:bookView.tag - kBaseTag];
 }
 
-- (void)bookDidDelete:(BookView *)bookView {
-    
-    [bookView removeFromSuperview];
-    
-    // 将tag大于gridCell.tag的子cell的tag减1，然后再根据新的tag计算新的frame
-    // 进行重新排列
-    
-    [UIView animateWithDuration:kDefaultAnimationDuration
-                          delay:0
-                        options:kDefaultAnimationOptions
-                     animations:^{
-                         
-                         NSInteger bookNumber = [self.dataSource numberOfBook];
-                         NSInteger startIndex = bookView.tag-kBaseTag+1;
-                         for (NSInteger index = startIndex; index < bookNumber; index++) {
-                             
-                             BookView *cell = [self subCellForIndex:index];
-                             
-                             cell.tag = cell.tag - 1;
-                             
-                             cell.frame = [self getBookViewFrame:index - 1];
-                         }
-                     }
-     
-                     completion:^(BOOL finished){
-
-                        [self.delegate bookDidDelete:bookView.tag - kBaseTag];
-                        [self reloadGridDate];
-                     }];
-
-}
-
 #pragma mark -
 #pragma mark Private Gesture
 
@@ -258,11 +226,8 @@ UIGestureRecognizerDelegate>
             //
             self.canSortCell = NO;
             
-            self.sortCell.selectButton.selected = NO;
-            
             [self relayoutItemsAnimate];
             
-            [self.delegate bookSortDidEnd];
             break;
         }
         case UIGestureRecognizerStateBegan:
@@ -345,7 +310,6 @@ UIGestureRecognizerDelegate>
             
             BookView *cell = [self subCellForIndex:index];
             sortCell = cell;
-            sortCell.selectButton.selected = YES;
             break;
         }
     }
@@ -434,7 +398,7 @@ UIGestureRecognizerDelegate>
     
     
     
-    BookView *sortCell = NULL;
+    BookView *sortCell = nil;
     
     NSInteger cityCount = [self.dataSource numberOfBook];
     for (NSInteger index = 0; index < cityCount; index++) {
@@ -443,9 +407,7 @@ UIGestureRecognizerDelegate>
         
         if (CGRectContainsPoint(itemFrame, point)) {
             
-            BookView *cell = [self subCellForIndex:index];
-            sortCell = cell;
-            sortCell.selectButton.selected = YES;
+            sortCell = [self subCellForIndex:index];
             break;
         }
     }

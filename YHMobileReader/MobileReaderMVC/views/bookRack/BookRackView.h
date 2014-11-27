@@ -24,10 +24,6 @@
 
 - (void)bookDidClick:(NSInteger)index;
 
-- (void)bookDidDelete:(NSInteger)index;
-
-- (void)bookSortDidEnd;
-
 - (void)bookDidMoveFromIndex:(NSInteger)fromIndex
                      toIndex:(NSInteger)toIndex;
 

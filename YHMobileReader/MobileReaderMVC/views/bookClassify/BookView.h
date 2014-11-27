@@ -24,8 +24,6 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
 
 - (void)bookDidClick:(BookView *)bookView;
 
-- (void)bookDidDelete:(BookView *)bookView;
-
 @end
 
 @interface BookView : UIView
@@ -39,6 +37,8 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
 - (void)startEditing;
 
 - (void)stopEditing;
+
+- (void)deleteSelf;
 
 - (void)shakeStatus:(BOOL)isShake;
 

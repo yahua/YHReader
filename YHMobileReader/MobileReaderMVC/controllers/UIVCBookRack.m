@@ -36,12 +36,6 @@ BookViewDataSource>
  */
 @property (nonatomic, strong) BookClassify *currentBookClassify;
 
-/**
- 选中的书籍
- */
-@property (nonatomic, strong) Books *selectedBooks;
-
-
 @property (nonatomic, assign) BOOL isEditing;
 
 
@@ -71,7 +65,7 @@ BookViewDataSource>
         
         //notify
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(enterBookRack:) name:kEnterBookRackNotify object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectWhichClassify::) name:kSelectWhichClassifyNotify object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectWhichClassify:) name:kSelectWhichClassifyNotify object:nil];
     }
     return self;
 }
@@ -79,10 +73,11 @@ BookViewDataSource>
 - (void)viewWillAppear:(BOOL)animated {
     
     //从阅读界面回来，刷新阅读进度
-    if (self.selectedBooks) {
-        
-        [self.bookRackView reloadGridDate];
-    }
+    //改为通知吧
+//    if (self.selectedBooks) {
+//        
+//        [self.bookRackView reloadGridDate];
+//    }
 }
 
 - (void)viewDidLoad {
@@ -111,7 +106,7 @@ BookViewDataSource>
     self.currentBookRackID = bookClassify.classifyID;
     self.currentBookClassify = nil;
     self.currentBookClassify = bookClassify;
-    self.booksArray = nil;
+    [self.booksArray removeAllObjects];
     if (self.currentBookRackID == kAllBookClassifyID) {
         
          self.booksArray = [NSMutableArray arrayWithArray:[[DBInterfaceFactory bookDBInterface] getAllBooks]];
@@ -129,34 +124,34 @@ BookViewDataSource>
 - (void)selectWhichClassify:(NSNotification *)notification {
     
     BookClassify *bookClassify = (BookClassify *)notification.object;
-    
+    self.currentBookRackID = bookClassify.classifyID;
     if (self.currentBookRackID != kAllBookClassifyID) {
         
-        //BookRackView移除动画
-        NSInteger index = [self.booksArray indexOfObject:self.selectedBooks];
-        [self.bookRackView removeCellIndex:index];
-        
-        //数组移除
-        [self.booksArray removeObject:self.selectedBooks];
-    }
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        //改变书籍bookRackID
-        [[DBInterfaceFactory bookDBInterface] setBookRack:bookClassify.classifyID forBookID:self.selectedBooks.booksID];
-        //新书籍为书架的最后一个位置
-        NSArray *bookArray = [[DBInterfaceFactory bookDBInterface] getBooks:bookClassify.classifyID];
-        [[DBInterfaceFactory bookDBInterface] setBookInRackPos:[bookArray count] withBookID:self.selectedBooks.booksID];
-        
-        //[self.bookClassifyView reloadData];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             
-            //刷新书架
-            [self.bookRackView reloadGridDate];
+            NSArray *bookArray = [[DBInterfaceFactory bookDBInterface] getBooks:bookClassify.classifyID];
+            NSInteger total = [bookArray count];
+            NSInteger index = 0;
+            for (NSString *key in self.selectBooksDic.allKeys) {
+                
+                Books *books = [self.selectBooksDic objectForKey:key];
+                //改变书籍bookRackID
+                [[DBInterfaceFactory bookDBInterface] setBookRack:bookClassify.classifyID forBookID:books.booksID];
+                //新书籍为书架的最后一个位置
+                [[DBInterfaceFactory bookDBInterface] setBookInRackPos:total+index withBookID:books.booksID];
+                
+                index++;
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                //重新进入书架
+                [self enterBookRack:notification];
+            });
+            [self.selectBooksDic removeAllObjects];
+            [self reloadLeftBarItemState];
         });
-    });
-    [self setBookRackName:bookClassify.classifyName];
+    }
 }
 
 #pragma mark
@@ -201,25 +196,9 @@ BookViewDataSource>
         [self reloadLeftBarItemState];
     }else {
         //进入阅读界面
-        self.selectedBooks = [self.booksArray objectAtIndex:index];
-        UIVCReadBook *controll = [[UIVCReadBook alloc] initWithBookInfo:self.selectedBooks];
+        UIVCReadBook *controll = [[UIVCReadBook alloc] initWithBookInfo:[self.booksArray objectAtIndex:index]];
         [self.navigationController pushViewController:controll animated:YES];
     }
-}
-
-- (void)bookDidDelete:(NSInteger)index {
-    
-    //删除图书
-    Books *books = [self.booksArray objectAtIndex:index];
-    //数据库中删除
-    [[DBInterfaceFactory bookDBInterface] deleteBook:books.booksID];
-    //数据删除（先数据库后数组，要不然books为nil）
-    [self.booksArray removeObject:books];
-}
-
-- (void)bookSortDidEnd {
-    
-    
 }
 
 - (void)bookDidMoveFromIndex:(NSInteger)fromIndex
@@ -233,7 +212,7 @@ BookViewDataSource>
 - (void)classifyClick {
     
     NSLog(@"classifyClick");
-    UIVCBookClassify *vc = [[UIVCBookClassify alloc] init];
+    UIVCBookClassify *vc = [[UIVCBookClassify alloc] initWithStyle:OpenBookClassifySelectStyle];
     [self presentViewController:vc animated:YES completion:nil];
 }
 
@@ -268,12 +247,31 @@ BookViewDataSource>
 
 - (void)moveClick {
     
-    
+    UIVCBookClassify *vc = [[UIVCBookClassify alloc] initWithStyle:OpenBookClassifyMoveStyle];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 - (void)deleteClick {
     
+    for (NSString *key in self.selectBooksDic.allKeys) {
+        
+        Books *books = [self.selectBooksDic objectForKey:key];
+        NSInteger index = [self.booksArray indexOfObject:books];
+        [self.bookRackView removeCellIndex:index];
+    }
     
+    for (NSString *key in self.selectBooksDic.allKeys) {
+        
+        Books *books = [self.selectBooksDic objectForKey:key];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            //数据库中删除
+            [[DBInterfaceFactory bookDBInterface] deleteBook:books.booksID];
+            //数据删除（先数据库后数组，要不然books为nil）
+            [self.booksArray removeObject:books];
+        });
+    }
+    [self.selectBooksDic removeAllObjects];
+    [self reloadLeftBarItemState];
 }
 
 #pragma mark - Private

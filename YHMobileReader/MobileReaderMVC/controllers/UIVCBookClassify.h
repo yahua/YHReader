@@ -10,8 +10,8 @@
 
 typedef NS_ENUM(NSInteger, OpenBookClassifyStyle) {
     
-    OpenBookClassifySelectStyle,
-    OpenBookClassifyMoveStyle
+    OpenBookClassifySelectStyle,        //选择目录
+    OpenBookClassifyMoveStyle           //书籍移动目录
 };
 
 #define  kEnterBookRackNotify            @"EnterBookRackNotify"

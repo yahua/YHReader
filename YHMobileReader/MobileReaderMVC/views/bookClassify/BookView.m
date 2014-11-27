@@ -14,8 +14,8 @@
 
 @interface BookView ()
 
-@property (nonatomic, strong) UIButton *deleteButton;
-@property (nonatomic, assign) BOOL editing;
+@property (nonatomic, strong) UIImageView       *selectImageView;
+@property (nonatomic, assign) BOOL              editing;
 
 @end
 
@@ -47,20 +47,57 @@
 - (void)startEditing {
     
     self.editing = YES;
-    
-    self.deleteButton.hidden = NO;
     [self shakeStatus:YES];
 }
 
 - (void)stopEditing {
     
     self.editing = NO;
-    
-    self.deleteButton.hidden = YES;
     [self shakeStatus:NO];
+    
+    self.selectImageView.image = nil;
 }
 
-#pragma mark
+- (void)deleteSelf {
+    
+    
+    self.clipsToBounds = YES;
+    
+    [UIView animateWithDuration:kDefaultAnimationDuration
+                          delay:0
+                        options:kDefaultAnimationOptions
+                     animations:^{
+                         
+                         CGAffineTransform newTransform =
+                         CGAffineTransformScale(self.transform, 0.1, 0.1);
+                         [self setTransform:newTransform];
+                         
+                         self.frame = CGRectMake(self.center.x, self.center.y, 0, 0);
+                     }
+                     completion:^(BOOL finished){
+                         
+                         [self removeFromSuperview];
+                     }
+     ];
+}
+
+#pragma mark - Action
+
+- (void)selectButtonClick:(id)sender {
+    
+    [self.delegate bookDidClick:self];
+    
+    if (self.editing) {  //处于编辑状态
+        UIButton *button = (UIButton *)sender;
+        button.selected = !button.selected;
+        if (button.selected) {
+            self.selectImageView.image = [UIImage imageNamed:@"optionButton_selected.png"];
+        }else {
+            self.selectImageView.image = nil;
+        }
+    }
+}
+
 #pragma mark - Private
 
 - (void)initSubviews {
@@ -70,17 +107,15 @@
     self.selectButton.layer.borderWidth = 1;
     [self addSubview:self.selectButton];
     
+    self.selectImageView = block_createImageView(CGRectMake(5, 70, 23, 23), nil);
+    [self.selectButton addSubview:self.selectImageView];
+    
     self.bookNameLabel = block_createLabel([[AppColor shareAppColor] _0x473125], CGRectMake(0, self.selectButton.bottom + 3, 81, 15), 15);
     self.bookNameLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
     [self addSubview:self.bookNameLabel];
     
-    
     self.bookProgressLabel = block_createLabel([[AppColor shareAppColor] _0x473125_60], CGRectMake(0, self.bookNameLabel.bottom + 2, 81, 10), 10);
     [self addSubview:self.bookProgressLabel];
-    
-    self.deleteButton = block_createButton(CGRectMake(0, 0, 30, 30), @"book_delete.png", self, @selector(deleteButtonClick:));
-    self.deleteButton.hidden = YES;
-    [self addSubview:self.deleteButton];
 }
 
 - (void)shakeStatus:(BOOL)isShake {
@@ -103,37 +138,6 @@
     {
         [self.layer removeAnimationForKey:@"shakeAnimation"];
     }
-}
-
-#pragma mark
-#pragma mark - Action
-
-- (void)selectButtonClick:(id)sender {
-    
-    [self.delegate bookDidClick:self];
-}
-
-- (void)deleteButtonClick:(id)sender {
-    
-    
-    self.clipsToBounds = YES;
-    
-    [UIView animateWithDuration:kDefaultAnimationDuration
-                          delay:0
-                        options:kDefaultAnimationOptions
-                     animations:^{
-                         
-                         CGAffineTransform newTransform =
-                         CGAffineTransformScale(self.transform, 0.1, 0.1);
-                         [self setTransform:newTransform];
-                         
-                         self.frame = CGRectMake(self.center.x, self.center.y, 0, 0);
-                     }
-                     completion:^(BOOL finished){
-                         
-                         [self.delegate bookDidDelete:self];
-                     }
-     ];
 }
 
 @end
