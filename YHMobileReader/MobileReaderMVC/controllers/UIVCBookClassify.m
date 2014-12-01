@@ -35,11 +35,11 @@ BookClassifyViewDelegate>
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSArray *bookClassiyArray = [[DBInterfaceFactory classifyDBInterface] getAllClassify];
-    
-    self.bookClassifyView = [[BookClassifyView alloc] initWithFrame:self.view.bounds classifyArray:bookClassiyArray];
+    self.bookClassifyView = [[BookClassifyView alloc] initWithFrame:self.view.bounds];
     self.bookClassifyView.delegate = self;
     [self.view addSubview:self.bookClassifyView];
+    
+    [self initData];
 }
 
 #pragma mark
@@ -60,6 +60,18 @@ BookClassifyViewDelegate>
 - (void)close {
     
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - Private 
+
+- (void)initData {
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSArray *bookClassiyArray = [[DBInterfaceFactory classifyDBInterface] getAllClassify];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.bookClassifyView reloadData:bookClassiyArray];
+        });
+    });
 }
 
 @end

@@ -13,7 +13,6 @@
 #import "UIVCReadBook.h"
 #import "UIVCBookClassify.h"
 
-#define kAllBookClassifyID 10000
 
 #define kBookClassifyWidth  (kUIScreen_Width - 60)
 #define kSlideLegth  (kBookClassifyWidth/3)
@@ -31,10 +30,6 @@ BookViewDataSource>
 @property (nonatomic, assign) NSInteger currentBookRackID;
 
 @property (nonatomic, strong) NSMutableDictionary *selectBooksDic;
-/**
- 当前书架
- */
-@property (nonatomic, strong) BookClassify *currentBookClassify;
 
 @property (nonatomic, assign) BOOL isEditing;
 
@@ -82,18 +77,19 @@ BookViewDataSource>
 
 - (void)viewDidLoad {
     
-    self.currentBookRackID = kAllBookClassifyID;
-    self.booksArray = [NSMutableArray arrayWithArray:[[DBInterfaceFactory bookDBInterface] getAllBooks]];
+    self.currentBookRackID = kAllBookRackID;
     self.bookRackView = [[BookRackView alloc] initWithFrame:CGRectMake(0, 0, kUIScreen_Width, kUIScreen_AppContentHeight)];
     self.bookRackView.delegate = self;
     self.bookRackView.dataSource = self;
-    [self.bookRackView reloadGridDate];
     [self.view addSubview:self.bookRackView];
     
     // 设置CGRectZero从导航栏下开始计算
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
+    
+    //
+    [self initData];
 }
 
 #pragma mark
@@ -104,28 +100,19 @@ BookViewDataSource>
     BookClassify *bookClassify = (BookClassify *)notification.object;
     
     self.currentBookRackID = bookClassify.classifyID;
-    self.currentBookClassify = nil;
-    self.currentBookClassify = bookClassify;
-    [self.booksArray removeAllObjects];
-    if (self.currentBookRackID == kAllBookClassifyID) {
-        
-         self.booksArray = [NSMutableArray arrayWithArray:[[DBInterfaceFactory bookDBInterface] getAllBooks]];
-    } else {
-        
-        self.booksArray = [NSMutableArray arrayWithArray:[[DBInterfaceFactory bookDBInterface] getBooks:self.currentBookRackID]];
-    }
-    
-    //刷新书架界面
-    [self.bookRackView reloadGridDate];
-    
     [self setBookRackName:bookClassify.classifyName];
+    
+    [self initData];
 }
 
 - (void)selectWhichClassify:(NSNotification *)notification {
     
     BookClassify *bookClassify = (BookClassify *)notification.object;
+    if (!bookClassify) {
+        return;
+    }
     self.currentBookRackID = bookClassify.classifyID;
-    if (self.currentBookRackID != kAllBookClassifyID) {
+    if (self.currentBookRackID != kAllBookRackID) {
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             
@@ -151,6 +138,9 @@ BookViewDataSource>
             [self.selectBooksDic removeAllObjects];
             [self reloadLeftBarItemState];
         });
+    }
+    if (self.isEditing) {   //结束编辑状态
+        [self editClick];
     }
 }
 
@@ -224,10 +214,12 @@ BookViewDataSource>
         
         [self.bookRackView stopSort];
         
-        if (self.currentBookRackID != kAllBookClassifyID) {  //全部书架中暂不提供记录书籍位置
+        if (self.currentBookRackID != kAllBookRackID) {  //全部书架中暂不提供记录书籍位置
             
-            //书籍在书架中的位置保存进数据库
-            [[DBInterfaceFactory bookDBInterface] saveBooksWithRack:self.currentBookRackID withBooksArray:self.booksArray];
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                //书籍在书架中的位置保存进数据库
+                [[DBInterfaceFactory bookDBInterface] saveBooksWithRack:self.currentBookRackID withBooksArray:self.booksArray];
+            });
         }
         self.navigationItem.rightBarButtonItem.title = @"编辑";
         
@@ -290,6 +282,19 @@ BookViewDataSource>
         _deleteBarItem = [[UIBarButtonItem alloc] initWithTitle:@"删除" style:UIBarButtonItemStylePlain target:self action:@selector(deleteClick)];
     }
     return _deleteBarItem;
+}
+
+- (void)initData {
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        if (self.booksArray) {
+            [self.booksArray removeAllObjects];
+        }
+        self.booksArray = [NSMutableArray arrayWithArray:[[DBInterfaceFactory bookDBInterface] getBooks:self.currentBookRackID]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.bookRackView reloadGridDate];
+        });
+    });
 }
 
 - (void)reloadLeftBarItemState {

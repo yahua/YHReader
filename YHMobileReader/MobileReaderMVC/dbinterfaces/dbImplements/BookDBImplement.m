@@ -59,7 +59,10 @@
                                                            @"select * from Books "
                                                            "where bookRackID = %d "
                                                             "order by booksInRackPos", bookRackID]];
-
+        if (bookRackID == kAllBookRackID) {
+            result = [[DBManager createDataBase] executeQuery:[NSString stringWithFormat:
+                                                               @"select * from Books"]];
+        }
         while ([result next]) {
             
             Books *books = [[Books alloc] init];

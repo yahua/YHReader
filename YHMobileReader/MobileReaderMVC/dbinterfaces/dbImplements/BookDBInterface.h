@@ -8,12 +8,9 @@
 
 #import "Books.h"
 
-@protocol BookDBInterface
+#define kAllBookRackID 10000
 
-/**
- 获取所有图书
- */
-- (NSArray *)getAllBooks;
+@protocol BookDBInterface
 
 /**
  获取书架的所有图书

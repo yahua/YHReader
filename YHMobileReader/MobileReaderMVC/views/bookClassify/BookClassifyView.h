@@ -19,8 +19,6 @@
 
 @property (nonatomic, weak) id<BookClassifyViewDelegate> delegate;
 
-- (id)initWithFrame:(CGRect)frame classifyArray:(NSArray *)bookClassifyArray;
-
-- (void)reloadData;
+- (void)reloadData:(NSArray *)bookClassifyArray;
 
 @end

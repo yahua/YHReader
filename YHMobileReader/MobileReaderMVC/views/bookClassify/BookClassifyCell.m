@@ -69,8 +69,8 @@ UITextFieldDelegate
     self.nameTextField.text = self.bookClassify.classifyName;
     self.nameTextField.placeholder = @"最多八个字符";
     self.nameTextField.font = [UIFont systemFontOfSize:15];
-    self.textLabel.alpha = 0;
-    self.detailTextLabel.alpha = 0;
+    self.textLabel.hidden = YES;
+    self.detailTextLabel.hidden = YES;
 
 }
 
@@ -107,7 +107,7 @@ UITextFieldDelegate
     [self addSubview:self.nameTextField];
     self.nameTextField.hidden = YES;
     
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, kRowHeight - 1, 260, 1)];
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, kRowHeight - 0.5f, kUIScreen_Width, 0.5f)];
     lineView.backgroundColor = [UIColor colorWithHex:0xc1c1c1];
     [self addSubview:lineView];
 }
@@ -118,8 +118,8 @@ UITextFieldDelegate
     self.bookClassify.classifyName = self.nameTextField.text;
     self.nameTextField.text = @"";
 
-    self.textLabel.alpha = 1.0;
-    self.detailTextLabel.alpha = 1.0;
+    self.textLabel.hidden = NO;
+    self.detailTextLabel.hidden = NO;
     
     [self.delegate resetClassifyName:self.bookClassify];
 }

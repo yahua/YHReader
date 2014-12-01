@@ -36,27 +36,22 @@ BookClassifyCellDelegate>
 @implementation BookClassifyView
 
 
-- (id)initWithFrame:(CGRect)frame classifyArray:(NSArray *)bookClassifyArray {
+- (id)initWithFrame:(CGRect)frame {
     
     self = [super initWithFrame:frame];
     if (self) {
         
         self.backgroundColor = [UIColor colorWithHex:0xf8f8f8];
-        self.bookClassifyArray = [NSMutableArray arrayWithArray:bookClassifyArray];
         [self initSubviews];
     }
     
     return self;
 }
 
-- (void)reloadData {
+- (void)reloadData:(NSArray *)bookClassifyArray; {
     
-    self.bookClassifyArray = nil;
-    self.bookClassifyArray = [NSMutableArray arrayWithArray:[[DBInterfaceFactory classifyDBInterface] getAllClassify]];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        [self.tableView reloadData];
-    });
+    self.bookClassifyArray = self.bookClassifyArray = [NSMutableArray arrayWithArray:bookClassifyArray];
+    [self.tableView reloadData];
 }
 
 #pragma mark -

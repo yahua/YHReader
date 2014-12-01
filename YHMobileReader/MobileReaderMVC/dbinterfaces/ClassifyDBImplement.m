@@ -51,7 +51,7 @@
                 bookClassify.bookNum = [[[DBInterfaceFactory bookDBInterface] getBooks:bookClassify.classifyID] count];
             } else {
                 
-                bookClassify.bookNum = [[[DBInterfaceFactory bookDBInterface] getAllBooks] count];
+                bookClassify.bookNum = [[[DBInterfaceFactory bookDBInterface] getBooks:kAllBookRackID] count];
             }
             
             [allClassifyArray addObject:bookClassify];

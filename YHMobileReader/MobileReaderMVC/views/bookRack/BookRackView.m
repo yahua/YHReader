@@ -75,6 +75,9 @@ UIGestureRecognizerDelegate>
     }
     
     NSInteger count = [self.dataSource numberOfBook];
+    if (!count) {
+        return;
+    }
     
     //重设 scrollerView 的 size和contentOffset 大小
     self.scrollView.contentSize = CGSizeMake(self.scrollView.width, self.scrollView.frame.size.height);
