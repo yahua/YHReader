@@ -21,4 +21,6 @@ typedef NS_ENUM(NSInteger, OpenBookClassifyStyle) {
 
 - (id)initWithStyle:(OpenBookClassifyStyle)style;
 
+- (void)presentModallyOn:(UIViewController *)controller animated:(BOOL)animated;
+
 @end

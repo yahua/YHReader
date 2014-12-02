@@ -49,7 +49,7 @@ BookViewDataSource>
     self = [super init];
     if (self) {
 
-        [[UINavigationBar appearance] setBarTintColor:[UIColor yellowColor]];
+        //[[UINavigationBar appearance] setBarTintColor:[UIColor yellowColor]];
         self.title = @"我的书架";
         
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"精选" style:UIBarButtonItemStylePlain target:self action:@selector(classifyClick)];
@@ -203,7 +203,7 @@ BookViewDataSource>
     
     NSLog(@"classifyClick");
     UIVCBookClassify *vc = [[UIVCBookClassify alloc] initWithStyle:OpenBookClassifySelectStyle];
-    [self presentViewController:vc animated:YES completion:nil];
+    [vc presentModallyOn:self animated:YES];
 }
 
 - (void)editClick {

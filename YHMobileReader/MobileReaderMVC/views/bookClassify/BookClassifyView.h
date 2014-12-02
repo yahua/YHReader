@@ -21,4 +21,6 @@
 
 - (void)reloadData:(NSArray *)bookClassifyArray;
 
+- (void)setIsEdit:(BOOL)isEdit;
+
 @end
