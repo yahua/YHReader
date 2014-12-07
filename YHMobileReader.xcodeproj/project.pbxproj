@@ -48,6 +48,11 @@
 		19BF38A41A1B96590068AFF8 /* SysConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19BF38A31A1B96590068AFF8 /* SysConfig.plist */; };
 		19CB567A1A276BB800925E80 /* optionButton_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 19CB56781A276BB800925E80 /* optionButton_selected.png */; };
 		19CB567B1A276BB800925E80 /* optionButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 19CB56791A276BB800925E80 /* optionButton.png */; };
+		19CCE14C1A34B8DD00C078B9 /* YHFtpFileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CCE1451A34B8DD00C078B9 /* YHFtpFileModel.m */; };
+		19CCE14D1A34B8DD00C078B9 /* YHFtpLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CCE1471A34B8DD00C078B9 /* YHFtpLogic.m */; };
+		19CCE14E1A34B8DD00C078B9 /* YhFtpRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CCE1491A34B8DD00C078B9 /* YhFtpRequestManager.m */; };
+		19CCE14F1A34B8DD00C078B9 /* YHFtpRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CCE14B1A34B8DD00C078B9 /* YHFtpRequestOperation.m */; };
+		19CCE1511A34B8FE00C078B9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19CCE1501A34B8FE00C078B9 /* CFNetwork.framework */; };
 		2C03BF2A18F81E3E002AFE50 /* PageFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C03BF2918F81E3E002AFE50 /* PageFooterView.m */; };
 		2C04CBC918F92C5D0083DB85 /* PageSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C04CBC818F92C5D0083DB85 /* PageSettingView.m */; };
 		2C04CBCC18F935B70083DB85 /* ReadStyleItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C04CBCB18F935B70083DB85 /* ReadStyleItemView.m */; };
@@ -176,6 +181,15 @@
 		19BF38A31A1B96590068AFF8 /* SysConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SysConfig.plist; sourceTree = "<group>"; };
 		19CB56781A276BB800925E80 /* optionButton_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = optionButton_selected.png; sourceTree = "<group>"; };
 		19CB56791A276BB800925E80 /* optionButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = optionButton.png; sourceTree = "<group>"; };
+		19CCE1441A34B8DD00C078B9 /* YHFtpFileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHFtpFileModel.h; sourceTree = "<group>"; };
+		19CCE1451A34B8DD00C078B9 /* YHFtpFileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHFtpFileModel.m; sourceTree = "<group>"; };
+		19CCE1461A34B8DD00C078B9 /* YHFtpLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHFtpLogic.h; sourceTree = "<group>"; };
+		19CCE1471A34B8DD00C078B9 /* YHFtpLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHFtpLogic.m; sourceTree = "<group>"; };
+		19CCE1481A34B8DD00C078B9 /* YhFtpRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YhFtpRequestManager.h; sourceTree = "<group>"; };
+		19CCE1491A34B8DD00C078B9 /* YhFtpRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YhFtpRequestManager.m; sourceTree = "<group>"; };
+		19CCE14A1A34B8DD00C078B9 /* YHFtpRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHFtpRequestOperation.h; sourceTree = "<group>"; };
+		19CCE14B1A34B8DD00C078B9 /* YHFtpRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHFtpRequestOperation.m; sourceTree = "<group>"; };
+		19CCE1501A34B8FE00C078B9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		2C03BF2818F81E3E002AFE50 /* PageFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageFooterView.h; sourceTree = "<group>"; };
 		2C03BF2918F81E3E002AFE50 /* PageFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageFooterView.m; sourceTree = "<group>"; };
 		2C04CBC718F92C5D0083DB85 /* PageSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageSettingView.h; sourceTree = "<group>"; };
@@ -247,6 +261,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19CCE1511A34B8FE00C078B9 /* CFNetwork.framework in Frameworks */,
 				2C0ECA5718E50EBD00E85F1B /* QuartzCore.framework in Frameworks */,
 				0EA62B9E18D889A600454481 /* libsqlite3.dylib in Frameworks */,
 				0E184B1F18D54753005A3888 /* UIKit.framework in Frameworks */,
@@ -278,6 +293,7 @@
 		0E184B1D18D54753005A3888 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				19CCE1501A34B8FE00C078B9 /* CFNetwork.framework */,
 				2C0ECA5618E50EBD00E85F1B /* QuartzCore.framework */,
 				0EA62B9D18D889A600454481 /* libsqlite3.dylib */,
 				0E184B1E18D54753005A3888 /* UIKit.framework */,
@@ -290,6 +306,7 @@
 		0E184B2418D54753005A3888 /* YHMobileReader */ = {
 			isa = PBXGroup;
 			children = (
+				19CCE1431A34B8DD00C078B9 /* FtpNetWork */,
 				0E184B4118D548EE005A3888 /* Resource */,
 				0E184B4218D548EE005A3888 /* Third */,
 				0E184B3B18D548EE005A3888 /* MobileReaderMVC */,
@@ -499,6 +516,21 @@
 				2C624C0518EC249F00D169AC /* BookRackHeaderView.m */,
 			);
 			path = bookRack;
+			sourceTree = "<group>";
+		};
+		19CCE1431A34B8DD00C078B9 /* FtpNetWork */ = {
+			isa = PBXGroup;
+			children = (
+				19CCE1441A34B8DD00C078B9 /* YHFtpFileModel.h */,
+				19CCE1451A34B8DD00C078B9 /* YHFtpFileModel.m */,
+				19CCE1461A34B8DD00C078B9 /* YHFtpLogic.h */,
+				19CCE1471A34B8DD00C078B9 /* YHFtpLogic.m */,
+				19CCE1481A34B8DD00C078B9 /* YhFtpRequestManager.h */,
+				19CCE1491A34B8DD00C078B9 /* YhFtpRequestManager.m */,
+				19CCE14A1A34B8DD00C078B9 /* YHFtpRequestOperation.h */,
+				19CCE14B1A34B8DD00C078B9 /* YHFtpRequestOperation.m */,
+			);
+			path = FtpNetWork;
 			sourceTree = "<group>";
 		};
 		2C06B56118FBB31900B3F485 /* bookMark */ = {
@@ -718,15 +750,18 @@
 				2C06B56A18FBBCB800B3F485 /* BookMarkHeaderView.m in Sources */,
 				2C06B56418FBB34200B3F485 /* BookMarkCell.m in Sources */,
 				2C5DC10518F42A0D00D6F145 /* ReadInfoManager.m in Sources */,
+				19CCE14E1A34B8DD00C078B9 /* YhFtpRequestManager.m in Sources */,
 				2C04CBCC18F935B70083DB85 /* ReadStyleItemView.m in Sources */,
 				2C06B57C18FBCE0400B3F485 /* MBProgressHUD.m in Sources */,
 				0E184B5318D5505D005A3888 /* FMDatabase.m in Sources */,
+				19CCE14C1A34B8DD00C078B9 /* YHFtpFileModel.m in Sources */,
 				0E184B5418D5505D005A3888 /* FMDatabaseAdditions.m in Sources */,
 				0E184B5518D5505D005A3888 /* FMDatabasePool.m in Sources */,
 				0E184B5618D5505D005A3888 /* FMDatabaseQueue.m in Sources */,
 				0E184B5718D5505D005A3888 /* FMResultSet.m in Sources */,
 				0E184B5B18D55069005A3888 /* DBManager.m in Sources */,
 				2C5DC10118F4248D00D6F145 /* UIVCReadBook.m in Sources */,
+				19CCE14D1A34B8DD00C078B9 /* YHFtpLogic.m in Sources */,
 				2C052A4618F54A7800A998EC /* PageHeaderView.m in Sources */,
 				2C624C0618EC249F00D169AC /* BookRackHeaderView.m in Sources */,
 				0E27803418D5565600053099 /* BookClassify.m in Sources */,
@@ -744,6 +779,7 @@
 				0EA047F018D5B83500CBFB48 /* ReadInfoDBImplement.m in Sources */,
 				0EA0555318D70C9C00318165 /* DBInterfaceFactory.m in Sources */,
 				0EA62B8018D885F100454481 /* SystemLogic.m in Sources */,
+				19CCE14F1A34B8DD00C078B9 /* YHFtpRequestOperation.m in Sources */,
 				0EA62B9518D888F600454481 /* BlockCreateUIDefine.m in Sources */,
 				0EA62B9618D888F600454481 /* UIColor+Hex.m in Sources */,
 				2C0D83C218FD15F200DB7730 /* ClassifyLogic.m in Sources */,
