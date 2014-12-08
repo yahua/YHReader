@@ -24,9 +24,6 @@ UIGestureRecognizerDelegate>
 
 @property (nonatomic, assign) BOOL canSortCell;
 
-//提示：长按可移动书籍到书架
-@property (nonatomic, strong) UILabel *tipsLabel;
-
 /**
  最大的ScrollerContentOffset
  */
@@ -44,20 +41,8 @@ UIGestureRecognizerDelegate>
         self.backgroundColor = [UIColor colorWithHex:0xdceaf0];
         
         self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
-        self.scrollView.height = self.height - 22;
         self.scrollView.backgroundColor = [UIColor clearColor];
         [self addSubview:self.scrollView];
-        
-        self.tipsLabel = [[UILabel alloc] init];
-        self.tipsLabel.backgroundColor = [UIColor clearColor];
-        self.tipsLabel.text = @"长按书籍可进行分类";
-        self.tipsLabel.font = [UIFont systemFontOfSize:12];
-        self.tipsLabel.textColor = [UIColor blackColor];
-        self.tipsLabel.shadowColor = [UIColor whiteColor];
-        self.tipsLabel.shadowOffset = CGSizeMake(1, 1);
-        self.tipsLabel.frame = CGRectMake(10, 0, 200, 12);
-        self.tipsLabel.bottom = self.height - 5;
-        [self addSubview:self.tipsLabel];
     
         [self setupGesture];
     }
@@ -132,8 +117,6 @@ UIGestureRecognizerDelegate>
         
         [cell startEditing];
     }
-    
-    self.tipsLabel.text = @"拖动书籍可进行排序";
 }
 
 - (void)stopSort {
@@ -148,7 +131,6 @@ UIGestureRecognizerDelegate>
     }
     
     self.isInSortMode = NO;
-    self.tipsLabel.text = @"长按书籍可进行分类";
 }
 
 - (void)removeCellIndex:(NSInteger)index {

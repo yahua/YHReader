@@ -52,7 +52,8 @@ BookClassifyCellDelegate>
 
 - (void)reloadData:(NSArray *)bookClassifyArray; {
     
-    self.bookClassifyArray = self.bookClassifyArray = [NSMutableArray arrayWithArray:bookClassifyArray];
+    [self.bookClassifyArray removeAllObjects];
+    self.bookClassifyArray = [NSMutableArray arrayWithArray:bookClassifyArray];
     [self.tableView reloadData];
 }
 
@@ -188,13 +189,9 @@ BookClassifyCellDelegate>
     self.tableView.allowsSelection = YES;
     self.selectClassifyID = 0;
 
-    if (self.editButtonIsClick) {
-            
-        [[DBInterfaceFactory classifyDBInterface] setBookClassifyName:bookClassify.classifyName forClassifyID:bookClassify.classifyID];
-    } else {
-            
-        [[DBInterfaceFactory classifyDBInterface] addBookClassify:bookClassify];
-    }
+   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+       [[DBInterfaceFactory classifyDBInterface] updateBookClassify:bookClassify];
+   });
 
     //数组更新
     NSInteger index=1;

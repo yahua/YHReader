@@ -58,16 +58,6 @@ extern CGFloat const kUIScreen_BottomBarHeight;
 ///-------------------------------
 
 /**
- 界面内容与 左右以及底部的Padding
- */
-extern CGFloat const kUIScreen_ContentViewPadding;
-
-/**
- 界面内容的宽度
- */
-extern CGFloat const kUIScreen_ContentViewWidth;
-
-/**
  界面内容的高度
  */
 extern CGFloat const kUIScreen_ContentViewHeight;
@@ -86,21 +76,6 @@ extern BOOL const kUIScreen_IPHONE_4;
  是否是iphone5 的屏幕 分辨率
  */
 extern BOOL const kUIScreen_IPHONE_5;
-
-
-/**
- iphone5 内容中的数据距离内容界面的宽度
- */
-extern CGFloat const kUIScreen_ContentOffsetFrameWidth;
-/**
- iphone5 内容中的数据距离内容界面的高度
- */
-extern CGFloat const kUIScreen_ContentOffsetFrameHeight;
-
-/**
- iphone5 内容中的数据距离内容界面的高度
- */
-extern CGFloat const kUIScreen_ContentFrameRadius;
 
 /**
  iphone5 内容中的数据距离内容界面的高度

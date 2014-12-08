@@ -66,16 +66,14 @@
  */
 - (void)addBookClassify:(BookClassify *)content {
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-        BOOL isOk = NO;
-        if ([[DBManager createDataBase] open]) {
+    BOOL isOk = NO;
+    if ([[DBManager createDataBase] open]) {
             
-            NSString *sql = [NSString stringWithFormat:@"insert into BookClassify(classifyID, classifyName, bookNum) "
+        NSString *sql = [NSString stringWithFormat:@"insert into BookClassify(classifyID, classifyName, bookNum) "
                              "values(%d, '%@', %d)", content.classifyID, content.classifyName, content.bookNum];
-            isOk = [[DBManager createDataBase] executeUpdate:sql];
-        }
-    });
+        isOk = [[DBManager createDataBase] executeUpdate:sql];
+    }
 }
 
 - (BookClassify *)getBookClassify:(NSInteger)classifyID {
@@ -115,21 +113,22 @@
 }
 
 /**
- 设置书籍分类的名称
+ 更新书籍分类
  */
-- (void)setBookClassifyName:(NSString *)content forClassifyID:(NSInteger)classifyID {
+- (void)updateBookClassify:(BookClassify *)bookClassify {
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        BOOL isOk = NO;
-        if ([[DBManager createDataBase] open]) {
+    BOOL isOk = NO;
+    if ([[DBManager createDataBase] open]) {
             
-            NSString *sql = [NSString stringWithFormat:@"update BookClassify "
+        NSString *sql = [NSString stringWithFormat:@"update BookClassify "
                              "set classifyName = '%@'"
-                             "where classifyID = %d", content, classifyID];
-            isOk = [[DBManager createDataBase] executeUpdate:sql];
+                             "where classifyID = %d", bookClassify.classifyName, bookClassify.classifyID];
+        isOk = [[DBManager createDataBase] executeUpdate:sql];
+            
+        if (!isOk) {
+            [self addBookClassify:bookClassify];
         }
-    });
+    }
 }
 
 @end

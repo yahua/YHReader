@@ -21,12 +21,14 @@ static FMDatabase *shareDataBase = nil;
 + (FMDatabase *)createDataBase {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
+        NSString *path = [(NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES)) lastObject];
+        NSString *file = [path stringByAppendingPathComponent:KdataBaseName];
         
-        NSString *path = [[[NSBundle mainBundle] resourcePath]
-                          stringByAppendingPathComponent:KdataBaseName];
-        
-        NSAssert([[NSFileManager defaultManager] fileExistsAtPath:path], @"dataBase.db not exist");
-        shareDataBase = [FMDatabase databaseWithPath:path];
+        if (![[NSFileManager defaultManager] fileExistsAtPath:file]) {
+            NSString *fromFile = [[NSBundle mainBundle] pathForResource:KdataBaseName ofType:nil];
+            [[NSFileManager defaultManager] copyItemAtPath:fromFile toPath:file error:nil];
+        }
+        shareDataBase = [FMDatabase databaseWithPath:file];
         [shareDataBase open];
     });
     return shareDataBase;

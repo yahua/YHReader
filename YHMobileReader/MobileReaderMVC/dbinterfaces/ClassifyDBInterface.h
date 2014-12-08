@@ -23,9 +23,9 @@
 - (void)deleteBookClassify:(NSInteger)classifyID;
 
 /**
- 设置书籍分类的名称
+ 更新书籍分类
  */
-- (void)setBookClassifyName:(NSString *)content forClassifyID:(NSInteger)classifyID;
+- (void)updateBookClassify:(BookClassify *)bookClassify;
 
 @end 
 

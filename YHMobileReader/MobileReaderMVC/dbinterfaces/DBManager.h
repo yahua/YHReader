@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "FMDatabase.h"
 
-#define dataBasePath [[(NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES)) lastObject]stringByAppendingPathComponent:dataBaseName]
 #define KdataBaseName @"dataBase.db"
 
 @interface DBManager : NSObject

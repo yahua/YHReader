@@ -23,21 +23,11 @@ CGFloat const kUIScreen_AppContentHeight;
 
 CGFloat const kUIScreen_BottomBarHeight;
 
-CGFloat const kUIScreen_ContentViewPadding;
-
-CGFloat const kUIScreen_ContentViewWidth;
-
 CGFloat const kUIScreen_ContentViewHeight;
 
 BOOL const kUIScreen_IPHONE_4;
 
 BOOL const kUIScreen_IPHONE_5;
-
-CGFloat const kUIScreen_ContentOffsetFrameWidth;
-
-CGFloat const kUIScreen_ContentOffsetFrameHeight;
-
-CGFloat const kUIScreen_ContentFrameRadius;
 
 CGFloat const kUIScreen_IPHONE_5_PDDING;
 
@@ -63,27 +53,16 @@ CGFloat const kUIScreen_IPHONE_5_PDDING;
 
     *((CGFloat *)&kUIScreen_AppContentHeight) = kUIScreen_Height - 20 - kUIScreen_TopBarHeight;
     
-    *((CGFloat *)&kUIScreen_BottomBarHeight) = 45;
+    *((CGFloat *)&kUIScreen_BottomBarHeight) = 50;
     
-
     // ContentView
-    *((CGFloat *)&kUIScreen_ContentViewPadding) = 6;
-    
-    *((CGFloat *)&kUIScreen_ContentViewWidth) = kUIScreen_Width - kUIScreen_ContentViewPadding * 2;
-    
-    *((CGFloat *)&kUIScreen_ContentViewHeight) = kUIScreen_AppHeight - kUIScreen_TopBarHeight - kUIScreen_ContentViewPadding;
+    *((CGFloat *)&kUIScreen_ContentViewHeight) = kUIScreen_AppHeight - kUIScreen_TopBarHeight - kUIScreen_BottomBarHeight;
 
 
     // 屏幕尺寸定义
     BOOL iphone5 = ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON );
     *((BOOL *)&kUIScreen_IPHONE_4) = !iphone5;
     *((BOOL *)&kUIScreen_IPHONE_5) = iphone5;
-    
-    *((CGFloat *)&kUIScreen_ContentOffsetFrameWidth) = 5;
-    
-    *((CGFloat *)&kUIScreen_ContentOffsetFrameHeight) = 5;
-    
-    *((CGFloat *)&kUIScreen_ContentFrameRadius) = 8;
     
     *((CGFloat *)&kUIScreen_IPHONE_5_PDDING) = 88.0;
     

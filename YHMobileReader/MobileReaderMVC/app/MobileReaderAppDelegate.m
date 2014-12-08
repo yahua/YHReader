@@ -30,23 +30,6 @@
         
         [DBManager createTable];
         [SystemLogic setFirstRunApp:YES];
-        
-        //测试
-//        BookClassify *bookClassify = [[[BookClassify alloc] init] autorelease];
-//        bookClassify.classifyID = 10000;
-//        bookClassify.classifyName = @"全部";
-//        bookClassify.bookNum = 20;
-//        [[DBInterfaceFactory classifyDBInterface] addBookClassify:bookClassify];
-//
-//        bookClassify.classifyID = 2;
-//        bookClassify.classifyName = @"经典小说";
-//        bookClassify.bookNum = 2;
-//        [[DBInterfaceFactory classifyDBInterface] addBookClassify:bookClassify];
-//        
-//        bookClassify.classifyID = 3;
-//        bookClassify.classifyName = @"言情小说";
-//        bookClassify.bookNum = 11;
-//        [[DBInterfaceFactory classifyDBInterface] addBookClassify:bookClassify];
     }
     //初始化
     [UIScreen initialUIScreenParam];

@@ -49,7 +49,7 @@ UITableViewDataSource>
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
     // Do any additional setup after loading the view.
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kUIScreen_Width, kUIScreen_AppContentHeight)];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kUIScreen_Width, kUIScreen_ContentViewHeight)];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
@@ -76,8 +76,7 @@ UITableViewDataSource>
     cell.textLabel.text = fileModel.fileName;
     
     NSString *fileSizeStr = [YHFtpLogic stringForFileSize:fileModel.fileSize];
-    NSString *dateStr = [fileModel.fileDate description];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@%@", fileSizeStr, dateStr];
+    cell.detailTextLabel.text = fileSizeStr;
     
     return cell;
 }

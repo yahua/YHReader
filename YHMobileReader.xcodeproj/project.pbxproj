@@ -53,6 +53,7 @@
 		19CCE14E1A34B8DD00C078B9 /* YhFtpRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CCE1491A34B8DD00C078B9 /* YhFtpRequestManager.m */; };
 		19CCE14F1A34B8DD00C078B9 /* YHFtpRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CCE14B1A34B8DD00C078B9 /* YHFtpRequestOperation.m */; };
 		19CCE1511A34B8FE00C078B9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19CCE1501A34B8FE00C078B9 /* CFNetwork.framework */; };
+		19D5D0561A35E59200D4A1BC /* UIVCMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D5D0551A35E59200D4A1BC /* UIVCMineViewController.m */; };
 		2C03BF2A18F81E3E002AFE50 /* PageFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C03BF2918F81E3E002AFE50 /* PageFooterView.m */; };
 		2C04CBC918F92C5D0083DB85 /* PageSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C04CBC818F92C5D0083DB85 /* PageSettingView.m */; };
 		2C04CBCC18F935B70083DB85 /* ReadStyleItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C04CBCB18F935B70083DB85 /* ReadStyleItemView.m */; };
@@ -199,6 +200,8 @@
 		19CCE14A1A34B8DD00C078B9 /* YHFtpRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHFtpRequestOperation.h; sourceTree = "<group>"; };
 		19CCE14B1A34B8DD00C078B9 /* YHFtpRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHFtpRequestOperation.m; sourceTree = "<group>"; };
 		19CCE1501A34B8FE00C078B9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		19D5D0541A35E59200D4A1BC /* UIVCMineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIVCMineViewController.h; sourceTree = "<group>"; };
+		19D5D0551A35E59200D4A1BC /* UIVCMineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIVCMineViewController.m; sourceTree = "<group>"; };
 		2C03BF2818F81E3E002AFE50 /* PageFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageFooterView.h; sourceTree = "<group>"; };
 		2C03BF2918F81E3E002AFE50 /* PageFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageFooterView.m; sourceTree = "<group>"; };
 		2C04CBC718F92C5D0083DB85 /* PageSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageSettingView.h; sourceTree = "<group>"; };
@@ -327,11 +330,11 @@
 		0E184B2418D54753005A3888 /* YHMobileReader */ = {
 			isa = PBXGroup;
 			children = (
-				19CCE1431A34B8DD00C078B9 /* FtpNetWork */,
 				0E184B4118D548EE005A3888 /* Resource */,
+				19CCE1431A34B8DD00C078B9 /* FtpNetWork */,
 				0E184B4218D548EE005A3888 /* Third */,
-				0E184B3B18D548EE005A3888 /* MobileReaderMVC */,
 				0E184B4318D548EE005A3888 /* Utility */,
+				0E184B3B18D548EE005A3888 /* MobileReaderMVC */,
 				0E184B2518D54753005A3888 /* Supporting Files */,
 			);
 			path = YHMobileReader;
@@ -357,10 +360,10 @@
 			children = (
 				0E184B3C18D548EE005A3888 /* app */,
 				0E184B5818D55069005A3888 /* dbinterfaces */,
-				0E184B3D18D548EE005A3888 /* controllers */,
-				0E184B4018D548EE005A3888 /* views */,
 				2C5DC10218F429D200D6F145 /* common */,
 				0E184B3E18D548EE005A3888 /* logics */,
+				0E184B3D18D548EE005A3888 /* controllers */,
+				0E184B4018D548EE005A3888 /* views */,
 				0E184B3F18D548EE005A3888 /* models */,
 			);
 			path = MobileReaderMVC;
@@ -380,6 +383,7 @@
 		0E184B3D18D548EE005A3888 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				19D5D0531A35E54800D4A1BC /* mine */,
 				2CDFF1861A35909800C476AB /* bookcity */,
 				2C5DC10018F4248D00D6F145 /* UIVCReadBook.h */,
 				2C5DC0FF18F4248D00D6F145 /* UIVCReadBook.m */,
@@ -558,6 +562,15 @@
 				19CCE14B1A34B8DD00C078B9 /* YHFtpRequestOperation.m */,
 			);
 			path = FtpNetWork;
+			sourceTree = "<group>";
+		};
+		19D5D0531A35E54800D4A1BC /* mine */ = {
+			isa = PBXGroup;
+			children = (
+				19D5D0541A35E59200D4A1BC /* UIVCMineViewController.h */,
+				19D5D0551A35E59200D4A1BC /* UIVCMineViewController.m */,
+			);
+			path = mine;
 			sourceTree = "<group>";
 		};
 		2C06B56118FBB31900B3F485 /* bookMark */ = {
@@ -803,6 +816,7 @@
 				2C5DC0FE18F4247C00D6F145 /* PageView.m in Sources */,
 				0E184B2B18D54753005A3888 /* main.m in Sources */,
 				2C06B56A18FBBCB800B3F485 /* BookMarkHeaderView.m in Sources */,
+				19D5D0561A35E59200D4A1BC /* UIVCMineViewController.m in Sources */,
 				2CDFF1891A35919100C476AB /* UIVCBookCityController.m in Sources */,
 				2C06B56418FBB34200B3F485 /* BookMarkCell.m in Sources */,
 				2C5DC10518F42A0D00D6F145 /* ReadInfoManager.m in Sources */,

@@ -84,7 +84,7 @@
 //            NSString *sql = [NSString stringWithFormat:@"update BookClassify "
 //                             "set booksArray = '%@'"
 //                             "where bookRackID = %d", bookArray, bookRackID];
-//            isOk = [shareDataBase executeUpdate:sql];
+//            isOk = [[DBManager createDataBase] executeUpdate:sql];
 //        }
 //        
 //        [[DBManager createDataBase] close];

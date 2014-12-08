@@ -77,7 +77,7 @@ BookViewDataSource>
 - (void)viewDidLoad {
     
     self.currentBookRackID = kAllBookRackID;
-    self.bookRackView = [[BookRackView alloc] initWithFrame:CGRectMake(0, 0, kUIScreen_Width, kUIScreen_AppContentHeight)];
+    self.bookRackView = [[BookRackView alloc] initWithFrame:CGRectMake(0, 0, kUIScreen_Width, kUIScreen_ContentViewHeight)];
     self.bookRackView.delegate = self;
     self.bookRackView.dataSource = self;
     [self.view addSubview:self.bookRackView];
@@ -254,11 +254,12 @@ BookViewDataSource>
     for (NSString *key in self.selectBooksDic.allKeys) {
         
         Books *books = [self.selectBooksDic objectForKey:key];
+        [self.booksArray removeObject:books];
+        [self.bookRackView reloadGridDate];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             //数据库中删除
-            [[DBInterfaceFactory bookDBInterface] deleteBook:books.booksID];
-            //数据删除（先数据库后数组，要不然books为nil）
-            [self.booksArray removeObject:books];
+            Books *dbBooks = books;
+            [[DBInterfaceFactory bookDBInterface] deleteBook:dbBooks.booksID];
         });
     }
     [self.selectBooksDic removeAllObjects];
