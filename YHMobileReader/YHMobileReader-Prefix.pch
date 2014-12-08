@@ -15,4 +15,5 @@
     #import "UIScreen+Common.h"
     #import "UIColor+Hex.h"
     #import "UIView+Size.h"
+    #import "UIViewController+MethodExt.h"
 #endif

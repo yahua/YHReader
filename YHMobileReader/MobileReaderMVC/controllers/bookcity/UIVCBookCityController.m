@@ -30,11 +30,12 @@ UITableViewDataSource>
     }
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)init
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super init];
     if (self) {
         // Custom initialization
+        self.navigationItem.title = @"排行榜";
     }
     return self;
 }

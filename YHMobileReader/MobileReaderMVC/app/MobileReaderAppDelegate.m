@@ -9,9 +9,15 @@
 #import "MobileReaderAppDelegate.h"
 #import "SystemLogic.h"
 #import "DBManager.h"
-#import "UIVCBookRack.h"
 #import "DBInterfaceFactory.h"
 #import "BookClassify.h"
+#import "UIVCYahuaController.h"
+
+@interface MobileReaderAppDelegate ()
+
+@property (nonatomic, strong) UIVCYahuaController *yahuaCon;
+
+@end
 
 
 @implementation MobileReaderAppDelegate
@@ -47,13 +53,10 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    UIVCBookRack *bookRackCon = [[UIVCBookRack alloc] init];
-    
-    self.navigationController = [[UINavigationController alloc] initWithRootViewController:bookRackCon];
-    self.navigationController.navigationBarHidden = NO;
+    self.yahuaCon = [[UIVCYahuaController alloc] init];
     
     // Override point for customization after application launch.
-    [self.window addSubview:self.navigationController.view];
+    [self.window addSubview:self.yahuaCon.view];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

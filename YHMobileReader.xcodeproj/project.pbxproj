@@ -103,7 +103,15 @@
 		2C5DC10118F4248D00D6F145 /* UIVCReadBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5DC0FF18F4248D00D6F145 /* UIVCReadBook.m */; };
 		2C5DC10518F42A0D00D6F145 /* ReadInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5DC10418F42A0D00D6F145 /* ReadInfoManager.m */; };
 		2C624C0618EC249F00D169AC /* BookRackHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C624C0518EC249F00D169AC /* BookRackHeaderView.m */; };
+		2C9FCD9B1A35A3B3009FADFC /* UIViewController+MethodExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FCD9A1A35A3B3009FADFC /* UIViewController+MethodExt.m */; };
+		2C9FCDA31A35A8AD009FADFC /* bookcity_icon_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C9FCD9D1A35A8AD009FADFC /* bookcity_icon_normal@2x.png */; };
+		2C9FCDA41A35A8AD009FADFC /* bookcity_icon_touch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C9FCD9E1A35A8AD009FADFC /* bookcity_icon_touch@2x.png */; };
+		2C9FCDA51A35A8AD009FADFC /* bookrack_icon_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C9FCD9F1A35A8AD009FADFC /* bookrack_icon_normal@2x.png */; };
+		2C9FCDA61A35A8AD009FADFC /* bookrack_icon_touch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C9FCDA01A35A8AD009FADFC /* bookrack_icon_touch@2x.png */; };
+		2C9FCDA71A35A8AD009FADFC /* mine_icon_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C9FCDA11A35A8AD009FADFC /* mine_icon_normal@2x.png */; };
+		2C9FCDA81A35A8AD009FADFC /* mine_icon_touch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C9FCDA21A35A8AD009FADFC /* mine_icon_touch@2x.png */; };
 		2CDFF1891A35919100C476AB /* UIVCBookCityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDFF1881A35919100C476AB /* UIVCBookCityController.m */; };
+		2CDFF18C1A359CBE00C476AB /* UIVCYahuaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDFF18B1A359CBE00C476AB /* UIVCYahuaController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -255,8 +263,18 @@
 		2C5DC10418F42A0D00D6F145 /* ReadInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadInfoManager.m; sourceTree = "<group>"; };
 		2C624C0418EC249F00D169AC /* BookRackHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookRackHeaderView.h; sourceTree = "<group>"; };
 		2C624C0518EC249F00D169AC /* BookRackHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookRackHeaderView.m; sourceTree = "<group>"; };
+		2C9FCD991A35A3B3009FADFC /* UIViewController+MethodExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MethodExt.h"; sourceTree = "<group>"; };
+		2C9FCD9A1A35A3B3009FADFC /* UIViewController+MethodExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MethodExt.m"; sourceTree = "<group>"; };
+		2C9FCD9D1A35A8AD009FADFC /* bookcity_icon_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bookcity_icon_normal@2x.png"; sourceTree = "<group>"; };
+		2C9FCD9E1A35A8AD009FADFC /* bookcity_icon_touch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bookcity_icon_touch@2x.png"; sourceTree = "<group>"; };
+		2C9FCD9F1A35A8AD009FADFC /* bookrack_icon_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bookrack_icon_normal@2x.png"; sourceTree = "<group>"; };
+		2C9FCDA01A35A8AD009FADFC /* bookrack_icon_touch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bookrack_icon_touch@2x.png"; sourceTree = "<group>"; };
+		2C9FCDA11A35A8AD009FADFC /* mine_icon_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_icon_normal@2x.png"; sourceTree = "<group>"; };
+		2C9FCDA21A35A8AD009FADFC /* mine_icon_touch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_icon_touch@2x.png"; sourceTree = "<group>"; };
 		2CDFF1871A35919100C476AB /* UIVCBookCityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIVCBookCityController.h; sourceTree = "<group>"; };
 		2CDFF1881A35919100C476AB /* UIVCBookCityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIVCBookCityController.m; sourceTree = "<group>"; };
+		2CDFF18A1A359CBE00C476AB /* UIVCYahuaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIVCYahuaController.h; sourceTree = "<group>"; };
+		2CDFF18B1A359CBE00C476AB /* UIVCYahuaController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIVCYahuaController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -353,6 +371,8 @@
 			children = (
 				2C089F2C18FF91630067C920 /* MobileReaderAppDelegate.h */,
 				2C089F2B18FF91630067C920 /* MobileReaderAppDelegate.m */,
+				2CDFF18A1A359CBE00C476AB /* UIVCYahuaController.h */,
+				2CDFF18B1A359CBE00C476AB /* UIVCYahuaController.m */,
 			);
 			path = app;
 			sourceTree = "<group>";
@@ -415,6 +435,7 @@
 		0E184B4118D548EE005A3888 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				2C9FCD9C1A35A8AD009FADFC /* tabbar */,
 				2C0D842F18FD4A7D00DB7730 /* icon.png */,
 				2C0D83BA18FCD50200DB7730 /* dataBase.db */,
 				2C5DC0F818F4246F00D6F145 /* books */,
@@ -448,6 +469,8 @@
 				0EA62B8E18D888F600454481 /* UIScreen+Common.m */,
 				0EA62B9118D888F600454481 /* UIView+Size.h */,
 				0EA62B9218D888F600454481 /* UIView+Size.m */,
+				2C9FCD991A35A3B3009FADFC /* UIViewController+MethodExt.h */,
+				2C9FCD9A1A35A3B3009FADFC /* UIViewController+MethodExt.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -647,6 +670,19 @@
 			path = common;
 			sourceTree = "<group>";
 		};
+		2C9FCD9C1A35A8AD009FADFC /* tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				2C9FCD9D1A35A8AD009FADFC /* bookcity_icon_normal@2x.png */,
+				2C9FCD9E1A35A8AD009FADFC /* bookcity_icon_touch@2x.png */,
+				2C9FCD9F1A35A8AD009FADFC /* bookrack_icon_normal@2x.png */,
+				2C9FCDA01A35A8AD009FADFC /* bookrack_icon_touch@2x.png */,
+				2C9FCDA11A35A8AD009FADFC /* mine_icon_normal@2x.png */,
+				2C9FCDA21A35A8AD009FADFC /* mine_icon_touch@2x.png */,
+			);
+			path = tabbar;
+			sourceTree = "<group>";
+		};
 		2CDFF1861A35909800C476AB /* bookcity */ = {
 			isa = PBXGroup;
 			children = (
@@ -716,21 +752,26 @@
 				0E184B2918D54753005A3888 /* InfoPlist.strings in Resources */,
 				2C0D83CC18FD24D200DB7730 /* 超级校园狂少.txt in Resources */,
 				19CB567B1A276BB800925E80 /* optionButton.png in Resources */,
+				2C9FCDA61A35A8AD009FADFC /* bookrack_icon_touch@2x.png in Resources */,
+				2C9FCDA31A35A8AD009FADFC /* bookcity_icon_normal@2x.png in Resources */,
 				0E184B3118D54753005A3888 /* Default.png in Resources */,
 				2C06B58218FBDA4600B3F485 /* 箭头1.png in Resources */,
 				2C06B58318FBDA4600B3F485 /* 箭头2.png in Resources */,
 				19BF38A41A1B96590068AFF8 /* SysConfig.plist in Resources */,
+				2C9FCDA51A35A8AD009FADFC /* bookrack_icon_normal@2x.png in Resources */,
 				2C0D842A18FD3B6E00DB7730 /* 超级校园狂少.png in Resources */,
 				2C0D83BD18FCDDDD00DB7730 /* bookclassify_add.png in Resources */,
 				2C0D842E18FD3B6E00DB7730 /* 魔剑录.png in Resources */,
 				2C0D842D18FD3B6E00DB7730 /* 邪妃傲天下.png in Resources */,
 				0E184B3318D54753005A3888 /* Default@2x.png in Resources */,
+				2C9FCDA41A35A8AD009FADFC /* bookcity_icon_touch@2x.png in Resources */,
 				2C0D83CF18FD24D200DB7730 /* 冷宫的弃后.txt in Resources */,
 				2C0D83D018FD24D200DB7730 /* 魔剑录.txt in Resources */,
 				2C0D83D418FD24D200DB7730 /* 最后一个道士.txt in Resources */,
 				2C0D842818FD3B6E00DB7730 /* 月亮.png in Resources */,
 				2C0D842118FD3B6E00DB7730 /* 书签.png in Resources */,
 				2C0D842718FD3B6E00DB7730 /* 最后一个道士.png in Resources */,
+				2C9FCDA81A35A8AD009FADFC /* mine_icon_touch@2x.png in Resources */,
 				2C0D842318FD3B6E00DB7730 /* 先结婚后恋爱.png in Resources */,
 				2C0D83BB18FCD50200DB7730 /* dataBase.db in Resources */,
 				2C0D83CD18FD24D200DB7730 /* 道胎种魔.txt in Resources */,
@@ -739,6 +780,7 @@
 				2C0D83D118FD24D200DB7730 /* 倾城绝恋.txt in Resources */,
 				2C0D842B18FD3B6E00DB7730 /* 过客,匆匆.png in Resources */,
 				2C0D842918FD3B6E00DB7730 /* 设置.png in Resources */,
+				2C9FCDA71A35A8AD009FADFC /* mine_icon_normal@2x.png in Resources */,
 				2C0D83D318FD24D200DB7730 /* 邪妃傲天下.txt in Resources */,
 				2C0D843018FD4A7D00DB7730 /* icon.png in Resources */,
 				2C06B58518FBDDCB00B3F485 /* bookrack_edit@2x.png in Resources */,
@@ -803,11 +845,13 @@
 				2C06B56718FBB85A00B3F485 /* UIVCBookMark.m in Sources */,
 				0EA62BA318D8919B00454481 /* BookClassifyCell.m in Sources */,
 				0E9F903918D9A172008AA9F4 /* AppColor.m in Sources */,
+				2C9FCD9B1A35A3B3009FADFC /* UIViewController+MethodExt.m in Sources */,
 				0EBB232A18DA943B002D203E /* BookClassifyView.m in Sources */,
 				0EBB232E18DAA45D002D203E /* UIVCBookRack.m in Sources */,
 				0EA27C0818E1AEDC00025541 /* BookRackView.m in Sources */,
 				2C089F2D18FF91630067C920 /* MobileReaderAppDelegate.m in Sources */,
 				1926A50E1A1CF2A4006D2921 /* UIVCBookClassify.m in Sources */,
+				2CDFF18C1A359CBE00C476AB /* UIVCYahuaController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
