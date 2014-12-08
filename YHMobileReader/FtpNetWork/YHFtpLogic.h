@@ -11,7 +11,7 @@
 
 @interface YHFtpLogic : NSObject
 
-+ (NSArray *)getListWithData:(NSData *)data;
++ (NSArray *)parserFileModelWithData:(NSData *)data;
 
 + (NSString *)stringForFileSize:(unsigned long long)size;
 

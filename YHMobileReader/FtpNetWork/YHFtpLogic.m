@@ -10,7 +10,7 @@
 
 @implementation YHFtpLogic
 
-+ (NSArray *)getListWithData:(NSData *)data {
++ (NSArray *)parserFileModelWithData:(NSData *)data {
     
     NSMutableArray *    newEntries;
     NSUInteger          offset;

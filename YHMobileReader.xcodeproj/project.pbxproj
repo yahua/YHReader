@@ -103,6 +103,7 @@
 		2C5DC10118F4248D00D6F145 /* UIVCReadBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5DC0FF18F4248D00D6F145 /* UIVCReadBook.m */; };
 		2C5DC10518F42A0D00D6F145 /* ReadInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5DC10418F42A0D00D6F145 /* ReadInfoManager.m */; };
 		2C624C0618EC249F00D169AC /* BookRackHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C624C0518EC249F00D169AC /* BookRackHeaderView.m */; };
+		2CDFF1891A35919100C476AB /* UIVCBookCityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDFF1881A35919100C476AB /* UIVCBookCityController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -254,6 +255,8 @@
 		2C5DC10418F42A0D00D6F145 /* ReadInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadInfoManager.m; sourceTree = "<group>"; };
 		2C624C0418EC249F00D169AC /* BookRackHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookRackHeaderView.h; sourceTree = "<group>"; };
 		2C624C0518EC249F00D169AC /* BookRackHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookRackHeaderView.m; sourceTree = "<group>"; };
+		2CDFF1871A35919100C476AB /* UIVCBookCityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIVCBookCityController.h; sourceTree = "<group>"; };
+		2CDFF1881A35919100C476AB /* UIVCBookCityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIVCBookCityController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -357,6 +360,7 @@
 		0E184B3D18D548EE005A3888 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2CDFF1861A35909800C476AB /* bookcity */,
 				2C5DC10018F4248D00D6F145 /* UIVCReadBook.h */,
 				2C5DC0FF18F4248D00D6F145 /* UIVCReadBook.m */,
 				0EBB232C18DAA45D002D203E /* UIVCBookRack.h */,
@@ -643,6 +647,15 @@
 			path = common;
 			sourceTree = "<group>";
 		};
+		2CDFF1861A35909800C476AB /* bookcity */ = {
+			isa = PBXGroup;
+			children = (
+				2CDFF1871A35919100C476AB /* UIVCBookCityController.h */,
+				2CDFF1881A35919100C476AB /* UIVCBookCityController.m */,
+			);
+			path = bookcity;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -748,6 +761,7 @@
 				2C5DC0FE18F4247C00D6F145 /* PageView.m in Sources */,
 				0E184B2B18D54753005A3888 /* main.m in Sources */,
 				2C06B56A18FBBCB800B3F485 /* BookMarkHeaderView.m in Sources */,
+				2CDFF1891A35919100C476AB /* UIVCBookCityController.m in Sources */,
 				2C06B56418FBB34200B3F485 /* BookMarkCell.m in Sources */,
 				2C5DC10518F42A0D00D6F145 /* ReadInfoManager.m in Sources */,
 				19CCE14E1A34B8DD00C078B9 /* YhFtpRequestManager.m in Sources */,

@@ -12,6 +12,7 @@
 #import "DBInterfaceFactory.h"
 #import "UIVCReadBook.h"
 #import "UIVCBookClassify.h"
+#import "UIVCBookCityController.h"
 
 
 #define kBookClassifyWidth  (kUIScreen_Width - 60)
@@ -208,33 +209,35 @@ BookViewDataSource>
 
 - (void)editClick {
     
-    self.isEditing = !self.isEditing;
-    
-    if(!self.isEditing) {  //结束编辑模式
-        
-        [self.bookRackView stopSort];
-        
-        if (self.currentBookRackID != kAllBookRackID) {  //全部书架中暂不提供记录书籍位置
-            
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                //书籍在书架中的位置保存进数据库
-                [[DBInterfaceFactory bookDBInterface] saveBooksWithRack:self.currentBookRackID withBooksArray:self.booksArray];
-            });
-        }
-        self.navigationItem.rightBarButtonItem.title = @"编辑";
-        
-        UIBarButtonItem *classifyItem = [[UIBarButtonItem alloc] initWithTitle:@"精选" style:UIBarButtonItemStylePlain target:self action:@selector(classifyClick)];
-        self.navigationItem.leftBarButtonItems = @[classifyItem];
-    }else {  //进入编辑模式
-        
-        [self.bookRackView startSort];
-        self.navigationItem.rightBarButtonItem.title = @"完成";
-        
-        self.moveBarItem.enabled = NO;
-        self.deleteBarItem.enabled = NO;
-        self.navigationItem.leftBarButtonItems = @[self.moveBarItem, self.deleteBarItem];
-    }
-    NSLog(@"editClick");
+    UIVCBookCityController *vc = [[UIVCBookCityController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+//    self.isEditing = !self.isEditing;
+//    
+//    if(!self.isEditing) {  //结束编辑模式
+//        
+//        [self.bookRackView stopSort];
+//        
+//        if (self.currentBookRackID != kAllBookRackID) {  //全部书架中暂不提供记录书籍位置
+//            
+//            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//                //书籍在书架中的位置保存进数据库
+//                [[DBInterfaceFactory bookDBInterface] saveBooksWithRack:self.currentBookRackID withBooksArray:self.booksArray];
+//            });
+//        }
+//        self.navigationItem.rightBarButtonItem.title = @"编辑";
+//        
+//        UIBarButtonItem *classifyItem = [[UIBarButtonItem alloc] initWithTitle:@"精选" style:UIBarButtonItemStylePlain target:self action:@selector(classifyClick)];
+//        self.navigationItem.leftBarButtonItems = @[classifyItem];
+//    }else {  //进入编辑模式
+//        
+//        [self.bookRackView startSort];
+//        self.navigationItem.rightBarButtonItem.title = @"完成";
+//        
+//        self.moveBarItem.enabled = NO;
+//        self.deleteBarItem.enabled = NO;
+//        self.navigationItem.leftBarButtonItems = @[self.moveBarItem, self.deleteBarItem];
+//    }
+//    NSLog(@"editClick");
 }
 
 - (void)moveClick {
