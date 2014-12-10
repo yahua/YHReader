@@ -20,20 +20,17 @@
  */
 - (NSArray *)getBooks:(NSInteger)bookRackID {
     
-    NSMutableArray *booksArray = nil;
-    
-    if ([[DBManager createDataBase] open]) {
-        
-        FMResultSet *result = [[DBManager createDataBase] executeQuery:[NSString stringWithFormat:
-                                                           @"select * from BookRack "
-                                                           "where bookRackID = %d", bookRackID]];
+    __block NSMutableArray *booksArray = nil;
+    [[DBManager shareDataBase] inDatabase:^(FMDatabase *db) {
+        FMResultSet *result = [db executeQuery:[NSString stringWithFormat:
+                                                                        @"select * from BookRack "
+                                                                        "where bookRackID = %d", bookRackID]];
         
         if ([result next]) {
             
             booksArray = [result objectForColumnName:@"booksArray"];
         }
-        [[DBManager createDataBase] close];
-    }
+    }];
 
     return booksArray;
 }

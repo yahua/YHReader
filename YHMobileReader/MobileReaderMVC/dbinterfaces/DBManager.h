@@ -7,20 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FMDatabaseQueue.h"
 #import "FMDatabase.h"
 
 #define KdataBaseName @"dataBase.db"
 
 @interface DBManager : NSObject
 
-/****/
 /**
  *	@brief	数据库对象单例方法
  *
  *	@return	返回FMDateBase数据库操作对象
  */
-+ (FMDatabase *)createDataBase;
-
++ (FMDatabaseQueue *)shareDataBase;
 
 /**
  *	@brief	关闭数据库

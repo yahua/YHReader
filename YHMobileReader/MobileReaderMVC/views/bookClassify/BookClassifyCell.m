@@ -71,7 +71,6 @@ UITextFieldDelegate
     self.nameTextField.font = [UIFont systemFontOfSize:15];
     self.textLabel.hidden = YES;
     self.detailTextLabel.hidden = YES;
-
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {   // return NO to not change text {

@@ -8,6 +8,8 @@
 
 #import "BookMarkDBInterface.h"
 #import "DBManager.h"
+#import "FMResultSet.h"
+#import "FMDatabase.h"
 
 @interface BookMarkDBImplement : NSObject <BookMarkDBInterface>
 
@@ -21,11 +23,16 @@
  */
 - (NSArray *)getBookMark:(NSInteger)bookID {
     
-    NSMutableArray *markArray = [NSMutableArray array];
+    __weak NSMutableArray *markArray = [NSMutableArray array];
     
-    if ([[DBManager createDataBase] open]) {
+    [[DBManager shareDataBase] inDatabase:^(FMDatabase *db) {
         
-        FMResultSet *result = [[DBManager createDataBase] executeQuery:[NSString stringWithFormat:@"select * from BookMark ""where bookID = %d", bookID]];
+        
+    }];
+    [[DBManager shareDataBase] inDatabase:^(FMDatabase *db) {
+        
+    
+        FMResultSet *result = [db executeQuery:[NSString stringWithFormat:@"select * from BookMark ""where bookID = %d", bookID]];
         
         while ([result next]) {
             
@@ -38,10 +45,8 @@
             
             [markArray addObject:bookMark];
         }
-    }
-
-    
-    return markArray;
+    }];
+     return markArray;
 }
 
 /**
@@ -49,14 +54,12 @@
  */
 - (void)addBookMark:(BookMark *)bookMark {
     
-    BOOL isOk = NO;
-    if ([[DBManager createDataBase] open]) {
-        
+    __block BOOL isOk = NO;
+    [[DBManager shareDataBase] inDatabase:^(FMDatabase *db) {
         NSString *sql = [NSString stringWithFormat:@"insert into BookMark(bookID, bookMarkID, bookMarkDes, bookMarkDate, booksProgress) "
                          "values(%d, %d, '%@', '%@', %f)",  bookMark.bookID, bookMark.bookMarkID, bookMark.bookMarkDes, bookMark.bookMarkDate, bookMark.bookProgress];
-        isOk = [[DBManager createDataBase] executeUpdate:sql];
-        
-    }
+        isOk = [db executeUpdate:sql];
+    }];
 }
 
 /**
@@ -64,16 +67,13 @@
  */
 - (void)deleteBookMark:(NSInteger)bookMarkID forBookID:(NSInteger)bookID {
     
-    BOOL isOk = NO;
-    if ([[DBManager createDataBase] open]) {
-        
+    __block BOOL isOk = NO;
+    [[DBManager shareDataBase] inDatabase:^(FMDatabase *db) {
         NSString *sql = [NSString stringWithFormat:
                          @"delete from BookMark "
                          "where bookID = %d and bookMarkID = %d", bookID, bookMarkID];
-        isOk = [[DBManager createDataBase] executeUpdate:sql];
-        
-    }
-
+        isOk = [db executeUpdate:sql];
+    }];
 }
 @end
 

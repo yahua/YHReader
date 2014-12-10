@@ -291,6 +291,7 @@ BookViewDataSource>
             [self.booksArray removeAllObjects];
         }
         self.booksArray = [NSMutableArray arrayWithArray:[[DBInterfaceFactory bookDBInterface] getBooks:self.currentBookRackID]];
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.bookRackView reloadGridDate];
         });

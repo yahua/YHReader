@@ -7,10 +7,6 @@
 //
 
 #import "MobileReaderAppDelegate.h"
-#import "SystemLogic.h"
-#import "DBManager.h"
-#import "DBInterfaceFactory.h"
-#import "BookClassify.h"
 #import "UIVCYahuaController.h"
 
 @interface MobileReaderAppDelegate ()
@@ -25,12 +21,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //创建数据库
-    if (![SystemLogic isFirstRunApp]) {
-        
-        [DBManager createTable];
-        [SystemLogic setFirstRunApp:YES];
-    }
+    
     //初始化
     [UIScreen initialUIScreenParam];
     

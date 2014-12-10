@@ -17,50 +17,19 @@
 @implementation BookDBImplement
 
 /**
- 获取所有图书
- */
-- (NSArray *)getAllBooks {
-    
-    NSMutableArray *booksArray = [NSMutableArray array];
-    
-    if ([[DBManager createDataBase] open]) {
-        
-        FMResultSet *result = [[DBManager createDataBase] executeQuery:[NSString stringWithFormat:
-                                                           @"select * from Books"]];
-        
-        while ([result next]) {
-            
-            Books *books = [[Books alloc] init];
-            books.booksID = [result intForColumn:@"booksID"];
-            books.bookRackID = [result intForColumn:@"bookRackID"];
-            books.booksName = [result stringForColumn:@"booksName"];
-            books.booksPicName = [result stringForColumn:@"booksPicName"];
-            books.booksPath = [result stringForColumn:@"booksPath"];
-            books.booksProgress = [result doubleForColumn:@"booksProgress"];
-            books.booksInRackPos = [result intForColumn:@"booksInRackPos"];
-            
-            [booksArray addObject:books];
-        }
-    }
-
-    return booksArray;
-}
-
-/**
  获取书架的所有图书
  */
 - (NSArray *)getBooks:(NSInteger)bookRackID {
     
     NSMutableArray *booksArray = [NSMutableArray array];
     
-    if ([[DBManager createDataBase] open]) {
-        
-        FMResultSet *result = [[DBManager createDataBase] executeQuery:[NSString stringWithFormat:
-                                                           @"select * from Books "
-                                                           "where bookRackID = %d "
-                                                            "order by booksInRackPos", bookRackID]];
+    [[DBManager shareDataBase] inDatabase:^(FMDatabase *db) {
+        FMResultSet *result = [db executeQuery:[NSString stringWithFormat:
+                                                                        @"select * from Books "
+                                                                        "where bookRackID = %d "
+                                                                        "order by booksInRackPos", bookRackID]];
         if (bookRackID == kAllBookRackID) {
-            result = [[DBManager createDataBase] executeQuery:[NSString stringWithFormat:
+            result = [db executeQuery:[NSString stringWithFormat:
                                                                @"select * from Books"]];
         }
         while ([result next]) {
@@ -76,7 +45,7 @@
             
             [booksArray addObject:books];
         }
-    }
+    }];
     
     return booksArray;
 }
@@ -86,14 +55,12 @@
  */
 - (void)addBook:(Books *)books {
     
-    BOOL isOk = NO;
-    if ([[DBManager createDataBase] open]) {
-        
+    __block BOOL isOk = NO;
+    [[DBManager shareDataBase] inDatabase:^(FMDatabase *db) {
         NSString *sql = [NSString stringWithFormat:@"insert into Books(booksID, booksName, booksPath, booksProgress) "
                          "values(%d, '%@', '%@', %f)", books.booksID, books.booksName, books.booksPath, books.booksProgress];
-        isOk = [[DBManager createDataBase] executeUpdate:sql];
-        
-    }
+        isOk = [db executeUpdate:sql];
+    }];
 }
 
 /**
@@ -101,14 +68,13 @@
  */
 - (void)deleteBook:(NSInteger)bookID {
     
-    BOOL isOk = NO;
-    if ([[DBManager createDataBase] open]) {
-        
+    __block BOOL isOk = NO;
+    [[DBManager shareDataBase] inDatabase:^(FMDatabase *db) {
         NSString *sql = [NSString stringWithFormat:
                          @"delete from Books "
                          "where booksID = %d", bookID];
-        isOk = [[DBManager createDataBase] executeUpdate:sql];
-    }
+        isOk = [db executeUpdate:sql];
+    }];
 }
 
 /**
@@ -116,15 +82,13 @@
  */
 - (void)setBookRack:(NSInteger)bookRackID forBookID:(NSInteger)bookID {
     
-    BOOL isOk = NO;
-    if ([[DBManager createDataBase] open]) {
-        
+    __block BOOL isOk = NO;
+    [[DBManager shareDataBase] inDatabase:^(FMDatabase *db) {
         NSString *sql = [NSString stringWithFormat:@"update Books "
                          "set bookRackID = %d "
                          "where booksID = %d", bookRackID, bookID];
-        isOk = [[DBManager createDataBase] executeUpdate:sql];
-        
-    }
+        isOk = [db executeUpdate:sql];
+    }];
 }
 
 /**
@@ -135,36 +99,37 @@
     for (NSInteger index=0; index<[booksArray count]; index++) {
         
         Books *books = [booksArray objectAtIndex:index];
-        
-        NSString *sql = [NSString stringWithFormat:@"update Books "
-                         "set booksInRackPos = %d "
-                         "where booksID = %d and bookRackID = %d", index, books.booksID, rackID];
-        [[DBManager createDataBase] executeUpdate:sql];
+        [[DBManager shareDataBase] inDatabase:^(FMDatabase *db) {
+            NSString *sql = [NSString stringWithFormat:@"update Books "
+                             "set booksInRackPos = %d "
+                             "where booksID = %d and bookRackID = %d", index, books.booksID, rackID];
+            [db executeUpdate:sql];
+        }];
     }
 }
 
 - (void)setBookInRackPos:(NSInteger)pos withBookID:(NSInteger)bookID {
     
-    NSString *sql = [NSString stringWithFormat:@"update Books "
-                     "set booksInRackPos = %d "
-                     "where booksID = %d", pos, bookID];
-    [[DBManager createDataBase] executeUpdate:sql];
+    [[DBManager shareDataBase] inDatabase:^(FMDatabase *db) {
+        NSString *sql = [NSString stringWithFormat:@"update Books "
+                         "set booksInRackPos = %d "
+                         "where booksID = %d", pos, bookID];
+        [db executeUpdate:sql];
+    }];
 }
 
 - (NSInteger)getBookInRackPos:(NSInteger)booksID {
     
-    NSInteger pos = 0;
-    if ([[DBManager createDataBase] open]) {
-        
-        FMResultSet *result = [[DBManager createDataBase] executeQuery:[NSString stringWithFormat:
+    __block NSInteger pos = 0;
+    [[DBManager shareDataBase] inDatabase:^(FMDatabase *db) {
+        FMResultSet *result = [db executeQuery:[NSString stringWithFormat:
                                                                         @"select * from Books "
                                                                         "where booksID = %d", booksID]];
         if ([result next]) {
             
             pos = [result doubleForColumn:@"booksInRackPos"];
         }
-        
-    }
+    }];
     return pos;
 }
 
@@ -173,14 +138,13 @@
  */
 - (void)setBookProgress:(CGFloat)booksProgress forBookID:(NSInteger)bookID {
     
-    BOOL isOk = NO;
-    if ([[DBManager createDataBase] open]) {
-        
+    __block BOOL isOk = NO;
+    [[DBManager shareDataBase] inDatabase:^(FMDatabase *db) {
         NSString *sql = [NSString stringWithFormat:@"update Books "
                          "set booksProgress = %f "
                          "where booksID = %d", booksProgress, bookID];
-        isOk = [[DBManager createDataBase] executeUpdate:sql];
-    }
+        isOk = [db executeUpdate:sql];
+    }];
 }
 
 
@@ -189,18 +153,16 @@
  */
 - (CGFloat)getBookProgress:(NSInteger)bookID {
     
-    CGFloat bookProgress = 0;
-    if ([[DBManager createDataBase] open]) {
-        
-        FMResultSet *result = [[DBManager createDataBase] executeQuery:[NSString stringWithFormat:
-                                                           @"select * from Books "
-                                                           "where booksID = %d", bookID]];
+    __block CGFloat bookProgress = 0;
+    [[DBManager shareDataBase] inDatabase:^(FMDatabase *db) {
+        FMResultSet *result = [db executeQuery:[NSString stringWithFormat:
+                                                                        @"select * from Books "
+                                                                        "where booksID = %d", bookID]];
         if ([result next]) {
             
             bookProgress = [result doubleForColumn:@"booksProgress"];
         }
-        
-    }
+    }];
     
     return bookProgress;
 }

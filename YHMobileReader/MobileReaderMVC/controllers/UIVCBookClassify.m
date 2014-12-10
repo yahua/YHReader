@@ -57,7 +57,6 @@ BookClassifyViewDelegate>
     [controller presentViewController:navController animated:YES completion:nil];
 }
 
-#pragma mark
 #pragma mark - BookClassifyViewDelegate
 
 - (void)enterBookRack:(BookClassify *)bookClassify {

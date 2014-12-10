@@ -25,7 +25,7 @@
     self = [super init];
     if (self) {
         
-        self.serialQueue = dispatch_queue_create("serialQueue", DISPATCH_QUEUE_SERIAL);
+        //self.serialQueue = dispatch_queue_create("serialQueue", DISPATCH_QUEUE_SERIAL);
     }
     return self;
 }
@@ -36,9 +36,8 @@
 - (NSArray *)getAllClassify {
     
     NSMutableArray *allClassifyArray = [NSMutableArray array];
-    
-    if ([[DBManager createDataBase] open]) {
-        FMResultSet *result = [[DBManager createDataBase] executeQuery:[NSString stringWithFormat:@"select * from BookClassify order by classifyID desc"]];
+    [[DBManager shareDataBase] inDatabase:^(FMDatabase *db) {
+        FMResultSet *result = [db executeQuery:[NSString stringWithFormat:@"select * from BookClassify order by classifyID desc"]];
         
         while ([result next]) {
             
@@ -56,8 +55,8 @@
             
             [allClassifyArray addObject:bookClassify];
         }
-    }
-    
+    }];
+
     return allClassifyArray;
 }
 
@@ -66,50 +65,42 @@
  */
 - (void)addBookClassify:(BookClassify *)content {
     
-        
-    BOOL isOk = NO;
-    if ([[DBManager createDataBase] open]) {
-            
+    __block BOOL isOk = NO;
+    [[DBManager shareDataBase] inDatabase:^(FMDatabase *db) {
         NSString *sql = [NSString stringWithFormat:@"insert into BookClassify(classifyID, classifyName, bookNum) "
-                             "values(%d, '%@', %d)", content.classifyID, content.classifyName, content.bookNum];
-        isOk = [[DBManager createDataBase] executeUpdate:sql];
-    }
+                         "values(%d, '%@', %d)", content.classifyID, content.classifyName, content.bookNum];
+        isOk = [db executeUpdate:sql];
+    }];
 }
 
 - (BookClassify *)getBookClassify:(NSInteger)classifyID {
     
     BookClassify *bookClassify = [[BookClassify alloc] init];
-    
-    if ([[DBManager createDataBase] open]) {
+    [[DBManager shareDataBase] inDatabase:^(FMDatabase *db) {
         
-        FMResultSet *result = [[DBManager createDataBase] executeQuery:[NSString stringWithFormat:
-                                                           @"select * from BookClassify "
-                                                           "where classifyID = %d", classifyID]];
-        
+        FMResultSet *result = [db executeQuery:[NSString stringWithFormat:
+                                                                        @"select * from BookClassify "
+                                                                        "where classifyID = %d", classifyID]];
         if ([result next]) {
             
             bookClassify.classifyID = [result intForColumn:@"classifyID"];
             bookClassify.classifyName = [result stringForColumn:@"classifyName"];
             bookClassify.bookNum = [[[DBInterfaceFactory bookDBInterface] getBooks:bookClassify.classifyID] count];
         }
-    }
-    
+    }];
+
     return bookClassify;
 }
 
 - (void)deleteBookClassify:(NSInteger)classifyID {
     
-    dispatch_async(self.serialQueue, ^{
-        
-        BOOL isOk = NO;
-        if ([[DBManager createDataBase] open]) {
-            
-            NSString *sql = [NSString stringWithFormat:
-                             @"delete from BookClassify "
-                             "where classifyID = %d", classifyID];
-            isOk = [[DBManager createDataBase] executeUpdate:sql];
-        }
-    });
+    __block BOOL isOk = NO;
+    [[DBManager shareDataBase] inDatabase:^(FMDatabase *db) {
+        NSString *sql = [NSString stringWithFormat:
+                         @"delete from BookClassify "
+                         "where classifyID = %d", classifyID];
+        isOk = [db executeUpdate:sql];
+    }];
 }
 
 /**
@@ -117,18 +108,17 @@
  */
 - (void)updateBookClassify:(BookClassify *)bookClassify {
     
-    BOOL isOk = NO;
-    if ([[DBManager createDataBase] open]) {
-            
+    __block BOOL isOk = NO;
+    [[DBManager shareDataBase] inDatabase:^(FMDatabase *db) {
         NSString *sql = [NSString stringWithFormat:@"update BookClassify "
-                             "set classifyName = '%@'"
-                             "where classifyID = %d", bookClassify.classifyName, bookClassify.classifyID];
-        isOk = [[DBManager createDataBase] executeUpdate:sql];
-            
+                         "set classifyName = '%@'"
+                         "where classifyID = %d", bookClassify.classifyName, bookClassify.classifyID];
+        isOk = [db executeUpdate:sql];
         if (!isOk) {
             [self addBookClassify:bookClassify];
         }
-    }
+    }];
+
 }
 
 @end
