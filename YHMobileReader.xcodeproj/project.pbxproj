@@ -48,6 +48,8 @@
 		19BF38A41A1B96590068AFF8 /* SysConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19BF38A31A1B96590068AFF8 /* SysConfig.plist */; };
 		19CB567A1A276BB800925E80 /* optionButton_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 19CB56781A276BB800925E80 /* optionButton_selected.png */; };
 		19CB567B1A276BB800925E80 /* optionButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 19CB56791A276BB800925E80 /* optionButton.png */; };
+		19CC81A91A39EC27008B2343 /* BookNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CC81A81A39EC27008B2343 /* BookNetManager.m */; };
+		19CC81AC1A39EDF1008B2343 /* BookCityNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CC81AB1A39EDF1008B2343 /* BookCityNet.m */; };
 		19CCE14C1A34B8DD00C078B9 /* YHFtpFileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CCE1451A34B8DD00C078B9 /* YHFtpFileModel.m */; };
 		19CCE14D1A34B8DD00C078B9 /* YHFtpLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CCE1471A34B8DD00C078B9 /* YHFtpLogic.m */; };
 		19CCE14E1A34B8DD00C078B9 /* YhFtpRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CCE1491A34B8DD00C078B9 /* YhFtpRequestManager.m */; };
@@ -191,6 +193,10 @@
 		19BF38A31A1B96590068AFF8 /* SysConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SysConfig.plist; sourceTree = "<group>"; };
 		19CB56781A276BB800925E80 /* optionButton_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = optionButton_selected.png; sourceTree = "<group>"; };
 		19CB56791A276BB800925E80 /* optionButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = optionButton.png; sourceTree = "<group>"; };
+		19CC81A71A39EC27008B2343 /* BookNetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookNetManager.h; sourceTree = "<group>"; };
+		19CC81A81A39EC27008B2343 /* BookNetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookNetManager.m; sourceTree = "<group>"; };
+		19CC81AA1A39EDF1008B2343 /* BookCityNet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookCityNet.h; sourceTree = "<group>"; };
+		19CC81AB1A39EDF1008B2343 /* BookCityNet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookCityNet.m; sourceTree = "<group>"; };
 		19CCE1441A34B8DD00C078B9 /* YHFtpFileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHFtpFileModel.h; sourceTree = "<group>"; };
 		19CCE1451A34B8DD00C078B9 /* YHFtpFileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHFtpFileModel.m; sourceTree = "<group>"; };
 		19CCE1461A34B8DD00C078B9 /* YHFtpLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHFtpLogic.h; sourceTree = "<group>"; };
@@ -365,6 +371,7 @@
 				0E184B3D18D548EE005A3888 /* controllers */,
 				0E184B4018D548EE005A3888 /* views */,
 				0E184B3F18D548EE005A3888 /* models */,
+				19CC81A61A39EBE7008B2343 /* network */,
 			);
 			path = MobileReaderMVC;
 			sourceTree = "<group>";
@@ -547,6 +554,17 @@
 				2C624C0518EC249F00D169AC /* BookRackHeaderView.m */,
 			);
 			path = bookRack;
+			sourceTree = "<group>";
+		};
+		19CC81A61A39EBE7008B2343 /* network */ = {
+			isa = PBXGroup;
+			children = (
+				19CC81A71A39EC27008B2343 /* BookNetManager.h */,
+				19CC81A81A39EC27008B2343 /* BookNetManager.m */,
+				19CC81AA1A39EDF1008B2343 /* BookCityNet.h */,
+				19CC81AB1A39EDF1008B2343 /* BookCityNet.m */,
+			);
+			path = network;
 			sourceTree = "<group>";
 		};
 		19CCE1431A34B8DD00C078B9 /* FtpNetWork */ = {
@@ -823,6 +841,7 @@
 				19CCE14E1A34B8DD00C078B9 /* YhFtpRequestManager.m in Sources */,
 				2C04CBCC18F935B70083DB85 /* ReadStyleItemView.m in Sources */,
 				2C06B57C18FBCE0400B3F485 /* MBProgressHUD.m in Sources */,
+				19CC81AC1A39EDF1008B2343 /* BookCityNet.m in Sources */,
 				0E184B5318D5505D005A3888 /* FMDatabase.m in Sources */,
 				19CCE14C1A34B8DD00C078B9 /* YHFtpFileModel.m in Sources */,
 				0E184B5418D5505D005A3888 /* FMDatabaseAdditions.m in Sources */,
@@ -836,6 +855,7 @@
 				2C624C0618EC249F00D169AC /* BookRackHeaderView.m in Sources */,
 				0E27803418D5565600053099 /* BookClassify.m in Sources */,
 				2C052A4318F51B5D00A998EC /* VerticalPageView.m in Sources */,
+				19CC81A91A39EC27008B2343 /* BookNetManager.m in Sources */,
 				0E27803718D5585700053099 /* BookRack.m in Sources */,
 				0E27803A18D55AB200053099 /* Books.m in Sources */,
 				0E27803D18D55C0300053099 /* BookMark.m in Sources */,

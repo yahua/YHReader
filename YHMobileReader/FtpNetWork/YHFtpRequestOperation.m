@@ -27,45 +27,32 @@ NSURLConnectionDataDelegate>
 
 @implementation YHFtpRequestOperation
 
+
++ (void)networkRequestThreadEntryPoint:(id)__unused object {
+    @autoreleasepool {
+        [[NSThread currentThread] setName:@"YHFtpNetworking"];
+        
+        NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+        [runLoop addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode];
+        [runLoop run];
+    }
+}
+
++ (NSThread *)networkRequestThread {
+    static NSThread *_networkRequestThread = nil;
+    static dispatch_once_t oncePredicate;
+    dispatch_once(&oncePredicate, ^{
+        _networkRequestThread = [[NSThread alloc] initWithTarget:self selector:@selector(networkRequestThreadEntryPoint:) object:nil];
+        [_networkRequestThread start];
+    });
+    
+    return _networkRequestThread;
+}
+
 #pragma mark - Public
 
-- (id)initWithGetUrl:(NSString *)urlString
-             success:(FtpOperationSuccessBlock)sucessBlock
-             failuer:(FtpOperationFailuerBlock)failBlock {
-    
-    self = [super init];
-    if (self) {
-        self.sucessBlock = sucessBlock;
-        self.failBlock = failBlock;
-        
-        //文件写入路径
-        self.outputStream = [NSOutputStream outputStreamToMemory];
-        assert(self.outputStream);
-        [self.outputStream open];
-        
-        //网络请求
-        NSURL *url = [NSURL URLWithString:urlString];
-        NSURLRequest *request = [NSURLRequest requestWithURL:url];
-        assert(request != nil);
-        self.connection = [NSURLConnection connectionWithRequest:request delegate:self];
-        assert(self.connection != nil);
-    }
-    return self;
-}
-
-- (id)initWithGetUrl:(NSString *)urlString
-            progress:(FtpOperationProgressBlock)progressBlock
-             failuer:(FtpOperationFailuerBlock)failBlock {
-    
-    self = [self initWithGetUrl:urlString success:nil failuer:failBlock];
-    if (self) {
-        self.progressBlock = progressBlock;
-    }
-    return self;
-}
-
 - (void)cancel {
-
+    
     if (self.connection) {
         [self.connection cancel];
         self.connection = nil;
@@ -76,6 +63,36 @@ NSURLConnectionDataDelegate>
     }
     
     [super cancel];
+}
+
+- (id)initWithRequest:(NSURLRequest *)urlRequest {
+    
+    self = [super init];
+    if (self) {
+
+        //文件写入路径
+        self.outputStream = [NSOutputStream outputStreamToMemory];
+        assert(self.outputStream);
+        [self.outputStream open];
+        
+        //网络请求
+        assert(urlRequest != nil);
+        self.connection = [NSURLConnection connectionWithRequest:urlRequest delegate:self];
+        assert(self.connection != nil);
+    }
+    return self;
+}
+
+- (void)setCompletionBlockWithSuccess:(FtpOperationSuccessBlock)success
+                              failure:(FtpOperationFailuerBlock)failure {
+    
+    self.sucessBlock = success;
+    self.failBlock = failure;
+}
+
+- (void)setFtpOperationProgressBlock:(FtpOperationProgressBlock)progressBlock {
+    
+    self.progressBlock = progressBlock;
 }
 
 #pragma mark - NSURLConnectionDataDelegate
@@ -156,7 +173,7 @@ NSURLConnectionDataDelegate>
     dispatch_async(dispatch_get_main_queue(), ^{
         
         if (self.failBlock) {
-            self.failBlock(@"网络获取失败");
+            self.failBlock(error);
         }
     });
 }
@@ -178,7 +195,7 @@ NSURLConnectionDataDelegate>
     dispatch_async(dispatch_get_main_queue(), ^{
         
         if (self.sucessBlock) {
-            self.sucessBlock(nil, self.responseData);
+            self.sucessBlock(self.responseData);
         }
     });
 }

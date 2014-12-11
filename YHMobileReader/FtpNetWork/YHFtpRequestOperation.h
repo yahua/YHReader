@@ -8,19 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^FtpOperationSuccessBlock)  (NSString *msg, id data);
-typedef void (^FtpOperationFailuerBlock)  (NSString *msg);
-typedef void (^FtpOperationProgressBlock) (long long bytesWritten, long long totalBytesWritten, long long expectedTotalBytes);
+typedef void (^FtpOperationSuccessBlock)  (id data);
+typedef void (^FtpOperationFailuerBlock)  (NSError *msg);
+typedef void (^FtpOperationProgressBlock) (NSInteger bytesWritten, long long totalBytesWritten, long long expectedTotalBytes);
 
 
 @interface YHFtpRequestOperation : NSOperation
 
-- (id)initWithGetUrl:(NSString *)urlString
-             success:(FtpOperationSuccessBlock)sucessBlock
-             failuer:(FtpOperationFailuerBlock)failBlock;
+- (id)initWithRequest:(NSURLRequest *)urlRequest;
 
-- (id)initWithGetUrl:(NSString *)urlString
-            progress:(FtpOperationProgressBlock)progressBlock
-             failuer:(FtpOperationFailuerBlock)failBlock;
+- (void)setCompletionBlockWithSuccess:(FtpOperationSuccessBlock)success
+                              failure:(FtpOperationFailuerBlock)failure;
+
+- (void)setFtpOperationProgressBlock:(FtpOperationProgressBlock)progressBlock;
 
 @end

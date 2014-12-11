@@ -148,7 +148,7 @@
     YHFtpFileModel *fileModel = [[YHFtpFileModel alloc] init];
     @try {
         
-        fileModel.fileName = newName;
+        fileModel.fileName = [newName stringByDeletingPathExtension];
         NSNumber *sizeNum = [newEntry objectForKey:(id)kCFFTPResourceSize];
         fileModel.fileSize = [sizeNum unsignedLongLongValue];
         fileModel.fileDate = [newEntry objectForKey:(id)kCFFTPResourceModDate];

@@ -11,15 +11,13 @@
 
 @interface YhFtpRequestManager : NSObject
 
-+ (YhFtpRequestManager *)shareInstance;
++ (id)manager;
+
+- (id)initWithBaseURL:(NSURL *)url;
 
 - (YHFtpRequestOperation *)get:(NSString *)urlString
                        success:(FtpOperationSuccessBlock)sucessBlock
                        failuer:(FtpOperationFailuerBlock)failBlock;
 
-
-- (YHFtpRequestOperation *)get:(NSString *)urlString
-                      progress:(FtpOperationProgressBlock)progressBlock
-                       failuer:(FtpOperationFailuerBlock)failBlock;
 
 @end

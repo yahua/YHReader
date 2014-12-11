@@ -37,6 +37,7 @@
     
     NSMutableArray *allClassifyArray = [NSMutableArray array];
     [[DBManager shareDataBase] inDatabase:^(FMDatabase *db) {
+        
         FMResultSet *result = [db executeQuery:[NSString stringWithFormat:@"select * from BookClassify order by classifyID desc"]];
         
         while ([result next]) {
@@ -44,14 +45,21 @@
             BookClassify *bookClassify = [[BookClassify alloc] init];
             bookClassify.classifyID = [result intForColumn:@"classifyID"];
             bookClassify.classifyName = [result stringForColumn:@"classifyName"];
-            //bookClassify.bookNum = [result intForColumn:@"bookNum"];
-            if (bookClassify.classifyID != kAllBookTag) {
-                
-                bookClassify.bookNum = [[[DBInterfaceFactory bookDBInterface] getBooks:bookClassify.classifyID] count];
-            } else {
-                
-                bookClassify.bookNum = [[[DBInterfaceFactory bookDBInterface] getBooks:kAllBookRackID] count];
+            
+            NSInteger num = 0;
+            NSString *sql = [NSString stringWithFormat:
+                             @"select * from Books "
+                             "where bookRackID = %d "
+                             "order by booksInRackPos", bookClassify.classifyID];
+            if (bookClassify.classifyID == kAllBookRackID) {
+                sql = [NSString stringWithFormat:@"select * from Books"];
             }
+            FMResultSet *resultbookNum = [db executeQuery:sql];
+            while ([resultbookNum next]) {
+                
+                num++;
+            }
+            bookClassify.bookNum = num;
             
             [allClassifyArray addObject:bookClassify];
         }

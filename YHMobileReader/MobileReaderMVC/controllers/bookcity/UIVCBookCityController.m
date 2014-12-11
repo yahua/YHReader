@@ -7,7 +7,8 @@
 //
 
 #import "UIVCBookCityController.h"
-#import "YhFtpRequestManager.h"
+#import "BookCityNet.h"
+#import "YHFtpFileModel.h"
 #import "YHFtpLogic.h"
 
 @interface UIVCBookCityController () <
@@ -85,13 +86,21 @@ UITableViewDataSource>
 
 - (void)initData {
     
-    self.operation = [[YhFtpRequestManager shareInstance] get:@"text/" success:^(NSString *msg, id data) {
-        self.operation = nil;
-        self.itemBookArray = [YHFtpLogic parserFileModelWithData:data];
-        [self.tableView reloadData];
-    } failuer:^(NSString *msg) {
-        NSLog(@"%@", msg);
-    }];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        self.operation = [BookCityNet getBookTopWithSuccess:^(NSArray *array) {
+            self.itemBookArray = array;
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            });
+            
+        } failuer:^(NSString *msg) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSLog(@"%@", msg);
+            });
+        }];
+    });
 }
 
 @end
