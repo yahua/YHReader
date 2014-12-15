@@ -151,6 +151,7 @@
         fileModel.fileName = [newName stringByDeletingPathExtension];
         NSNumber *sizeNum = [newEntry objectForKey:(id)kCFFTPResourceSize];
         fileModel.fileSize = [sizeNum unsignedLongLongValue];
+        fileModel.fileSizeStr = [self stringForFileSize:fileModel.fileSize];
         fileModel.fileDate = [newEntry objectForKey:(id)kCFFTPResourceModDate];
         
     }

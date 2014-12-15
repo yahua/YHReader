@@ -14,6 +14,8 @@
 
 @property (nonatomic, assign) unsigned long long fileSize;
 
+@property (nonatomic, strong) NSString *fileSizeStr;
+
 @property (nonatomic, strong) NSDate *fileDate;
 
 @end

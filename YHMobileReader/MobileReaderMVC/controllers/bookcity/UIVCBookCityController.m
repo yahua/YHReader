@@ -8,8 +8,7 @@
 
 #import "UIVCBookCityController.h"
 #import "BookCityNet.h"
-#import "YHFtpFileModel.h"
-#import "YHFtpLogic.h"
+#import "BookCityTopCell.h"
 
 @interface UIVCBookCityController () <
 UITableViewDelegate,
@@ -66,18 +65,22 @@ UITableViewDataSource>
     return [self.itemBookArray count];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return kBookCityTopCellHeight;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *cellString = @"kCellString";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellString];
+    id cell = [tableView dequeueReusableCellWithIdentifier:cellString];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellString];
+        cell = [[BookCityTopCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellString];
+
     }
-    YHFtpFileModel *fileModel = [self.itemBookArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = fileModel.fileName;
     
-    NSString *fileSizeStr = [YHFtpLogic stringForFileSize:fileModel.fileSize];
-    cell.detailTextLabel.text = fileSizeStr;
+    YHFtpFileModel *fileModel = [self.itemBookArray objectAtIndex:indexPath.row];
+    [cell reloadData:fileModel];
     
     return cell;
 }
@@ -86,21 +89,14 @@ UITableViewDataSource>
 
 - (void)initData {
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        self.operation = [BookCityNet getBookTopWithSuccess:^(NSArray *array) {
-            self.itemBookArray = array;
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.tableView reloadData];
-            });
-            
-        } failuer:^(NSString *msg) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                NSLog(@"%@", msg);
-            });
-        }];
-    });
+    self.operation = [BookCityNet getBookTopWithSuccess:^(NSArray *array) {
+        self.itemBookArray = array;
+        [self.tableView reloadData];
+
+    } failuer:^(NSString *msg) {
+
+        NSLog(@"%@", msg);
+    }];
 }
 
 @end

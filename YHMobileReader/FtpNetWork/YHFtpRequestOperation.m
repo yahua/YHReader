@@ -28,25 +28,27 @@ NSURLConnectionDataDelegate>
 @implementation YHFtpRequestOperation
 
 
-+ (void)networkRequestThreadEntryPoint:(id)__unused object {
-    @autoreleasepool {
-        [[NSThread currentThread] setName:@"YHFtpNetworking"];
-        
-        NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
-        [runLoop addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode];
-        [runLoop run];
-    }
-}
-
-+ (NSThread *)networkRequestThread {
-    static NSThread *_networkRequestThread = nil;
++ (NSThread *)networkThread {
+    static NSThread *networkThread = nil;
     static dispatch_once_t oncePredicate;
+    
     dispatch_once(&oncePredicate, ^{
-        _networkRequestThread = [[NSThread alloc] initWithTarget:self selector:@selector(networkRequestThreadEntryPoint:) object:nil];
-        [_networkRequestThread start];
+        networkThread =
+        [[NSThread alloc] initWithTarget:self
+                                selector:@selector(networkThreadMain:)
+                                  object:nil];
+        [networkThread start];
     });
     
-    return _networkRequestThread;
+    return networkThread;}
+
++ (void)networkThreadMain:(id)unused {
+    do {
+        @autoreleasepool {
+            [[NSThread currentThread] setName:@"YHFtpThread"];
+            [[NSRunLoop currentRunLoop] run];
+        }
+    } while (YES);
 }
 
 #pragma mark - Public
@@ -70,15 +72,7 @@ NSURLConnectionDataDelegate>
     self = [super init];
     if (self) {
 
-        //文件写入路径
-        self.outputStream = [NSOutputStream outputStreamToMemory];
-        assert(self.outputStream);
-        [self.outputStream open];
-        
-        //网络请求
-        assert(urlRequest != nil);
-        self.connection = [NSURLConnection connectionWithRequest:urlRequest delegate:self];
-        assert(self.connection != nil);
+        [self startRequest:urlRequest];
     }
     return self;
 }
@@ -249,6 +243,30 @@ NSURLConnectionDataDelegate>
 }
 
 #pragma mark - Private
+
+- (void)startRequest:(NSURLRequest *)request {
+    
+    //文件写入路径
+    assert(self.outputStream);
+    [self.outputStream open];
+    
+    //网络请求
+    assert(request != nil);
+    self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
+    assert(self.connection != nil);
+    
+    [self performSelector:@selector(scheduleInCurrentThread)
+                 onThread:[[self class] networkThread]
+               withObject:nil
+            waitUntilDone:YES];
+}
+
+- (void)scheduleInCurrentThread {
+    
+    [self.connection scheduleInRunLoop:[NSRunLoop currentRunLoop]
+                           forMode:NSRunLoopCommonModes];
+    [self.connection start];
+}
 
 - (NSOutputStream *)outputStream {
     

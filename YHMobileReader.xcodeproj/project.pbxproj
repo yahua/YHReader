@@ -46,6 +46,9 @@
 		0EBB232E18DAA45D002D203E /* UIVCBookRack.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EBB232D18DAA45D002D203E /* UIVCBookRack.m */; };
 		1926A50E1A1CF2A4006D2921 /* UIVCBookClassify.m in Sources */ = {isa = PBXBuildFile; fileRef = 1926A50D1A1CF2A4006D2921 /* UIVCBookClassify.m */; };
 		19BF38A41A1B96590068AFF8 /* SysConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19BF38A31A1B96590068AFF8 /* SysConfig.plist */; };
+		19C77DFD1A3F16B300E561B1 /* UIImageView+Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C77DFC1A3F16B300E561B1 /* UIImageView+Cache.m */; };
+		19C77E051A3F212B00E561B1 /* BookCityTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C77E041A3F212B00E561B1 /* BookCityTopCell.m */; };
+		19C77E081A3F2A5C00E561B1 /* UILabel+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C77E071A3F2A5C00E561B1 /* UILabel+Extended.m */; };
 		19CB567A1A276BB800925E80 /* optionButton_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 19CB56781A276BB800925E80 /* optionButton_selected.png */; };
 		19CB567B1A276BB800925E80 /* optionButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 19CB56791A276BB800925E80 /* optionButton.png */; };
 		19CC81A91A39EC27008B2343 /* BookNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CC81A81A39EC27008B2343 /* BookNetManager.m */; };
@@ -191,6 +194,12 @@
 		1926A50C1A1CF2A4006D2921 /* UIVCBookClassify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIVCBookClassify.h; sourceTree = "<group>"; };
 		1926A50D1A1CF2A4006D2921 /* UIVCBookClassify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIVCBookClassify.m; sourceTree = "<group>"; };
 		19BF38A31A1B96590068AFF8 /* SysConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SysConfig.plist; sourceTree = "<group>"; };
+		19C77DFB1A3F16B300E561B1 /* UIImageView+Cache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Cache.h"; sourceTree = "<group>"; };
+		19C77DFC1A3F16B300E561B1 /* UIImageView+Cache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Cache.m"; sourceTree = "<group>"; };
+		19C77E031A3F212B00E561B1 /* BookCityTopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookCityTopCell.h; sourceTree = "<group>"; };
+		19C77E041A3F212B00E561B1 /* BookCityTopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookCityTopCell.m; sourceTree = "<group>"; };
+		19C77E061A3F2A5C00E561B1 /* UILabel+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Extended.h"; sourceTree = "<group>"; };
+		19C77E071A3F2A5C00E561B1 /* UILabel+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Extended.m"; sourceTree = "<group>"; };
 		19CB56781A276BB800925E80 /* optionButton_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = optionButton_selected.png; sourceTree = "<group>"; };
 		19CB56791A276BB800925E80 /* optionButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = optionButton.png; sourceTree = "<group>"; };
 		19CC81A71A39EC27008B2343 /* BookNetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookNetManager.h; sourceTree = "<group>"; };
@@ -435,6 +444,7 @@
 		0E184B4018D548EE005A3888 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				19C77E021A3F20F800E561B1 /* bookCity */,
 				2C06B56118FBB31900B3F485 /* bookMark */,
 				2C5DC0FB18F4247C00D6F145 /* readBook */,
 				0EA62B9F18D8915800454481 /* bookClassify */,
@@ -482,6 +492,10 @@
 				0EA62B9218D888F600454481 /* UIView+Size.m */,
 				2C9FCD991A35A3B3009FADFC /* UIViewController+MethodExt.h */,
 				2C9FCD9A1A35A3B3009FADFC /* UIViewController+MethodExt.m */,
+				19C77DFB1A3F16B300E561B1 /* UIImageView+Cache.h */,
+				19C77DFC1A3F16B300E561B1 /* UIImageView+Cache.m */,
+				19C77E061A3F2A5C00E561B1 /* UILabel+Extended.h */,
+				19C77E071A3F2A5C00E561B1 /* UILabel+Extended.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -554,6 +568,15 @@
 				2C624C0518EC249F00D169AC /* BookRackHeaderView.m */,
 			);
 			path = bookRack;
+			sourceTree = "<group>";
+		};
+		19C77E021A3F20F800E561B1 /* bookCity */ = {
+			isa = PBXGroup;
+			children = (
+				19C77E031A3F212B00E561B1 /* BookCityTopCell.h */,
+				19C77E041A3F212B00E561B1 /* BookCityTopCell.m */,
+			);
+			path = bookCity;
 			sourceTree = "<group>";
 		};
 		19CC81A61A39EBE7008B2343 /* network */ = {
@@ -863,6 +886,8 @@
 				0E27804318D5641000053099 /* ClassifyDBImplement.m in Sources */,
 				0E27804618D567BE00053099 /* RackDBImplement.m in Sources */,
 				2C03BF2A18F81E3E002AFE50 /* PageFooterView.m in Sources */,
+				19C77E051A3F212B00E561B1 /* BookCityTopCell.m in Sources */,
+				19C77E081A3F2A5C00E561B1 /* UILabel+Extended.m in Sources */,
 				0E27804918D56A7D00053099 /* BookDBImplement.m in Sources */,
 				2C04CBC918F92C5D0083DB85 /* PageSettingView.m in Sources */,
 				0EA047E318D5AEE400CBFB48 /* BookMarkDBImplement.m in Sources */,
@@ -876,6 +901,7 @@
 				0EA62B9718D888F600454481 /* UIImageExtended.m in Sources */,
 				0EA62B9818D888F600454481 /* UIScreen+Common.m in Sources */,
 				0EA62B9A18D888F600454481 /* UIView+Size.m in Sources */,
+				19C77DFD1A3F16B300E561B1 /* UIImageView+Cache.m in Sources */,
 				2C06B56718FBB85A00B3F485 /* UIVCBookMark.m in Sources */,
 				0EA62BA318D8919B00454481 /* BookClassifyCell.m in Sources */,
 				0E9F903918D9A172008AA9F4 /* AppColor.m in Sources */,

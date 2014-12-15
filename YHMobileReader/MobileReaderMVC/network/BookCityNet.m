@@ -30,4 +30,19 @@
     return operation;
 }
 
++ (YHFtpRequestOperation *)getImageWithUrl:(NSString *)url
+                                 completed:(void(^)(UIImage *image))completed {
+    
+    NSString *urlString = [NSString stringWithFormat:@"img/%@.png", url];
+    YHFtpRequestOperation *operation = [[BookNetManager sharedInstance] get:urlString success:^(id data) {
+
+        UIImage *image = [UIImage imageWithData:data];
+        completed(image);
+    } failuer:^(NSError *msg) {
+        completed(nil);
+    }];
+    
+    return operation;
+}
+
 @end

@@ -16,4 +16,6 @@
     #import "UIColor+Hex.h"
     #import "UIView+Size.h"
     #import "UIViewController+MethodExt.h"
+    #import "UIImageView+Cache.h"
+    #import "UILabel+Extended.h"
 #endif

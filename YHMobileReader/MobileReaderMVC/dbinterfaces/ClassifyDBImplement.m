@@ -118,13 +118,24 @@
     
     __block BOOL isOk = NO;
     [[DBManager shareDataBase] inDatabase:^(FMDatabase *db) {
-        NSString *sql = [NSString stringWithFormat:@"update BookClassify "
-                         "set classifyName = '%@'"
-                         "where classifyID = %d", bookClassify.classifyName, bookClassify.classifyID];
-        isOk = [db executeUpdate:sql];
-        if (!isOk) {
+        
+        BOOL bExits = NO;
+        {
+            NSString *strSql = [NSString stringWithFormat:@"select 1 from BookClassify where classifyID = %d  ", bookClassify.classifyID];
+            FMResultSet *rs = [db executeQuery:strSql];
+            bExits = [rs next];
+            [rs close];
+        }
+        
+        if (bExits) {
+            NSString *sql = [NSString stringWithFormat:@"update BookClassify "
+                             "set classifyName = '%@'"
+                             "where classifyID = %d", bookClassify.classifyName, bookClassify.classifyID];
+            isOk = [db executeUpdate:sql];
+        }else {
             [self addBookClassify:bookClassify];
         }
+        
     }];
 
 }
