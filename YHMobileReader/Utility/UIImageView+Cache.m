@@ -7,7 +7,7 @@
 //
 
 #import "UIImageView+Cache.h"
-#import "BookCityNet.h"
+#import "YhFtpRequestManager.h"
 #import <objc/runtime.h>
 
 @interface UIImageView ()
@@ -26,12 +26,13 @@
     }
     
     __weak UIImageView *wself = self;
-    self.operation = [BookCityNet getImageWithUrl:url completed:^(UIImage *image) {
+    self.operation = [[YhFtpRequestManager manager] get:url success:^(id data) {
         self.operation = nil;
-        if (image) {
-            wself.image = image;
-            [wself setNeedsLayout];
-        }
+        UIImage *image = [UIImage imageWithData:data];
+        wself.image = image;
+        [wself setNeedsLayout];
+    } failuer:^(NSError *msg) {
+        self.operation = nil;
     }];
 }
 

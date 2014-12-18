@@ -8,8 +8,6 @@
 
 #import "BookNetManager.h"
 
-#define kFtpBaseUrl  @"ftp://192.168.152.1/"
-
 @implementation BookNetManager
 
 + (BookNetManager *)sharedInstance {
@@ -18,7 +16,6 @@
     static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{
         netManager = [[BookNetManager alloc] initWithBaseURL:[NSURL URLWithString:kFtpBaseUrl]];
-
     });
     return netManager;
 }

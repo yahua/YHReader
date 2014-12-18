@@ -44,7 +44,9 @@
 		0EA62BA318D8919B00454481 /* BookClassifyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA62BA218D8919B00454481 /* BookClassifyCell.m */; };
 		0EBB232A18DA943B002D203E /* BookClassifyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EBB232918DA943B002D203E /* BookClassifyView.m */; };
 		0EBB232E18DAA45D002D203E /* UIVCBookRack.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EBB232D18DAA45D002D203E /* UIVCBookRack.m */; };
+		1921ECC41A43027B003677A1 /* APLParseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1921ECC31A43027B003677A1 /* APLParseOperation.m */; };
 		1926A50E1A1CF2A4006D2921 /* UIVCBookClassify.m in Sources */ = {isa = PBXBuildFile; fileRef = 1926A50D1A1CF2A4006D2921 /* UIVCBookClassify.m */; };
+		194D1E151A42FF2B00B4647D /* NetBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 194D1E141A42FF2B00B4647D /* NetBook.m */; };
 		19BF38A41A1B96590068AFF8 /* SysConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19BF38A31A1B96590068AFF8 /* SysConfig.plist */; };
 		19C77DFD1A3F16B300E561B1 /* UIImageView+Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C77DFC1A3F16B300E561B1 /* UIImageView+Cache.m */; };
 		19C77E051A3F212B00E561B1 /* BookCityTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C77E041A3F212B00E561B1 /* BookCityTopCell.m */; };
@@ -191,8 +193,12 @@
 		0EBB232918DA943B002D203E /* BookClassifyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookClassifyView.m; sourceTree = "<group>"; };
 		0EBB232C18DAA45D002D203E /* UIVCBookRack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIVCBookRack.h; sourceTree = "<group>"; };
 		0EBB232D18DAA45D002D203E /* UIVCBookRack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIVCBookRack.m; sourceTree = "<group>"; };
+		1921ECC21A43027B003677A1 /* APLParseOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APLParseOperation.h; sourceTree = "<group>"; };
+		1921ECC31A43027B003677A1 /* APLParseOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APLParseOperation.m; sourceTree = "<group>"; };
 		1926A50C1A1CF2A4006D2921 /* UIVCBookClassify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIVCBookClassify.h; sourceTree = "<group>"; };
 		1926A50D1A1CF2A4006D2921 /* UIVCBookClassify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIVCBookClassify.m; sourceTree = "<group>"; };
+		194D1E131A42FF2B00B4647D /* NetBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetBook.h; sourceTree = "<group>"; };
+		194D1E141A42FF2B00B4647D /* NetBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetBook.m; sourceTree = "<group>"; };
 		19BF38A31A1B96590068AFF8 /* SysConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SysConfig.plist; sourceTree = "<group>"; };
 		19C77DFB1A3F16B300E561B1 /* UIImageView+Cache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Cache.h"; sourceTree = "<group>"; };
 		19C77DFC1A3F16B300E561B1 /* UIImageView+Cache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Cache.m"; sourceTree = "<group>"; };
@@ -427,6 +433,7 @@
 		0E184B3F18D548EE005A3888 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				194D1E121A42FF0100B4647D /* bookcity */,
 				0E27803218D5565600053099 /* BookClassify.h */,
 				0E27803318D5565600053099 /* BookClassify.m */,
 				0E27803518D5585700053099 /* BookRack.h */,
@@ -568,6 +575,15 @@
 				2C624C0518EC249F00D169AC /* BookRackHeaderView.m */,
 			);
 			path = bookRack;
+			sourceTree = "<group>";
+		};
+		194D1E121A42FF0100B4647D /* bookcity */ = {
+			isa = PBXGroup;
+			children = (
+				194D1E131A42FF2B00B4647D /* NetBook.h */,
+				194D1E141A42FF2B00B4647D /* NetBook.m */,
+			);
+			path = bookcity;
 			sourceTree = "<group>";
 		};
 		19C77E021A3F20F800E561B1 /* bookCity */ = {
@@ -718,6 +734,8 @@
 		2C5DC10218F429D200D6F145 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				1921ECC21A43027B003677A1 /* APLParseOperation.h */,
+				1921ECC31A43027B003677A1 /* APLParseOperation.m */,
 				2C5DC10318F42A0D00D6F145 /* ReadInfoManager.h */,
 				2C5DC10418F42A0D00D6F145 /* ReadInfoManager.m */,
 			);
@@ -894,6 +912,7 @@
 				0EA047F018D5B83500CBFB48 /* ReadInfoDBImplement.m in Sources */,
 				0EA0555318D70C9C00318165 /* DBInterfaceFactory.m in Sources */,
 				0EA62B8018D885F100454481 /* SystemLogic.m in Sources */,
+				1921ECC41A43027B003677A1 /* APLParseOperation.m in Sources */,
 				19CCE14F1A34B8DD00C078B9 /* YHFtpRequestOperation.m in Sources */,
 				0EA62B9518D888F600454481 /* BlockCreateUIDefine.m in Sources */,
 				0EA62B9618D888F600454481 /* UIColor+Hex.m in Sources */,
@@ -901,6 +920,7 @@
 				0EA62B9718D888F600454481 /* UIImageExtended.m in Sources */,
 				0EA62B9818D888F600454481 /* UIScreen+Common.m in Sources */,
 				0EA62B9A18D888F600454481 /* UIView+Size.m in Sources */,
+				194D1E151A42FF2B00B4647D /* NetBook.m in Sources */,
 				19C77DFD1A3F16B300E561B1 /* UIImageView+Cache.m in Sources */,
 				2C06B56718FBB85A00B3F485 /* UIVCBookMark.m in Sources */,
 				0EA62BA318D8919B00454481 /* BookClassifyCell.m in Sources */,

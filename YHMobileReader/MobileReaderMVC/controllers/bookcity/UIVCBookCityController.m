@@ -9,6 +9,7 @@
 #import "UIVCBookCityController.h"
 #import "BookCityNet.h"
 #import "BookCityTopCell.h"
+#import "APLParseOperation.h"
 
 @interface UIVCBookCityController () <
 UITableViewDelegate,
@@ -16,8 +17,9 @@ UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
 
-@property (nonatomic, strong) NSArray *itemBookArray;
 @property (nonatomic, strong) YHFtpRequestOperation *operation;
+@property (nonatomic, strong) NSMutableArray *netBookList;
+@property (nonatomic, strong) NSOperationQueue *parseQueue;
 
 @end
 
@@ -36,6 +38,7 @@ UITableViewDataSource>
     if (self) {
         // Custom initialization
         self.navigationItem.title = @"排行榜";
+        self.netBookList = [NSMutableArray array];
     }
     return self;
 }
@@ -56,13 +59,17 @@ UITableViewDataSource>
     
     //初始化数据
     [self initData];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(addNetBooks:)
+                                                 name:kAddNetBookNotificationName object:nil];
 }
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return [self.itemBookArray count];
+    return [self.netBookList count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -79,8 +86,8 @@ UITableViewDataSource>
 
     }
     
-    YHFtpFileModel *fileModel = [self.itemBookArray objectAtIndex:indexPath.row];
-    [cell reloadData:fileModel];
+    NetBook *netBook = [self.netBookList objectAtIndex:indexPath.row];
+    [cell reloadData:netBook];
     
     return cell;
 }
@@ -89,14 +96,35 @@ UITableViewDataSource>
 
 - (void)initData {
     
-    self.operation = [BookCityNet getBookTopWithSuccess:^(NSArray *array) {
-        self.itemBookArray = array;
-        [self.tableView reloadData];
-
+    self.parseQueue = [NSOperationQueue new];
+    self.operation = [BookCityNet getBookTopInfoWithSuccess:^(NSData *data) {
+        APLParseOperation *parseOperation = [[APLParseOperation alloc] initWithData:data];
+        [self.parseQueue addOperation:parseOperation];
     } failuer:^(NSString *msg) {
-
-        NSLog(@"%@", msg);
+        
     }];
+}
+
+- (void)addNetBooks:(NSNotification *)notif {
+    
+    assert([NSThread isMainThread]);
+    [self addNetBooksToList:[[notif userInfo] valueForKey:kNetBookResultsKey]];
+}
+
+- (void)addNetBooksToList:(NSArray *)netBooks {
+    
+    NSInteger startingRow = [self.netBookList count];
+    NSInteger netBookCount = [netBooks count];
+    NSMutableArray *indexPaths = [[NSMutableArray alloc] initWithCapacity:netBookCount];
+    
+    for (NSInteger row = startingRow; row < (startingRow + netBookCount); row++) {
+        
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+        [indexPaths addObject:indexPath];
+    }
+    
+    [self.netBookList addObjectsFromArray:netBooks];
+    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 @end

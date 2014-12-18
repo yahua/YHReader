@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "YHFtpFileModel.h"
+#import "NetBook.h"
 
 #define kBookCityTopCellHeight  43
 
 @interface BookCityTopCell : UITableViewCell
 
-- (void)reloadData:(YHFtpFileModel *)fileModel;
+- (void)reloadData:(NetBook *)netBook;
 
 @end

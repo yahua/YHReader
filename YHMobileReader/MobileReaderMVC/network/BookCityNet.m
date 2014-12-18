@@ -30,19 +30,28 @@
     return operation;
 }
 
-+ (YHFtpRequestOperation *)getImageWithUrl:(NSString *)url
-                                 completed:(void(^)(UIImage *image))completed {
++ (YHFtpRequestOperation *)getBookTopInfoWithSuccess:(void(^)(NSData *data))sucessBlock
+                                             failuer:(void(^)(NSString *msg))failBlock {
     
-    NSString *urlString = [NSString stringWithFormat:@"img/%@.png", url];
+    NSString *urlString = @"book/bookcity.xml";
     YHFtpRequestOperation *operation = [[BookNetManager sharedInstance] get:urlString success:^(id data) {
-
-        UIImage *image = [UIImage imageWithData:data];
-        completed(image);
+        if (sucessBlock) {
+            sucessBlock(data);
+        }
     } failuer:^(NSError *msg) {
-        completed(nil);
+        if (failBlock) {
+            failBlock(@"网络获取失败");
+        }
     }];
     
     return operation;
+}
+
++ (NSString *)getImageUrl:(NSString *)imageName {
+    
+    NSString *urlString = [NSString stringWithFormat:@"img/%@.png", imageName];
+    urlString = [NSString stringWithFormat:@"%@%@", kFtpBaseUrl, urlString];
+    return urlString;
 }
 
 @end

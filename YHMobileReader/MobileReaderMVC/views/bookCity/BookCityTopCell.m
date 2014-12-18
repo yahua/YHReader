@@ -8,6 +8,7 @@
 
 #import "BookCityTopCell.h"
 #import "BlockCreateUIDefine.h"
+#import "BookCityNet.h"
 
 @interface BookCityTopCell ()
 
@@ -48,11 +49,12 @@
 
 #pragma mark - Public
 
-- (void)reloadData:(YHFtpFileModel *)fileModel {
+- (void)reloadData:(NetBook *)netBook; {
     
-    self.tittleLable.text = fileModel.fileName;
-    self.sizeLable.text = fileModel.fileSizeStr;
-    [self.bookImageView setImageUrl:@"111"];
+    self.tittleLable.text = netBook.bookName;
+    //self.sizeLable.text = fileModel.fileSizeStr;
+    NSString *imageUrl = [BookCityNet getImageUrl:netBook.bookImageName];
+    [self.bookImageView setImageUrl:imageUrl];
 }
 
 @end

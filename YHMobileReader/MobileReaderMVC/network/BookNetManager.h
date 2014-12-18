@@ -8,6 +8,8 @@
 
 #import "YhFtpRequestManager.h"
 
+#define kFtpBaseUrl  @"ftp://192.168.152.1/"
+
 @interface BookNetManager : YhFtpRequestManager
 
 + (id)sharedInstance;
