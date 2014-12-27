@@ -19,7 +19,7 @@ NSString *kNetBookMessageErrorKey = @"NetBookMsgErrorKey";
 
 @property (nonatomic, strong) NetBook *currentObject;
 @property (nonatomic, strong) NSMutableArray *parseObjectArray;
-@property (nonatomic, strong) NSString *currentParsedCharacter;
+@property (nonatomic, strong) NSMutableString *currentParsedCharacter;
 
 @end
 
@@ -80,6 +80,7 @@ static NSString * const kImageName = @"bookImgName";
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
     
+    self.currentParsedCharacter = [[NSMutableString alloc] init];
     if ([elementName isEqualToString:kEntryElementName]) {
         NetBook *netBook = [[NetBook alloc] init];
         self.currentObject = netBook;
@@ -102,6 +103,7 @@ static NSString * const kImageName = @"bookImgName";
     else if ([elementName isEqualToString:kImageName]) {
         self.currentObject.bookImageName = self.currentParsedCharacter;
     }
+    self.currentParsedCharacter = nil;
 }
 
 /**
@@ -109,7 +111,7 @@ static NSString * const kImageName = @"bookImgName";
  */
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
 
-    self.currentParsedCharacter = string;
+    [self.currentParsedCharacter appendString:string];
 }
 
 /** 

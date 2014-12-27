@@ -33,7 +33,7 @@
 + (YHFtpRequestOperation *)getBookTopInfoWithSuccess:(void(^)(NSData *data))sucessBlock
                                              failuer:(void(^)(NSString *msg))failBlock {
     
-    NSString *urlString = @"book/bookcity.xml";
+    NSString *urlString = @"booksInfo.xml";
     YHFtpRequestOperation *operation = [[BookNetManager sharedInstance] get:urlString success:^(id data) {
         if (sucessBlock) {
             sucessBlock(data);
