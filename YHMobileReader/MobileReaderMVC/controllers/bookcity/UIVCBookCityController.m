@@ -96,10 +96,12 @@ UITableViewDataSource>
 
 - (void)initData {
     
-    self.parseQueue = [NSOperationQueue new];
-    self.operation = [BookCityNet getBookTopInfoWithSuccess:^(NSData *data) {
-        APLParseOperation *parseOperation = [[APLParseOperation alloc] initWithData:data];
-        [self.parseQueue addOperation:parseOperation];
+    //self.parseQueue = [NSOperationQueue new];
+    self.operation = [BookCityNet getBookTopInfoWithSuccess:^(NSArray *array) {
+//        APLParseOperation *parseOperation = [[APLParseOperation alloc] initWithData:data];
+//        [self.parseQueue addOperation:parseOperation];
+        self.netBookList = [NSMutableArray arrayWithArray:array];
+        [self.tableView reloadData];
     } failuer:^(NSString *msg) {
         
     }];

@@ -9,7 +9,7 @@
 #import "YhFtpRequestManager.h"
 
 //#define kFtpBaseUrl  @"ftp://192.168.152.1/"
-#define kFtpBaseUrl  @"ftp://192.168.1.106/"
+#define kFtpBaseUrl  @"ftp://yahua:Y123@192.168.1.106/"
 
 @interface BookNetManager : YhFtpRequestManager
 

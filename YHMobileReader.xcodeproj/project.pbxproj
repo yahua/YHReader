@@ -60,6 +60,9 @@
 		19CCE14E1A34B8DD00C078B9 /* YhFtpRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CCE1491A34B8DD00C078B9 /* YhFtpRequestManager.m */; };
 		19CCE14F1A34B8DD00C078B9 /* YHFtpRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CCE14B1A34B8DD00C078B9 /* YHFtpRequestOperation.m */; };
 		19CCE1511A34B8FE00C078B9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19CCE1501A34B8FE00C078B9 /* CFNetwork.framework */; };
+		19D5AC6A1A5018C700EAED62 /* BookCityParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D5AC691A5018C700EAED62 /* BookCityParser.m */; };
+		19D5AC6E1A50191500EAED62 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D5AC6D1A50191500EAED62 /* GDataXMLNode.m */; };
+		19D5AC701A50193300EAED62 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19D5AC6F1A50193300EAED62 /* libxml2.dylib */; };
 		19D5D0561A35E59200D4A1BC /* UIVCMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D5D0551A35E59200D4A1BC /* UIVCMineViewController.m */; };
 		2C03BF2A18F81E3E002AFE50 /* PageFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C03BF2918F81E3E002AFE50 /* PageFooterView.m */; };
 		2C04CBC918F92C5D0083DB85 /* PageSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C04CBC818F92C5D0083DB85 /* PageSettingView.m */; };
@@ -221,6 +224,11 @@
 		19CCE14A1A34B8DD00C078B9 /* YHFtpRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHFtpRequestOperation.h; sourceTree = "<group>"; };
 		19CCE14B1A34B8DD00C078B9 /* YHFtpRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHFtpRequestOperation.m; sourceTree = "<group>"; };
 		19CCE1501A34B8FE00C078B9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		19D5AC681A5018C700EAED62 /* BookCityParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookCityParser.h; sourceTree = "<group>"; };
+		19D5AC691A5018C700EAED62 /* BookCityParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookCityParser.m; sourceTree = "<group>"; };
+		19D5AC6C1A50191500EAED62 /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
+		19D5AC6D1A50191500EAED62 /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
+		19D5AC6F1A50193300EAED62 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		19D5D0541A35E59200D4A1BC /* UIVCMineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIVCMineViewController.h; sourceTree = "<group>"; };
 		19D5D0551A35E59200D4A1BC /* UIVCMineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIVCMineViewController.m; sourceTree = "<group>"; };
 		2C03BF2818F81E3E002AFE50 /* PageFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageFooterView.h; sourceTree = "<group>"; };
@@ -306,6 +314,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19D5AC701A50193300EAED62 /* libxml2.dylib in Frameworks */,
 				19CCE1511A34B8FE00C078B9 /* CFNetwork.framework in Frameworks */,
 				2C0ECA5718E50EBD00E85F1B /* QuartzCore.framework in Frameworks */,
 				0EA62B9E18D889A600454481 /* libsqlite3.dylib in Frameworks */,
@@ -338,6 +347,7 @@
 		0E184B1D18D54753005A3888 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				19D5AC6F1A50193300EAED62 /* libxml2.dylib */,
 				19CCE1501A34B8FE00C078B9 /* CFNetwork.framework */,
 				2C0ECA5618E50EBD00E85F1B /* QuartzCore.framework */,
 				0EA62B9D18D889A600454481 /* libsqlite3.dylib */,
@@ -476,6 +486,7 @@
 		0E184B4218D548EE005A3888 /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				19D5AC6B1A50191500EAED62 /* GDataXMLNode */,
 				2C06B57918FBCE0400B3F485 /* MBProgressHUD */,
 				0E184B4818D5505D005A3888 /* FMDB */,
 			);
@@ -598,6 +609,7 @@
 		19CC81A61A39EBE7008B2343 /* network */ = {
 			isa = PBXGroup;
 			children = (
+				19D5AC671A5018A500EAED62 /* parser */,
 				19CC81A71A39EC27008B2343 /* BookNetManager.h */,
 				19CC81A81A39EC27008B2343 /* BookNetManager.m */,
 				19CC81AA1A39EDF1008B2343 /* BookCityNet.h */,
@@ -619,6 +631,24 @@
 				19CCE14B1A34B8DD00C078B9 /* YHFtpRequestOperation.m */,
 			);
 			path = FtpNetWork;
+			sourceTree = "<group>";
+		};
+		19D5AC671A5018A500EAED62 /* parser */ = {
+			isa = PBXGroup;
+			children = (
+				19D5AC681A5018C700EAED62 /* BookCityParser.h */,
+				19D5AC691A5018C700EAED62 /* BookCityParser.m */,
+			);
+			path = parser;
+			sourceTree = "<group>";
+		};
+		19D5AC6B1A50191500EAED62 /* GDataXMLNode */ = {
+			isa = PBXGroup;
+			children = (
+				19D5AC6C1A50191500EAED62 /* GDataXMLNode.h */,
+				19D5AC6D1A50191500EAED62 /* GDataXMLNode.m */,
+			);
+			path = GDataXMLNode;
 			sourceTree = "<group>";
 		};
 		19D5D0531A35E54800D4A1BC /* mine */ = {
@@ -921,8 +951,10 @@
 				0EA62B9818D888F600454481 /* UIScreen+Common.m in Sources */,
 				0EA62B9A18D888F600454481 /* UIView+Size.m in Sources */,
 				194D1E151A42FF2B00B4647D /* NetBook.m in Sources */,
+				19D5AC6E1A50191500EAED62 /* GDataXMLNode.m in Sources */,
 				19C77DFD1A3F16B300E561B1 /* UIImageView+Cache.m in Sources */,
 				2C06B56718FBB85A00B3F485 /* UIVCBookMark.m in Sources */,
+				19D5AC6A1A5018C700EAED62 /* BookCityParser.m in Sources */,
 				0EA62BA318D8919B00454481 /* BookClassifyCell.m in Sources */,
 				0E9F903918D9A172008AA9F4 /* AppColor.m in Sources */,
 				2C9FCD9B1A35A3B3009FADFC /* UIViewController+MethodExt.m in Sources */,
@@ -1004,6 +1036,11 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YHMobileReader/YHMobileReader-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"${SDK_ROOT}/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = "YHMobileReader/YHMobileReader-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -1016,6 +1053,11 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YHMobileReader/YHMobileReader-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"${SDK_ROOT}/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = "YHMobileReader/YHMobileReader-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

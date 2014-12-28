@@ -9,34 +9,18 @@
 #import "BookCityNet.h"
 #import "BookNetManager.h"
 #import "YHFtpLogic.h"
+#import "BookCityParser.h"
 
 @implementation BookCityNet
 
-+ (YHFtpRequestOperation *)getBookTopWithSuccess:(void(^)(NSArray *array))sucessBlock
-                                         failuer:(void(^)(NSString *msg))failBlock {
-    
-    NSString *urlString = @"book/";
-    YHFtpRequestOperation *operation = [[BookNetManager sharedInstance] get:urlString success:^(id data) {
-        if (sucessBlock) {
-            NSArray *array = [YHFtpLogic parserFileModelWithData:data];
-            sucessBlock(array);
-        }
-    } failuer:^(NSError *msg) {
-        if (failBlock) {
-            failBlock(@"网络获取失败");
-        }
-    }];
-    
-    return operation;
-}
-
-+ (YHFtpRequestOperation *)getBookTopInfoWithSuccess:(void(^)(NSData *data))sucessBlock
++ (YHFtpRequestOperation *)getBookTopInfoWithSuccess:(void(^)(NSArray *array))sucessBlock
                                              failuer:(void(^)(NSString *msg))failBlock {
     
-    NSString *urlString = @"booksInfo.xml";
+    NSString *urlString = @"booksInfo/booksInfo.xml";
     YHFtpRequestOperation *operation = [[BookNetManager sharedInstance] get:urlString success:^(id data) {
         if (sucessBlock) {
-            sucessBlock(data);
+            NSArray *netBookArray = [BookCityParser parserBookInfo:data];
+            sucessBlock(netBookArray);
         }
     } failuer:^(NSError *msg) {
         if (failBlock) {

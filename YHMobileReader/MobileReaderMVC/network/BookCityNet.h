@@ -10,11 +10,8 @@
 
 @interface BookCityNet : NSObject
 
-+ (YHFtpRequestOperation *)getBookTopWithSuccess:(void(^)(NSArray *array))sucessBlock
-                                         failuer:(void(^)(NSString *msg))failBlock;
-
-+ (YHFtpRequestOperation *)getBookTopInfoWithSuccess:(void(^)(NSData *data))sucessBlock
-                                         failuer:(void(^)(NSString *msg))failBlock;
++ (YHFtpRequestOperation *)getBookTopInfoWithSuccess:(void(^)(NSArray *array))sucessBlock
+                                             failuer:(void(^)(NSString *msg))failBlock;
 
 + (NSString *)getImageUrl:(NSString *)imageName;
 
