@@ -64,6 +64,9 @@
 		19D5AC6E1A50191500EAED62 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D5AC6D1A50191500EAED62 /* GDataXMLNode.m */; };
 		19D5AC701A50193300EAED62 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19D5AC6F1A50193300EAED62 /* libxml2.dylib */; };
 		19D5D0561A35E59200D4A1BC /* UIVCMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D5D0551A35E59200D4A1BC /* UIVCMineViewController.m */; };
+		19D63E901A57C77F00506A91 /* NSString+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D63E8F1A57C77F00506A91 /* NSString+Extended.m */; };
+		19D63E941A57D24900506A91 /* YHWebImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D63E931A57D24900506A91 /* YHWebImageOperation.m */; };
+		19D63E971A57E16D00506A91 /* YHWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D63E961A57E16D00506A91 /* YHWebImageManager.m */; };
 		2C03BF2A18F81E3E002AFE50 /* PageFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C03BF2918F81E3E002AFE50 /* PageFooterView.m */; };
 		2C04CBC918F92C5D0083DB85 /* PageSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C04CBC818F92C5D0083DB85 /* PageSettingView.m */; };
 		2C04CBCC18F935B70083DB85 /* ReadStyleItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C04CBCB18F935B70083DB85 /* ReadStyleItemView.m */; };
@@ -231,6 +234,12 @@
 		19D5AC6F1A50193300EAED62 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		19D5D0541A35E59200D4A1BC /* UIVCMineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIVCMineViewController.h; sourceTree = "<group>"; };
 		19D5D0551A35E59200D4A1BC /* UIVCMineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIVCMineViewController.m; sourceTree = "<group>"; };
+		19D63E8E1A57C77F00506A91 /* NSString+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extended.h"; sourceTree = "<group>"; };
+		19D63E8F1A57C77F00506A91 /* NSString+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extended.m"; sourceTree = "<group>"; };
+		19D63E921A57D24900506A91 /* YHWebImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHWebImageOperation.h; sourceTree = "<group>"; };
+		19D63E931A57D24900506A91 /* YHWebImageOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHWebImageOperation.m; sourceTree = "<group>"; };
+		19D63E951A57E16D00506A91 /* YHWebImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHWebImageManager.h; sourceTree = "<group>"; };
+		19D63E961A57E16D00506A91 /* YHWebImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHWebImageManager.m; sourceTree = "<group>"; };
 		2C03BF2818F81E3E002AFE50 /* PageFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageFooterView.h; sourceTree = "<group>"; };
 		2C03BF2918F81E3E002AFE50 /* PageFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageFooterView.m; sourceTree = "<group>"; };
 		2C04CBC718F92C5D0083DB85 /* PageSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageSettingView.h; sourceTree = "<group>"; };
@@ -486,6 +495,7 @@
 		0E184B4218D548EE005A3888 /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				19D63E911A57D23000506A91 /* YHWebImageManager */,
 				19D5AC6B1A50191500EAED62 /* GDataXMLNode */,
 				2C06B57918FBCE0400B3F485 /* MBProgressHUD */,
 				0E184B4818D5505D005A3888 /* FMDB */,
@@ -514,6 +524,8 @@
 				19C77DFC1A3F16B300E561B1 /* UIImageView+Cache.m */,
 				19C77E061A3F2A5C00E561B1 /* UILabel+Extended.h */,
 				19C77E071A3F2A5C00E561B1 /* UILabel+Extended.m */,
+				19D63E8E1A57C77F00506A91 /* NSString+Extended.h */,
+				19D63E8F1A57C77F00506A91 /* NSString+Extended.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -658,6 +670,17 @@
 				19D5D0551A35E59200D4A1BC /* UIVCMineViewController.m */,
 			);
 			path = mine;
+			sourceTree = "<group>";
+		};
+		19D63E911A57D23000506A91 /* YHWebImageManager */ = {
+			isa = PBXGroup;
+			children = (
+				19D63E951A57E16D00506A91 /* YHWebImageManager.h */,
+				19D63E961A57E16D00506A91 /* YHWebImageManager.m */,
+				19D63E921A57D24900506A91 /* YHWebImageOperation.h */,
+				19D63E931A57D24900506A91 /* YHWebImageOperation.m */,
+			);
+			path = YHWebImageManager;
 			sourceTree = "<group>";
 		};
 		2C06B56118FBB31900B3F485 /* bookMark */ = {
@@ -935,6 +958,7 @@
 				0E27804618D567BE00053099 /* RackDBImplement.m in Sources */,
 				2C03BF2A18F81E3E002AFE50 /* PageFooterView.m in Sources */,
 				19C77E051A3F212B00E561B1 /* BookCityTopCell.m in Sources */,
+				19D63E901A57C77F00506A91 /* NSString+Extended.m in Sources */,
 				19C77E081A3F2A5C00E561B1 /* UILabel+Extended.m in Sources */,
 				0E27804918D56A7D00053099 /* BookDBImplement.m in Sources */,
 				2C04CBC918F92C5D0083DB85 /* PageSettingView.m in Sources */,
@@ -955,6 +979,7 @@
 				19C77DFD1A3F16B300E561B1 /* UIImageView+Cache.m in Sources */,
 				2C06B56718FBB85A00B3F485 /* UIVCBookMark.m in Sources */,
 				19D5AC6A1A5018C700EAED62 /* BookCityParser.m in Sources */,
+				19D63E941A57D24900506A91 /* YHWebImageOperation.m in Sources */,
 				0EA62BA318D8919B00454481 /* BookClassifyCell.m in Sources */,
 				0E9F903918D9A172008AA9F4 /* AppColor.m in Sources */,
 				2C9FCD9B1A35A3B3009FADFC /* UIViewController+MethodExt.m in Sources */,
@@ -962,6 +987,7 @@
 				0EBB232E18DAA45D002D203E /* UIVCBookRack.m in Sources */,
 				0EA27C0818E1AEDC00025541 /* BookRackView.m in Sources */,
 				2C089F2D18FF91630067C920 /* MobileReaderAppDelegate.m in Sources */,
+				19D63E971A57E16D00506A91 /* YHWebImageManager.m in Sources */,
 				1926A50E1A1CF2A4006D2921 /* UIVCBookClassify.m in Sources */,
 				2CDFF18C1A359CBE00C476AB /* UIVCYahuaController.m in Sources */,
 			);

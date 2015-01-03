@@ -18,4 +18,5 @@
     #import "UIViewController+MethodExt.h"
     #import "UIImageView+Cache.h"
     #import "UILabel+Extended.h"
+    #import "NSString+Extended.h"
 #endif
