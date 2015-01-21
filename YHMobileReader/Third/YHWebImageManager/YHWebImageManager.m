@@ -7,6 +7,7 @@
 //
 
 #import "YHWebImageManager.h"
+#import "YHWebImageCache.h"
 
 @interface YHWebImageManager ()
 
@@ -38,8 +39,24 @@
 - (YHWebImageOperation *)downloadWithUrl:(NSString *)urlString
                                  success:(WebImageOperationSuccessBlock)sucessBlock
                                  failuer:(WebImageOperationFailuerBlock)failBlock {
+    
+    UIImage *image = [[YHWebImageCache sharedInstance] imageFromMemoryCacheForKey:urlString];
+    if (image) {
+        if (sucessBlock) {
+            sucessBlock(image, [NSURL URLWithString:urlString]);
+            return nil;
+        }
+    }
+    
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
-    YHWebImageOperation *operation = [self imageRequestOperationWithRequest:request sucess:sucessBlock failure:failBlock];
+    YHWebImageOperation *operation = [self imageRequestOperationWithRequest:request sucess:^(UIImage *image, NSURL *url) {
+        if (sucessBlock) {
+            sucessBlock(image, url);
+        }
+        if (image) {
+            [[YHWebImageCache sharedInstance] storeImage:image forKey:urlString];
+        }
+    } failure:failBlock];
     [self.operationQueue addOperation:operation];
     
     return operation;

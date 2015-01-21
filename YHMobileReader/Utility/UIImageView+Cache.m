@@ -27,11 +27,10 @@
     }
     
     __weak UIImageView *wself = self;
-    self.imageId = [NSString md5:url];
-    self.operation = [[YHWebImageManager sharedInstance] downloadWithUrl:url success:^(id data) {
+    self.imageId = url;
+    self.operation = [[YHWebImageManager sharedInstance] downloadWithUrl:url success:^(UIImage *image, NSURL *url) {
         self.operation = nil;
-        if ([[data lastPathComponent] isEqualToString:self.imageId]) {
-            UIImage *image = [UIImage imageWithContentsOfFile:data];
+        if ([[url absoluteString] isEqualToString:self.imageId]) {
             wself.image = image;
             [wself setNeedsLayout];
         }

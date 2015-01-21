@@ -11,7 +11,9 @@
 @interface YHWebImageOperation ()
 
 @property (nonatomic, retain) NSURLConnection *connection;
+@property (nonatomic, strong) NSURL *url;
 @property (nonatomic, retain) NSMutableData *receivedData;
+
 @property (nonatomic, copy) NSString *filePath;
 
 @property (nonatomic, copy) WebImageOperationSuccessBlock  sucessBlock;
@@ -58,6 +60,7 @@
     
     self = [super init];
     if (self) {
+        self.url = urlRequest.URL;
         [self startRequest:urlRequest];
     }
     return self;
@@ -120,7 +123,8 @@
 	}
     dispatch_async(dispatch_get_main_queue(), ^{
         if (self.sucessBlock) {
-            self.sucessBlock(self.filePath);
+            UIImage *image = [UIImage imageWithData:self.receivedData];
+            self.sucessBlock(image, self.url);
         }
     });
 }
@@ -135,7 +139,8 @@
     if ([[NSFileManager defaultManager] fileExistsAtPath:self.filePath]) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (self.sucessBlock) {
-                self.sucessBlock(self.filePath);
+                UIImage *image = [UIImage imageWithContentsOfFile:self.filePath];
+                self.sucessBlock(image, self.url);
             }
         });
         return;

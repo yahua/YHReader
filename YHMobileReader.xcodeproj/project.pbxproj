@@ -60,6 +60,7 @@
 		19CCE14E1A34B8DD00C078B9 /* YhFtpRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CCE1491A34B8DD00C078B9 /* YhFtpRequestManager.m */; };
 		19CCE14F1A34B8DD00C078B9 /* YHFtpRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CCE14B1A34B8DD00C078B9 /* YHFtpRequestOperation.m */; };
 		19CCE1511A34B8FE00C078B9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19CCE1501A34B8FE00C078B9 /* CFNetwork.framework */; };
+		19D09B491A6FEE5500BE624A /* YHWebImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D09B481A6FEE5500BE624A /* YHWebImageCache.m */; };
 		19D5AC6A1A5018C700EAED62 /* BookCityParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D5AC691A5018C700EAED62 /* BookCityParser.m */; };
 		19D5AC6E1A50191500EAED62 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D5AC6D1A50191500EAED62 /* GDataXMLNode.m */; };
 		19D5AC701A50193300EAED62 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19D5AC6F1A50193300EAED62 /* libxml2.dylib */; };
@@ -227,6 +228,8 @@
 		19CCE14A1A34B8DD00C078B9 /* YHFtpRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHFtpRequestOperation.h; sourceTree = "<group>"; };
 		19CCE14B1A34B8DD00C078B9 /* YHFtpRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHFtpRequestOperation.m; sourceTree = "<group>"; };
 		19CCE1501A34B8FE00C078B9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		19D09B471A6FEE5500BE624A /* YHWebImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHWebImageCache.h; sourceTree = "<group>"; };
+		19D09B481A6FEE5500BE624A /* YHWebImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHWebImageCache.m; sourceTree = "<group>"; };
 		19D5AC681A5018C700EAED62 /* BookCityParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookCityParser.h; sourceTree = "<group>"; };
 		19D5AC691A5018C700EAED62 /* BookCityParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookCityParser.m; sourceTree = "<group>"; };
 		19D5AC6C1A50191500EAED62 /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
@@ -679,6 +682,8 @@
 				19D63E961A57E16D00506A91 /* YHWebImageManager.m */,
 				19D63E921A57D24900506A91 /* YHWebImageOperation.h */,
 				19D63E931A57D24900506A91 /* YHWebImageOperation.m */,
+				19D09B471A6FEE5500BE624A /* YHWebImageCache.h */,
+				19D09B481A6FEE5500BE624A /* YHWebImageCache.m */,
 			);
 			path = YHWebImageManager;
 			sourceTree = "<group>";
@@ -957,6 +962,7 @@
 				0E27804318D5641000053099 /* ClassifyDBImplement.m in Sources */,
 				0E27804618D567BE00053099 /* RackDBImplement.m in Sources */,
 				2C03BF2A18F81E3E002AFE50 /* PageFooterView.m in Sources */,
+				19D09B491A6FEE5500BE624A /* YHWebImageCache.m in Sources */,
 				19C77E051A3F212B00E561B1 /* BookCityTopCell.m in Sources */,
 				19D63E901A57C77F00506A91 /* NSString+Extended.m in Sources */,
 				19C77E081A3F2A5C00E561B1 /* UILabel+Extended.m in Sources */,

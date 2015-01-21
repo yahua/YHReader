@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^WebImageOperationSuccessBlock)  (id data);
+typedef void (^WebImageOperationSuccessBlock)  (UIImage *image, NSURL *url);
 typedef void (^WebImageOperationFailuerBlock)  (NSError *msg);
 
 @interface YHWebImageOperation : NSOperation
