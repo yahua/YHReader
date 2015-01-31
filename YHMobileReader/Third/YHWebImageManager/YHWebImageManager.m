@@ -40,24 +40,25 @@
                                  success:(WebImageOperationSuccessBlock)sucessBlock
                                  failuer:(WebImageOperationFailuerBlock)failBlock {
     
-    UIImage *image = [[YHWebImageCache sharedInstance] imageFromMemoryCacheForKey:urlString];
-    if (image) {
-        if (sucessBlock) {
-            sucessBlock(image, [NSURL URLWithString:urlString]);
-            return nil;
-        }
-    }
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
-    YHWebImageOperation *operation = [self imageRequestOperationWithRequest:request sucess:^(UIImage *image, NSURL *url) {
-        if (sucessBlock) {
-            sucessBlock(image, url);
-        }
+    YHWebImageOperation *operation = nil;
+    [[YHWebImageCache sharedInstance] imageFromCacheForKey:urlString complete:^(UIImage *image) {
         if (image) {
-            [[YHWebImageCache sharedInstance] storeImage:image forKey:urlString];
+            if (sucessBlock) {
+                sucessBlock(image, [NSURL URLWithString:urlString]);
+            }
+        }else {
+            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+            [self imageRequestOperationWithRequest:request sucess:^(UIImage *image, NSURL *url) {
+                if (sucessBlock) {
+                    sucessBlock(image, url);
+                }
+                if (image) {
+                    [[YHWebImageCache sharedInstance] storeImage:image forKey:urlString];
+                }
+            } failure:failBlock];
+            [self.operationQueue addOperation:operation];
         }
-    } failure:failBlock];
-    [self.operationQueue addOperation:operation];
+    }];
     
     return operation;
 }

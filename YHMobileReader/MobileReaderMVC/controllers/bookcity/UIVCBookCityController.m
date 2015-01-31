@@ -55,6 +55,7 @@ UITableViewDataSource>
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kUIScreen_Width, kUIScreen_ContentViewHeight)];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.tableView];
     
     //初始化数据

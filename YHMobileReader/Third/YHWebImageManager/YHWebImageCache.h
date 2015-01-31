@@ -14,6 +14,6 @@
 
 - (void)storeImage:(UIImage *)image forKey:(NSString *)key;
 
-- (UIImage *)imageFromMemoryCacheForKey:(NSString *)key;
+- (void)imageFromCacheForKey:(NSString *)key complete:(void(^)(UIImage *image))complete;
 
 @end

@@ -14,8 +14,6 @@
 @property (nonatomic, strong) NSURL *url;
 @property (nonatomic, retain) NSMutableData *receivedData;
 
-@property (nonatomic, copy) NSString *filePath;
-
 @property (nonatomic, copy) WebImageOperationSuccessBlock  sucessBlock;
 @property (nonatomic, copy) WebImageOperationFailuerBlock  failBlock;
 
@@ -115,12 +113,6 @@
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection
 {
 	self.connection = nil;
-    if ([[NSFileManager defaultManager] fileExistsAtPath:self.filePath] == NO) {
-		/* file doesn't exist, so create it */
-		[[NSFileManager defaultManager] createFileAtPath:self.filePath
-												contents:self.receivedData
-											  attributes:nil];
-	}
     dispatch_async(dispatch_get_main_queue(), ^{
         if (self.sucessBlock) {
             UIImage *image = [UIImage imageWithData:self.receivedData];
@@ -133,19 +125,6 @@
 
 - (void)startRequest:(NSURLRequest *)request {
     
-    NSString *cachePath = [self getCachePath];
-    NSString *fileName = [NSString md5:[request.URL absoluteString]];
-    self.filePath = [cachePath stringByAppendingPathComponent:fileName];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:self.filePath]) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (self.sucessBlock) {
-                UIImage *image = [UIImage imageWithContentsOfFile:self.filePath];
-                self.sucessBlock(image, self.url);
-            }
-        });
-        return;
-    }
-    //网络请求
     assert(request != nil);
     self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
     assert(self.connection != nil);
@@ -161,28 +140,6 @@
     [self.connection scheduleInRunLoop:[NSRunLoop currentRunLoop]
                                forMode:NSRunLoopCommonModes];
     [self.connection start];
-}
-
-- (NSString *)getCachePath
-{
-	/* create path to cache directory inside the application's Documents directory */
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    NSString *dataPath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"URLCache"];
-    
-	/* check for existence of cache directory */
-	if ([[NSFileManager defaultManager] fileExistsAtPath:dataPath]) {
-		return dataPath;
-	}
-    
-	/* create a new cache directory */
-	if ([[NSFileManager defaultManager] createDirectoryAtPath:dataPath
-								   withIntermediateDirectories:NO
-													attributes:nil
-														 error:nil]) {
-		
-		return dataPath;
-	}
-    return nil;
 }
 
 @end
