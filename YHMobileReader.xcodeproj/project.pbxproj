@@ -61,6 +61,7 @@
 		19CCE14F1A34B8DD00C078B9 /* YHFtpRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CCE14B1A34B8DD00C078B9 /* YHFtpRequestOperation.m */; };
 		19CCE1511A34B8FE00C078B9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19CCE1501A34B8FE00C078B9 /* CFNetwork.framework */; };
 		19D09B491A6FEE5500BE624A /* YHWebImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D09B481A6FEE5500BE624A /* YHWebImageCache.m */; };
+		19D3ABB21AFF5B4200261C4D /* CommonFuction.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D3ABB11AFF5B4200261C4D /* CommonFuction.m */; };
 		19D5AC6A1A5018C700EAED62 /* BookCityParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D5AC691A5018C700EAED62 /* BookCityParser.m */; };
 		19D5AC6E1A50191500EAED62 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D5AC6D1A50191500EAED62 /* GDataXMLNode.m */; };
 		19D5AC701A50193300EAED62 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 19D5AC6F1A50193300EAED62 /* libxml2.dylib */; };
@@ -127,9 +128,11 @@
 		2C9FCDA81A35A8AD009FADFC /* mine_icon_touch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C9FCDA21A35A8AD009FADFC /* mine_icon_touch@2x.png */; };
 		2CDFF1891A35919100C476AB /* UIVCBookCityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDFF1881A35919100C476AB /* UIVCBookCityController.m */; };
 		2CDFF18C1A359CBE00C476AB /* UIVCYahuaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDFF18B1A359CBE00C476AB /* UIVCYahuaController.m */; };
+		A73E23F45362B2E14714D628 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB3FACC920FD3742670F126 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03842A4BAE7D02281CA159D0 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		0E184B1A18D54753005A3888 /* YHMobileReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YHMobileReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E184B1E18D54753005A3888 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0E184B2018D54753005A3888 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -230,6 +233,8 @@
 		19CCE1501A34B8FE00C078B9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		19D09B471A6FEE5500BE624A /* YHWebImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHWebImageCache.h; sourceTree = "<group>"; };
 		19D09B481A6FEE5500BE624A /* YHWebImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHWebImageCache.m; sourceTree = "<group>"; };
+		19D3ABB01AFF5B4200261C4D /* CommonFuction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonFuction.h; sourceTree = "<group>"; };
+		19D3ABB11AFF5B4200261C4D /* CommonFuction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonFuction.m; sourceTree = "<group>"; };
 		19D5AC681A5018C700EAED62 /* BookCityParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookCityParser.h; sourceTree = "<group>"; };
 		19D5AC691A5018C700EAED62 /* BookCityParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookCityParser.m; sourceTree = "<group>"; };
 		19D5AC6C1A50191500EAED62 /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
@@ -319,6 +324,8 @@
 		2CDFF1881A35919100C476AB /* UIVCBookCityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIVCBookCityController.m; sourceTree = "<group>"; };
 		2CDFF18A1A359CBE00C476AB /* UIVCYahuaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIVCYahuaController.h; sourceTree = "<group>"; };
 		2CDFF18B1A359CBE00C476AB /* UIVCYahuaController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIVCYahuaController.m; sourceTree = "<group>"; };
+		F30FAC459D87B7DE6AB20679 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		FFB3FACC920FD3742670F126 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -333,6 +340,7 @@
 				0E184B1F18D54753005A3888 /* UIKit.framework in Frameworks */,
 				0E184B2118D54753005A3888 /* Foundation.framework in Frameworks */,
 				0E184B2318D54753005A3888 /* CoreGraphics.framework in Frameworks */,
+				A73E23F45362B2E14714D628 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +353,7 @@
 				0E184B2418D54753005A3888 /* YHMobileReader */,
 				0E184B1D18D54753005A3888 /* Frameworks */,
 				0E184B1B18D54753005A3888 /* Products */,
+				F0E23F1A1BE282907219EE11 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -366,6 +375,7 @@
 				0E184B1E18D54753005A3888 /* UIKit.framework */,
 				0E184B2018D54753005A3888 /* Foundation.framework */,
 				0E184B2218D54753005A3888 /* CoreGraphics.framework */,
+				FFB3FACC920FD3742670F126 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -796,6 +806,8 @@
 				1921ECC31A43027B003677A1 /* APLParseOperation.m */,
 				2C5DC10318F42A0D00D6F145 /* ReadInfoManager.h */,
 				2C5DC10418F42A0D00D6F145 /* ReadInfoManager.m */,
+				19D3ABB01AFF5B4200261C4D /* CommonFuction.h */,
+				19D3ABB11AFF5B4200261C4D /* CommonFuction.m */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -822,6 +834,15 @@
 			path = bookcity;
 			sourceTree = "<group>";
 		};
+		F0E23F1A1BE282907219EE11 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F30FAC459D87B7DE6AB20679 /* Pods.debug.xcconfig */,
+				03842A4BAE7D02281CA159D0 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -829,9 +850,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0E184B3818D54753005A3888 /* Build configuration list for PBXNativeTarget "YHMobileReader" */;
 			buildPhases = (
+				36409CF7F880A36C135BF753 /* Check Pods Manifest.lock */,
 				0E184B1618D54753005A3888 /* Sources */,
 				0E184B1718D54753005A3888 /* Frameworks */,
 				0E184B1818D54753005A3888 /* Resources */,
+				5415375DC0664135212E74CE /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -924,6 +947,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		36409CF7F880A36C135BF753 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5415375DC0664135212E74CE /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0E184B1618D54753005A3888 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -956,6 +1012,7 @@
 				2C052A4318F51B5D00A998EC /* VerticalPageView.m in Sources */,
 				19CC81A91A39EC27008B2343 /* BookNetManager.m in Sources */,
 				0E27803718D5585700053099 /* BookRack.m in Sources */,
+				19D3ABB21AFF5B4200261C4D /* CommonFuction.m in Sources */,
 				0E27803A18D55AB200053099 /* Books.m in Sources */,
 				0E27803D18D55C0300053099 /* BookMark.m in Sources */,
 				0E27804018D55D8100053099 /* ReadInfo.m in Sources */,
@@ -1064,6 +1121,7 @@
 		};
 		0E184B3918D54753005A3888 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F30FAC459D87B7DE6AB20679 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1074,6 +1132,7 @@
 					"${SDK_ROOT}/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = "YHMobileReader/YHMobileReader-Info.plist";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1081,6 +1140,7 @@
 		};
 		0E184B3A18D54753005A3888 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03842A4BAE7D02281CA159D0 /* Pods.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

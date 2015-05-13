@@ -16,4 +16,10 @@
 + (NSString *)getImageUrl:(NSString *)imageName;
 
 
++ (YHFtpRequestOperation *)test:(void(^)(NSArray *array))sucessBlock;
+
++ (YHFtpRequestOperation *)downloadBookWithBookName:(NSString *)bookName
+                                             result:(void(^)(BOOL isSuccess))resultBlock
+                                           progress:(void(^)(NSInteger bytesWritten, long long totalBytesWritten, long long expectedTotalBytes))progressBlock;
+
 @end

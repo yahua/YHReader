@@ -8,10 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NetBook : NSObject
+@interface NetBook : NSObject <NSCoding>
 
 @property (nonatomic, copy) NSString *bookName;
 
 @property (nonatomic, copy) NSString *bookImageName;
+
+@property (nonatomic, copy) NSString *bookSize;
+
+#pragma mark -
+#pragma mark 非服务端信息
+
+@property (nonatomic, assign) BOOL isLocal;
 
 @end

@@ -19,4 +19,5 @@
     #import "UIImageView+Cache.h"
     #import "UILabel+Extended.h"
     #import "NSString+Extended.h"
+    #import "CommonFuction.h"
 #endif

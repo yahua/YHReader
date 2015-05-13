@@ -11,7 +11,6 @@
 @interface YHFtpRequestOperation () <
 NSURLConnectionDataDelegate>
 
-@property (nonatomic, strong) NSOutputStream            *outputStream;
 @property (nonatomic, strong) NSInputStream             *inputStream;
 @property (nonatomic, strong) NSMutableData             *listData;
 @property (nonatomic, strong) NSData                    *responseData;
@@ -26,7 +25,7 @@ NSURLConnectionDataDelegate>
 @end
 
 @implementation YHFtpRequestOperation
-
+@synthesize outputStream = _outputStream;
 
 + (NSThread *)networkThread {
     static NSThread *networkThread = nil;
@@ -89,6 +88,17 @@ NSURLConnectionDataDelegate>
     self.progressBlock = progressBlock;
 }
 
+- (void)setOutputStream:(NSOutputStream *)outputStream {
+    //[self.lock lock];
+    if (outputStream != _outputStream) {
+        if (_outputStream) {
+            [_outputStream close];
+        }
+        _outputStream = outputStream;
+    }
+    //[self.lock unlock];
+}
+
 #pragma mark - NSURLConnectionDataDelegate
 
 - (void)connection:(NSURLConnection *)theConnection didReceiveResponse:(NSURLResponse *)response
@@ -110,6 +120,7 @@ NSURLConnectionDataDelegate>
     NSLog(@"%llu", [response expectedContentLength]);
     self.totleLength = [response expectedContentLength];
     self.totleWriteLength = 0;
+    [self.outputStream open];
 }
 
 - (void)connection:(NSURLConnection *)theConnection didReceiveData:(NSData *)data
@@ -246,10 +257,7 @@ NSURLConnectionDataDelegate>
 
 - (void)startRequest:(NSURLRequest *)request {
     
-    //文件写入路径
-    assert(self.outputStream);
-    [self.outputStream open];
-    
+
     //网络请求
     assert(request != nil);
     self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];

@@ -15,6 +15,8 @@ typedef void (^FtpOperationProgressBlock) (NSInteger bytesWritten, long long tot
 
 @interface YHFtpRequestOperation : NSOperation
 
+@property (nonatomic, strong) NSOutputStream            *outputStream;
+
 - (id)initWithRequest:(NSURLRequest *)urlRequest;
 
 - (void)setCompletionBlockWithSuccess:(FtpOperationSuccessBlock)success

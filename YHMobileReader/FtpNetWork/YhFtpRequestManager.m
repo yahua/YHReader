@@ -13,7 +13,6 @@
 @interface YhFtpRequestManager ()
 
 @property (nonatomic, strong) NSOperationQueue *operationQueue;
-@property (nonatomic, strong) NSURL *baseURL;
 
 @end
 
@@ -47,21 +46,25 @@
                        success:(FtpOperationSuccessBlock)sucessBlock
                        failuer:(FtpOperationFailuerBlock)failBlock {
     
+    NSURL *url = [NSURL URLWithString:urlString relativeToURL:self.baseURL];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString relativeToURL:self.baseURL]];
-    YHFtpRequestOperation *operation = [self FtpRequestOperationWithRequest:request sucess:^(id data) {
-        if (sucessBlock) {
-            sucessBlock(data);
-        }
-    } failure:^(NSError *msg) {
-        if (failBlock) {
-            failBlock(msg);
-        }
-    }];
+    YHFtpRequestOperation *operation = [self FtpRequestOperationWithRequest:request sucess:sucessBlock failure:failBlock];
     [self.operationQueue addOperation:operation];
                              
     return operation;
 }
 
+- (YHFtpRequestOperation *)download:(NSString *)urlString
+                            success:(FtpOperationSuccessBlock)sucessBlock
+                            failuer:(FtpOperationFailuerBlock)failBlock
+                           progress:(FtpOperationProgressBlock)progressBlock {
+    
+    YHFtpRequestOperation *operation = [self get:urlString success:sucessBlock failuer:failBlock];
+    [operation setFtpOperationProgressBlock:progressBlock];
+    return operation;
+}
+
+#pragma mark - Private
 
 - (YHFtpRequestOperation *)FtpRequestOperationWithRequest:(NSURLRequest *)request
                                                    sucess:(FtpOperationSuccessBlock)sucess

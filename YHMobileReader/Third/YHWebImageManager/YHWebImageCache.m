@@ -32,6 +32,11 @@
     if (self) {
         self.memCache = [[NSCache alloc] init];
         self.memCache.name = @"YHWebImageCache";
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(clearMemory)
+                                                     name:UIApplicationDidReceiveMemoryWarningNotification
+                                                   object:nil];
     }
     return self;
 }
@@ -59,14 +64,21 @@
             });
         }else {
             image = [self getDiskImageWithKey:key];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                complete(image);
-            });
             if (image) {
                 [self storeMemoryImage:image forKey:key];
             }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                complete(image);
+            });
         }
     });
+}
+
+#pragma mark - Notification
+
+- (void)clearMemory {
+    
+    [self.memCache removeAllObjects];
 }
 
 #pragma mark - Private

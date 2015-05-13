@@ -11,6 +11,8 @@
 
 @interface YhFtpRequestManager : NSObject
 
+@property (nonatomic, strong) NSURL *baseURL;
+
 + (id)manager;
 
 - (id)initWithBaseURL:(NSURL *)url;
@@ -19,5 +21,9 @@
                        success:(FtpOperationSuccessBlock)sucessBlock
                        failuer:(FtpOperationFailuerBlock)failBlock;
 
+- (YHFtpRequestOperation *)download:(NSString *)urlString
+                            success:(FtpOperationSuccessBlock)sucessBlock
+                            failuer:(FtpOperationFailuerBlock)failBlock
+                           progress:(FtpOperationProgressBlock)progressBlock;
 
 @end

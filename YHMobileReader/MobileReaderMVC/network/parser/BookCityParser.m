@@ -28,6 +28,7 @@
         NetBook *netBook = [[NetBook alloc] init];
         netBook.bookName = [dic objectForKey:@"bookName"];
         netBook.bookImageName = [dic objectForKey:@"bookImgName"];
+        netBook.bookSize = [dic objectForKey:@"bookSize"];
         
         [netBookArray addObject:netBook];
     }

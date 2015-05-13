@@ -16,6 +16,7 @@ UITableViewDelegate,
 UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UIImageView *imageView;
 
 @property (nonatomic, strong) YHFtpRequestOperation *operation;
 @property (nonatomic, strong) NSMutableArray *netBookList;
@@ -58,6 +59,10 @@ UITableViewDataSource>
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.tableView];
     
+    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 100, 100, 100)];
+    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.view addSubview:self.imageView];
+    
     //初始化数据
     [self initData];
     
@@ -70,6 +75,11 @@ UITableViewDataSource>
     
     [super viewWillAppear:animated];
     [self.tableView reloadData];
+    
+//    [BookCityNet test:^(NSArray *array) {
+//        self.netBookList = [NSMutableArray arrayWithArray:array];
+//        [self.tableView reloadData];
+//    }];
 }
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource
@@ -97,6 +107,25 @@ UITableViewDataSource>
     [cell reloadData:netBook];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NetBook *netBook = [self.netBookList objectAtIndex:indexPath.row];
+    [self downLoadBookWithName:netBook.bookName];
+}
+
+- (void)downLoadBookWithName:(NSString *)bookName {
+    
+    NSString *downloadPath = [CommonFuction getLocalPath:bookName];
+    unsigned long long downloadedBytes = [CommonFuction fileSizeForPath:downloadPath];
+    
+    [BookCityNet downloadBookWithBookName:bookName result:^(BOOL isSuccess) {
+        NSLog(@"%@ has download", bookName);
+    } progress:^(NSInteger bytesWritten, long long totalBytesWritten, long long expectedTotalBytes) {
+        CGFloat progress = (float)(totalBytesWritten+downloadedBytes)/(expectedTotalBytes+downloadedBytes);
+        NSLog(@"下载比率：%f", progress);
+    }];
 }
 
 #pragma mark - Private
