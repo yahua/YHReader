@@ -46,7 +46,6 @@
                        success:(FtpOperationSuccessBlock)sucessBlock
                        failuer:(FtpOperationFailuerBlock)failBlock {
     
-    NSURL *url = [NSURL URLWithString:urlString relativeToURL:self.baseURL];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString relativeToURL:self.baseURL]];
     YHFtpRequestOperation *operation = [self FtpRequestOperationWithRequest:request sucess:sucessBlock failure:failBlock];
     [self.operationQueue addOperation:operation];

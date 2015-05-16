@@ -10,6 +10,7 @@
 #import "BookNetManager.h"
 #import "YHFtpLogic.h"
 #import "BookCityParser.h"
+#import "BookCityLogic.h"
 
 #import "AFNetworking.h"
 
@@ -56,15 +57,17 @@
     [[NSURLCache sharedURLCache] removeCachedResponseForRequest:request];
     
     YHFtpRequestOperation *operation = [[YHFtpRequestOperation alloc] initWithRequest:request];
-    [operation setOutputStream:[NSOutputStream outputStreamToFileAtPath:downloadBookPath append:YES]];
+    //服务端暂时无法Range 所以append：NO
+    [operation setOutputStream:[NSOutputStream outputStreamToFileAtPath:downloadBookPath append:NO]];
     
     [operation setCompletionBlockWithSuccess:^(id data) {
+        [BookCityLogic addBookLocal:bookName];
         if (resultBlock) {
-            resultBlock(@"YES");
+            resultBlock(YES);
         }
     } failure:^(NSError *msg) {
         if (resultBlock) {
-            resultBlock(@"NO");
+            resultBlock(NO);
         }
     }];
     [operation setFtpOperationProgressBlock:progressBlock];
@@ -93,7 +96,6 @@
                           @"name": @"yahua"};
     [manager GET:@"http://192.168.1.107:8000/booksInfo/booksInfo.xml" parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (sucessBlock) {
-            NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
             NSArray *netBookArray = [BookCityParser parserBookInfo:responseObject];
             sucessBlock(netBookArray);
         }

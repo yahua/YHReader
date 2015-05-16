@@ -44,6 +44,10 @@
 		0EA62BA318D8919B00454481 /* BookClassifyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA62BA218D8919B00454481 /* BookClassifyCell.m */; };
 		0EBB232A18DA943B002D203E /* BookClassifyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EBB232918DA943B002D203E /* BookClassifyView.m */; };
 		0EBB232E18DAA45D002D203E /* UIVCBookRack.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EBB232D18DAA45D002D203E /* UIVCBookRack.m */; };
+		190494C21B0794AC00DDC184 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 190494BF1B0794AC00DDC184 /* ProgressHUD.bundle */; };
+		190494C31B0794AC00DDC184 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 190494C11B0794AC00DDC184 /* ProgressHUD.m */; };
+		190494C71B079A2200DDC184 /* DownloadBookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 190494C61B079A2200DDC184 /* DownloadBookManager.m */; };
+		190494CA1B079A4700DDC184 /* DownloadBookInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 190494C91B079A4700DDC184 /* DownloadBookInfo.m */; };
 		1921ECC41A43027B003677A1 /* APLParseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1921ECC31A43027B003677A1 /* APLParseOperation.m */; };
 		1926A50E1A1CF2A4006D2921 /* UIVCBookClassify.m in Sources */ = {isa = PBXBuildFile; fileRef = 1926A50D1A1CF2A4006D2921 /* UIVCBookClassify.m */; };
 		194D1E151A42FF2B00B4647D /* NetBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 194D1E141A42FF2B00B4647D /* NetBook.m */; };
@@ -51,6 +55,7 @@
 		19C77DFD1A3F16B300E561B1 /* UIImageView+Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C77DFC1A3F16B300E561B1 /* UIImageView+Cache.m */; };
 		19C77E051A3F212B00E561B1 /* BookCityTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C77E041A3F212B00E561B1 /* BookCityTopCell.m */; };
 		19C77E081A3F2A5C00E561B1 /* UILabel+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C77E071A3F2A5C00E561B1 /* UILabel+Extended.m */; };
+		19C871581B04EA9400F44E20 /* BookCityLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C871571B04EA9400F44E20 /* BookCityLogic.m */; };
 		19CB567A1A276BB800925E80 /* optionButton_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 19CB56781A276BB800925E80 /* optionButton_selected.png */; };
 		19CB567B1A276BB800925E80 /* optionButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 19CB56791A276BB800925E80 /* optionButton.png */; };
 		19CC81A91A39EC27008B2343 /* BookNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CC81A81A39EC27008B2343 /* BookNetManager.m */; };
@@ -77,7 +82,6 @@
 		2C06B56418FBB34200B3F485 /* BookMarkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C06B56318FBB34200B3F485 /* BookMarkCell.m */; };
 		2C06B56718FBB85A00B3F485 /* UIVCBookMark.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C06B56618FBB85A00B3F485 /* UIVCBookMark.m */; };
 		2C06B56A18FBBCB800B3F485 /* BookMarkHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C06B56918FBBCB800B3F485 /* BookMarkHeaderView.m */; };
-		2C06B57C18FBCE0400B3F485 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C06B57B18FBCE0400B3F485 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2C06B58218FBDA4600B3F485 /* 箭头1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C06B58018FBDA4600B3F485 /* 箭头1.png */; };
 		2C06B58318FBDA4600B3F485 /* 箭头2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C06B58118FBDA4600B3F485 /* 箭头2.png */; };
 		2C06B58518FBDDCB00B3F485 /* bookrack_edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C06B58418FBDDCB00B3F485 /* bookrack_edit@2x.png */; };
@@ -203,6 +207,13 @@
 		0EBB232918DA943B002D203E /* BookClassifyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookClassifyView.m; sourceTree = "<group>"; };
 		0EBB232C18DAA45D002D203E /* UIVCBookRack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIVCBookRack.h; sourceTree = "<group>"; };
 		0EBB232D18DAA45D002D203E /* UIVCBookRack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIVCBookRack.m; sourceTree = "<group>"; };
+		190494BF1B0794AC00DDC184 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
+		190494C01B0794AC00DDC184 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
+		190494C11B0794AC00DDC184 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
+		190494C51B079A2200DDC184 /* DownloadBookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadBookManager.h; sourceTree = "<group>"; };
+		190494C61B079A2200DDC184 /* DownloadBookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadBookManager.m; sourceTree = "<group>"; };
+		190494C81B079A4700DDC184 /* DownloadBookInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadBookInfo.h; sourceTree = "<group>"; };
+		190494C91B079A4700DDC184 /* DownloadBookInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadBookInfo.m; sourceTree = "<group>"; };
 		1921ECC21A43027B003677A1 /* APLParseOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APLParseOperation.h; sourceTree = "<group>"; };
 		1921ECC31A43027B003677A1 /* APLParseOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APLParseOperation.m; sourceTree = "<group>"; };
 		1926A50C1A1CF2A4006D2921 /* UIVCBookClassify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIVCBookClassify.h; sourceTree = "<group>"; };
@@ -216,6 +227,8 @@
 		19C77E041A3F212B00E561B1 /* BookCityTopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookCityTopCell.m; sourceTree = "<group>"; };
 		19C77E061A3F2A5C00E561B1 /* UILabel+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Extended.h"; sourceTree = "<group>"; };
 		19C77E071A3F2A5C00E561B1 /* UILabel+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Extended.m"; sourceTree = "<group>"; };
+		19C871561B04EA9400F44E20 /* BookCityLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookCityLogic.h; sourceTree = "<group>"; };
+		19C871571B04EA9400F44E20 /* BookCityLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookCityLogic.m; sourceTree = "<group>"; };
 		19CB56781A276BB800925E80 /* optionButton_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = optionButton_selected.png; sourceTree = "<group>"; };
 		19CB56791A276BB800925E80 /* optionButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = optionButton.png; sourceTree = "<group>"; };
 		19CC81A71A39EC27008B2343 /* BookNetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookNetManager.h; sourceTree = "<group>"; };
@@ -264,8 +277,6 @@
 		2C06B56618FBB85A00B3F485 /* UIVCBookMark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIVCBookMark.m; sourceTree = "<group>"; };
 		2C06B56818FBBCB800B3F485 /* BookMarkHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookMarkHeaderView.h; sourceTree = "<group>"; };
 		2C06B56918FBBCB800B3F485 /* BookMarkHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookMarkHeaderView.m; sourceTree = "<group>"; };
-		2C06B57A18FBCE0400B3F485 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		2C06B57B18FBCE0400B3F485 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		2C06B58018FBDA4600B3F485 /* 箭头1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头1.png"; sourceTree = "<group>"; };
 		2C06B58118FBDA4600B3F485 /* 箭头2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头2.png"; sourceTree = "<group>"; };
 		2C06B58418FBDDCB00B3F485 /* bookrack_edit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bookrack_edit@2x.png"; sourceTree = "<group>"; };
@@ -411,6 +422,7 @@
 		0E184B3B18D548EE005A3888 /* MobileReaderMVC */ = {
 			isa = PBXGroup;
 			children = (
+				190494C41B079A0800DDC184 /* manager */,
 				0E184B3C18D548EE005A3888 /* app */,
 				0E184B5818D55069005A3888 /* dbinterfaces */,
 				2C5DC10218F429D200D6F145 /* common */,
@@ -458,6 +470,8 @@
 				2C0D83C118FD15F200DB7730 /* ClassifyLogic.m */,
 				0EA62B7E18D885F100454481 /* SystemLogic.h */,
 				0EA62B7F18D885F100454481 /* SystemLogic.m */,
+				19C871561B04EA9400F44E20 /* BookCityLogic.h */,
+				19C871571B04EA9400F44E20 /* BookCityLogic.m */,
 			);
 			path = logics;
 			sourceTree = "<group>";
@@ -508,9 +522,9 @@
 		0E184B4218D548EE005A3888 /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				190494BE1B0794AC00DDC184 /* ProgressHUD */,
 				19D63E911A57D23000506A91 /* YHWebImageManager */,
 				19D5AC6B1A50191500EAED62 /* GDataXMLNode */,
-				2C06B57918FBCE0400B3F485 /* MBProgressHUD */,
 				0E184B4818D5505D005A3888 /* FMDB */,
 			);
 			path = Third;
@@ -613,6 +627,27 @@
 			path = bookRack;
 			sourceTree = "<group>";
 		};
+		190494BE1B0794AC00DDC184 /* ProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				190494BF1B0794AC00DDC184 /* ProgressHUD.bundle */,
+				190494C01B0794AC00DDC184 /* ProgressHUD.h */,
+				190494C11B0794AC00DDC184 /* ProgressHUD.m */,
+			);
+			path = ProgressHUD;
+			sourceTree = "<group>";
+		};
+		190494C41B079A0800DDC184 /* manager */ = {
+			isa = PBXGroup;
+			children = (
+				190494C51B079A2200DDC184 /* DownloadBookManager.h */,
+				190494C61B079A2200DDC184 /* DownloadBookManager.m */,
+				190494C81B079A4700DDC184 /* DownloadBookInfo.h */,
+				190494C91B079A4700DDC184 /* DownloadBookInfo.m */,
+			);
+			path = manager;
+			sourceTree = "<group>";
+		};
 		194D1E121A42FF0100B4647D /* bookcity */ = {
 			isa = PBXGroup;
 			children = (
@@ -707,15 +742,6 @@
 				2C06B56918FBBCB800B3F485 /* BookMarkHeaderView.m */,
 			);
 			path = bookMark;
-			sourceTree = "<group>";
-		};
-		2C06B57918FBCE0400B3F485 /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				2C06B57A18FBCE0400B3F485 /* MBProgressHUD.h */,
-				2C06B57B18FBCE0400B3F485 /* MBProgressHUD.m */,
-			);
-			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		2C0D840E18FD3B6E00DB7730 /* img */ = {
@@ -898,6 +924,7 @@
 			files = (
 				2C0D83CE18FD24D200DB7730 /* 过客,匆匆.txt in Resources */,
 				2C5DC0FA18F4246F00D6F145 /* 异界召唤师.txt in Resources */,
+				190494C21B0794AC00DDC184 /* ProgressHUD.bundle in Resources */,
 				2C0D842618FD3B6E00DB7730 /* 异界召唤师.png in Resources */,
 				2C0D841F18FD3B6E00DB7730 /* home.png in Resources */,
 				2C183B2618ED8284009EE4B4 /* book_delete.png in Resources */,
@@ -995,7 +1022,6 @@
 				2C5DC10518F42A0D00D6F145 /* ReadInfoManager.m in Sources */,
 				19CCE14E1A34B8DD00C078B9 /* YhFtpRequestManager.m in Sources */,
 				2C04CBCC18F935B70083DB85 /* ReadStyleItemView.m in Sources */,
-				2C06B57C18FBCE0400B3F485 /* MBProgressHUD.m in Sources */,
 				19CC81AC1A39EDF1008B2343 /* BookCityNet.m in Sources */,
 				0E184B5318D5505D005A3888 /* FMDatabase.m in Sources */,
 				19CCE14C1A34B8DD00C078B9 /* YHFtpFileModel.m in Sources */,
@@ -1018,8 +1044,10 @@
 				0E27804018D55D8100053099 /* ReadInfo.m in Sources */,
 				0E27804318D5641000053099 /* ClassifyDBImplement.m in Sources */,
 				0E27804618D567BE00053099 /* RackDBImplement.m in Sources */,
+				190494C71B079A2200DDC184 /* DownloadBookManager.m in Sources */,
 				2C03BF2A18F81E3E002AFE50 /* PageFooterView.m in Sources */,
 				19D09B491A6FEE5500BE624A /* YHWebImageCache.m in Sources */,
+				190494CA1B079A4700DDC184 /* DownloadBookInfo.m in Sources */,
 				19C77E051A3F212B00E561B1 /* BookCityTopCell.m in Sources */,
 				19D63E901A57C77F00506A91 /* NSString+Extended.m in Sources */,
 				19C77E081A3F2A5C00E561B1 /* UILabel+Extended.m in Sources */,
@@ -1027,6 +1055,7 @@
 				2C04CBC918F92C5D0083DB85 /* PageSettingView.m in Sources */,
 				0EA047E318D5AEE400CBFB48 /* BookMarkDBImplement.m in Sources */,
 				0EA047F018D5B83500CBFB48 /* ReadInfoDBImplement.m in Sources */,
+				19C871581B04EA9400F44E20 /* BookCityLogic.m in Sources */,
 				0EA0555318D70C9C00318165 /* DBInterfaceFactory.m in Sources */,
 				0EA62B8018D885F100454481 /* SystemLogic.m in Sources */,
 				1921ECC41A43027B003677A1 /* APLParseOperation.m in Sources */,
@@ -1039,6 +1068,7 @@
 				0EA62B9A18D888F600454481 /* UIView+Size.m in Sources */,
 				194D1E151A42FF2B00B4647D /* NetBook.m in Sources */,
 				19D5AC6E1A50191500EAED62 /* GDataXMLNode.m in Sources */,
+				190494C31B0794AC00DDC184 /* ProgressHUD.m in Sources */,
 				19C77DFD1A3F16B300E561B1 /* UIImageView+Cache.m in Sources */,
 				2C06B56718FBB85A00B3F485 /* UIVCBookMark.m in Sources */,
 				19D5AC6A1A5018C700EAED62 /* BookCityParser.m in Sources */,

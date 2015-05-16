@@ -9,6 +9,7 @@
 #import "BookCityParser.h"
 #import "GDataXMLNode.h"
 #import "NetBook.h"
+#import "BookCityLogic.h"
 
 @implementation BookCityParser
 
@@ -29,6 +30,7 @@
         netBook.bookName = [dic objectForKey:@"bookName"];
         netBook.bookImageName = [dic objectForKey:@"bookImgName"];
         netBook.bookSize = [dic objectForKey:@"bookSize"];
+        [BookCityLogic handleBookIslocal:netBook];
         
         [netBookArray addObject:netBook];
     }

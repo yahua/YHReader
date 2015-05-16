@@ -7,9 +7,12 @@
 //
 
 #import "UIVCBookCityController.h"
-#import "BookCityNet.h"
 #import "BookCityTopCell.h"
-#import "APLParseOperation.h"
+#import "BookCityNet.h"
+#import "DownloadBookManager.h"
+
+#import "MBProgressHUD.h"
+#import "ProgressHUD.h"
 
 @interface UIVCBookCityController () <
 UITableViewDelegate,
@@ -66,9 +69,6 @@ UITableViewDataSource>
     //初始化数据
     [self initData];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(addNetBooks:)
-                                                 name:kAddNetBookNotificationName object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -97,35 +97,23 @@ UITableViewDataSource>
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *cellString = @"kCellString";
-    id cell = [tableView dequeueReusableCellWithIdentifier:cellString];
+    BookCityTopCell *cell = [tableView dequeueReusableCellWithIdentifier:cellString];
     if (!cell) {
         cell = [[BookCityTopCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellString];
 
     }
-    
     NetBook *netBook = [self.netBookList objectAtIndex:indexPath.row];
     [cell reloadData:netBook];
+    cell.userInteractionEnabled = netBook.isLocal?NO:YES;
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NetBook *netBook = [self.netBookList objectAtIndex:indexPath.row];
-    [self downLoadBookWithName:netBook.bookName];
-}
-
-- (void)downLoadBookWithName:(NSString *)bookName {
-    
-    NSString *downloadPath = [CommonFuction getLocalPath:bookName];
-    unsigned long long downloadedBytes = [CommonFuction fileSizeForPath:downloadPath];
-    
-    [BookCityNet downloadBookWithBookName:bookName result:^(BOOL isSuccess) {
-        NSLog(@"%@ has download", bookName);
-    } progress:^(NSInteger bytesWritten, long long totalBytesWritten, long long expectedTotalBytes) {
-        CGFloat progress = (float)(totalBytesWritten+downloadedBytes)/(expectedTotalBytes+downloadedBytes);
-        NSLog(@"下载比率：%f", progress);
-    }];
+    [self downLoadBookWithName:netBook indexPath:indexPath];
 }
 
 #pragma mark - Private
@@ -134,8 +122,6 @@ UITableViewDataSource>
     
     //self.parseQueue = [NSOperationQueue new];
     self.operation = [BookCityNet getBookTopInfoWithSuccess:^(NSArray *array) {
-//        APLParseOperation *parseOperation = [[APLParseOperation alloc] initWithData:data];
-//        [self.parseQueue addOperation:parseOperation];
         self.netBookList = [NSMutableArray arrayWithArray:array];
         [self.tableView reloadData];
     } failuer:^(NSString *msg) {
@@ -143,26 +129,26 @@ UITableViewDataSource>
     }];
 }
 
-- (void)addNetBooks:(NSNotification *)notif {
+- (void)downLoadBookWithName:(NetBook *)netBook indexPath:(NSIndexPath *)indexPath {
     
-    assert([NSThread isMainThread]);
-    [self addNetBooksToList:[[notif userInfo] valueForKey:kNetBookResultsKey]];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[DownloadBookManager shareInstance] addDownloadBookTaskL:netBook.bookName bookImageUrl:netBook.bookImageName resultBlock:^(BOOL isSuccess) {
+        [MBProgressHUD hideHUDForView:self.view animated:NO];
+        NetBook *netBook = [self.netBookList objectAtIndex:indexPath.row];
+        netBook.isLocal = YES;
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        if (cell) {
+            if (isSuccess) {
+                [ProgressHUD showSuccess:@"下载成功！"];
+            }else {
+                [ProgressHUD showError:@"下载失败！"];
+            }
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        }
+    }];
 }
 
-- (void)addNetBooksToList:(NSArray *)netBooks {
-    
-    NSInteger startingRow = [self.netBookList count];
-    NSInteger netBookCount = [netBooks count];
-    NSMutableArray *indexPaths = [[NSMutableArray alloc] initWithCapacity:netBookCount];
-    
-    for (NSInteger row = startingRow; row < (startingRow + netBookCount); row++) {
-        
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
-        [indexPaths addObject:indexPath];
-    }
-    
-    [self.netBookList addObjectsFromArray:netBooks];
-    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-}
+
+
 
 @end

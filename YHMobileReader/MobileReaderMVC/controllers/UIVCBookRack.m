@@ -1,5 +1,5 @@
 //
-//  UIVCBookClassify.m
+//  UIVCBookRack.m
 //  YHMobileReader
 //
 //  Created by wang shiwen on 14-3-20.
