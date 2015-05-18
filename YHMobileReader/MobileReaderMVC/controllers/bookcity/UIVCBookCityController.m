@@ -25,6 +25,8 @@ UITableViewDataSource>
 @property (nonatomic, strong) NSMutableArray *netBookList;
 @property (nonatomic, strong) NSOperationQueue *parseQueue;
 
+@property (nonatomic, strong) NSString *test;
+
 @end
 
 @implementation UIVCBookCityController
@@ -50,7 +52,7 @@ UITableViewDataSource>
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.test = @"22";
     // 设置CGRectZero从导航栏下开始计算
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -132,19 +134,24 @@ UITableViewDataSource>
 - (void)downLoadBookWithName:(NetBook *)netBook indexPath:(NSIndexPath *)indexPath {
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[RACObserve(self, test) filter:^BOOL(NSString *x) {
+        return[x isEqualToString:@"11"];
+    }] subscribeNext:^(NSString *x) {
+        NSLog(@"xx");
+    }];
     [[DownloadBookManager shareInstance] addDownloadBookTaskL:netBook.bookName bookImageUrl:netBook.bookImageName resultBlock:^(BOOL isSuccess) {
         [MBProgressHUD hideHUDForView:self.view animated:NO];
-        NetBook *netBook = [self.netBookList objectAtIndex:indexPath.row];
-        netBook.isLocal = YES;
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
         if (cell) {
             if (isSuccess) {
                 [ProgressHUD showSuccess:@"下载成功！"];
+                netBook.isLocal = YES;
             }else {
                 [ProgressHUD showError:@"下载失败！"];
             }
             [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
         }
+        self.test = @"11";
     }];
 }
 

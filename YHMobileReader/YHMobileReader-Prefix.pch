@@ -20,4 +20,5 @@
     #import "UILabel+Extended.h"
     #import "NSString+Extended.h"
     #import "CommonFuction.h"
+    #import "ReactiveCocoa.h"
 #endif
